@@ -1,6 +1,6 @@
 import Image from "next/image"
 import placeholder from "../../../public/next.svg"
-import { AddButton, CategoryButton, ComentaryButton, RatingButton } from "../_fragments/Buttons"
+import { BuyButton, CategoryButton, ComentaryButton, RatingButton } from "../_fragments/Buttons"
 
 export const ProductsHomeCard = () => {
   return (
@@ -30,10 +30,10 @@ export const ProductsHomeCard = () => {
           </div>
         </div>
         <div>
-          <CategoryButton>CATEGORIA</CategoryButton>
-          <RatingButton />
-          <ComentaryButton />
-          <AddButton />
+          <CategoryButton>NOME DA CATEGORIA</CategoryButton>
+          <RatingButton>8</RatingButton>
+          <ComentaryButton>2</ComentaryButton>
+          <BuyButton />
         </div>
       </div>
     </li>
