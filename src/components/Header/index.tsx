@@ -4,6 +4,7 @@ import placeholder from "../../../public/next.svg"
 import Link from "next/link"
 
 export const Header = () => {
+
   return (
     <header>
       <div>
