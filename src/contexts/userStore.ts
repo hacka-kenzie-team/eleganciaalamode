@@ -7,4 +7,5 @@ export const userStore = create<IUserState>()((set) => ({
 //login
 //logout
 //autologin
+// BUY (salvar order)
 }))

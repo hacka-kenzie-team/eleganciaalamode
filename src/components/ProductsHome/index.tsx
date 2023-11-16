@@ -1,24 +1,30 @@
+import { IProduct } from "@/contexts/@productTypes"
 import { ProductsHomeCard } from "../ProductsHomeCard"
 import { CategoryButton } from "../_fragments/Buttons"
 import { SearchInput } from "../_fragments/Inputs"
 
-export const ProductsHome = () => {
 
+interface IProductsHomeProps{
+    allProducts: IProduct[]
+}
+
+
+export const ProductsHome = ({allProducts}: IProductsHomeProps) => {
 
     return (
         <section>
             <SearchInput />
             <ul>
-                <li><CategoryButton>Categoria 1</CategoryButton></li>
-                <li><CategoryButton>Categoria 2</CategoryButton></li>
-                <li><CategoryButton>Categoria 3</CategoryButton></li>
-                <li><CategoryButton>Categoria 4</CategoryButton></li>
+                <li><CategoryButton>Roupas</CategoryButton></li>
+                <li><CategoryButton>Calçados</CategoryButton></li>
+                <li><CategoryButton>Acessórios</CategoryButton></li>
+                <li><CategoryButton>Ternos</CategoryButton></li>
             </ul>
             <ul>
-                <ProductsHomeCard />
-                <ProductsHomeCard />
-                <ProductsHomeCard />
-                <ProductsHomeCard />
+                {allProducts.map(
+                    (product) => 
+                    <ProductsHomeCard product={product} key={product.id}/>
+                )}
             </ul>
         </section>
     )

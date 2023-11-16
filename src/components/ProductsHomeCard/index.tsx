@@ -1,38 +1,43 @@
 import Image from "next/image"
 import placeholder from "../../../public/next.svg"
 import { BuyButton, CategoryButton, ComentaryButton, RatingButton } from "../_fragments/Buttons"
+import { IProduct } from "@/contexts/@productTypes"
+import { getAverageScore } from "@/utils/getAverageScore"
 
-export const ProductsHomeCard = () => {
+
+interface IProductsHomeCardProps{
+  product: IProduct
+}
+
+export const ProductsHomeCard = ({product}: IProductsHomeCardProps) => {
+
   return (
     <li>
       <Image
-        src={placeholder}
-        width={900}
-        height={400}
+        src={product.style.url}
+        width={400}
+        height={600}
         alt="Imagem do produto"
       />
       <div>
         <div>
           <div>
-            <h1>Nome do Produto</h1>
-            <span>Descrição</span>
+            <h1>{product.name}</h1>
+            <span>Descrição: </span>
             <p>
-              descrição:There are many variations of passages
-              of Lorem Ipsum available, but the majority have suffered
-              alteration in some form, by injected humour, or randomised
-              words which don't look even slightly believable. If you are
+              {product.description || "Generic description"}
             </p>
           </div>
           <div>
-            <h1>R$ 999,99</h1>
+            <h1>{product.price}</h1>
             <p>Estoque:</p>
-            <p>x10</p>
+            <p>x{product.stock}</p>
           </div>
         </div>
         <div>
-          <CategoryButton>NOME DA CATEGORIA</CategoryButton>
-          <RatingButton>8</RatingButton>
-          <ComentaryButton>2</ComentaryButton>
+          <CategoryButton>{product.category}</CategoryButton>
+          <RatingButton>{getAverageScore(product.comments)}</RatingButton>
+          <ComentaryButton>{product.comments.length}</ComentaryButton>
           <BuyButton />
         </div>
       </div>
