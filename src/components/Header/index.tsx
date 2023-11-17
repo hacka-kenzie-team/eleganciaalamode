@@ -1,9 +1,18 @@
+'use client'
 import Image from "next/image"
 import { HeaderNav } from "../HeaderNav"
 import placeholder from "../../../public/next.svg"
 import Link from "next/link"
+import { userStore } from "@/contexts/userStore"
+import { useEffect } from "react"
+
 
 export const Header = () => {
+  const { loadUser } = userStore((state) => state)
+
+  useEffect(() => {
+    loadUser()
+  }, []);
 
   return (
     <header>

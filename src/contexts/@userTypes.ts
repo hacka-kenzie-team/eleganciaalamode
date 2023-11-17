@@ -1,9 +1,24 @@
 import { IComment } from "./@commentTypes";
 
+export interface IOrderItemCreate{
+    product_name: string;
+    product_price: number;
+    quantity: number;
+
+    productId: number;
+    quantityTotal: number;
+}
+
+export interface IOrderCreate{
+    user_id: number;
+    is_paid: boolean;
+    items_bought: IOrderItemCreate[]
+}
+
 export interface IOrderItem{
     order: number;
     product_name: string;
-    product_price?: number;
+    product_price: number;
     quantity: number;
 }
 
@@ -13,6 +28,19 @@ export interface IOrder{
     is_paid: boolean;
     date_paid: null | Date;
     items_bought: IOrderItem[]
+}
+
+export type TToken = {
+    refresh: string;
+    access: string;
+}
+
+export interface IUserCreate{
+    username: string,
+	email: string,
+	name: string,
+	password: string,
+	is_superuser?: boolean
 }
 
 export interface IUser{
@@ -32,5 +60,20 @@ export interface IUserData{
 };
 
 export interface IUserState {
-    user_data: IUserData | null;
+    userData: IUserData | null;
+    loading: boolean,
+    error: string,
+    message: string,
+    logoutUser: () => void
+    loginUser: ({ username, password }: {
+        username: string;
+        password: string;
+    }) => Promise<true | undefined>
+    loadUser: () => Promise<void>
+    registerUser: (userData: {
+        userData: IUserCreate;
+    }) => Promise<boolean | undefined>
+    buy: ({ order }: {
+        order: IOrderCreate;
+    }) => Promise<IOrder | undefined>
 }
