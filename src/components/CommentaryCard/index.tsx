@@ -1,7 +1,7 @@
 'use client'
 import { IComment } from "@/contexts/@commentTypes"
 import { UserNameTag } from "../UserNameTag"
-import { RatingButton } from "../_fragments/Buttons"
+import { RatingButton } from "../_fragments/Icons"
 import { usePathname } from "next/navigation"
 import { userStore } from "@/contexts/userStore"
 import { CommentModerationButtons } from "../_fragments/buttons/CommentModerationButtons"

@@ -1,11 +1,12 @@
 'use client'
 import { useRouter } from "next/navigation";
-import { AppleButton, FacebookButton, FormSubmitButton, GoogleButton } from "../_fragments/Buttons"
 import { FormInput } from "../_fragments/Inputs"
 import { userStore } from "@/contexts/userStore";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { TRegisterValues, registerSchema } from "./schema";
+import { FormSubmitButton } from "../_fragments/buttons/FormSubmitButton";
+import { AppleIcon, FacebookIcon, GoogleIcon } from "../_fragments/Icons";
 
 
 export const RegisterForm = () => {
@@ -37,9 +38,9 @@ export const RegisterForm = () => {
                 </div>
                 <span>Ou cadastre-se com sua rede social</span>
                 <div>
-                    <GoogleButton />
-                    <FacebookButton />
-                    <AppleButton />
+                    <GoogleIcon />
+                    <FacebookIcon />
+                    <AppleIcon />
                 </div>
                 <FormSubmitButton>Cadastrar</FormSubmitButton>
             </form>

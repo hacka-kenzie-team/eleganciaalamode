@@ -1,6 +1,8 @@
 import Image from "next/image"
 import placeholder from "../../../public/vercel.svg"
-import { AddButton, BuyButton, CategoryButton, RatingButton } from "../_fragments/Buttons"
+import { CategoryButton } from "../_fragments/buttons/CategoryButton"
+import { BuyIcon, RatingIcon } from "../_fragments/Icons"
+
 
 export const DetailedProductMainCard = () => {
     return (
@@ -29,8 +31,8 @@ export const DetailedProductMainCard = () => {
             </div>
             <div>
                 <CategoryButton>NOME DA CATEGORIA</CategoryButton>
-                <RatingButton>8</RatingButton>
-                <BuyButton />
+                <RatingIcon>8</RatingIcon>
+                <BuyIcon />
             </div>
         </section>
     )

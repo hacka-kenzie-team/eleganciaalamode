@@ -1,11 +1,13 @@
 'use client'
 import { userStore } from "@/contexts/userStore";
-import { AppleButton, FacebookButton, FormSubmitButton, GoogleButton } from "../_fragments/Buttons"
+
 import { FormInput } from "../_fragments/Inputs"
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TLoginValues, loginSchema } from "./schema";
+import { FormSubmitButton } from "../_fragments/buttons/FormSubmitButton";
+import { AppleIcon, FacebookIcon, GoogleIcon } from "../_fragments/Icons";
 
 
 export const LoginForm = () => {
@@ -34,9 +36,9 @@ export const LoginForm = () => {
                 </div>
                 <span>Ou entre com sua rede social</span>
                 <div>
-                    <GoogleButton />
-                    <FacebookButton />
-                    <AppleButton />
+                    <GoogleIcon />
+                    <FacebookIcon />
+                    <AppleIcon />
                 </div>
                 <FormSubmitButton>Entrar</FormSubmitButton>
             </form>

@@ -1,11 +1,12 @@
 
 import { CommentaryCard } from "../CommentaryCard"
-import { CommentaryButton } from "../_fragments/Buttons"
+import { CommentaryIcon } from "../_fragments/Icons"
+
 
 export const CommentaryList = () => {
     return (
         <section>
-            <CommentaryButton>2 Deixe sua Avaliação</CommentaryButton>
+            <CommentaryIcon>2 Deixe sua Avaliação</CommentaryIcon>
             <ul>
                 {/* <CommentaryCard />
                 <CommentaryCard /> */}

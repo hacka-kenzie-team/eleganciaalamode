@@ -1,6 +1,6 @@
 import Image from "next/image"
 import placeholder from "../../../public/vercel.svg"
-import { AddButton, SubtractButton } from "../_fragments/Buttons"
+import { AddIcon, SubtractIcon } from "../_fragments/Icons"
 
 
 export const ShoppingCartModalCard = () => {
@@ -19,8 +19,8 @@ export const ShoppingCartModalCard = () => {
             <div>
                 <span>R$: 999,99</span>
                 <div>
-                    <AddButton />
-                    <SubtractButton />
+                    <AddIcon />
+                    <SubtractIcon />
                 </div>
             </div>
         </li>

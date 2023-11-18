@@ -1,7 +1,9 @@
 import Image from "next/image"
 import placeholder from "../../../public/vercel.svg"
 import { SearchInput } from "../_fragments/Inputs"
-import { HomeCategoryButton } from "../_fragments/Buttons"
+import { HomeCategoryButton } from "../_fragments/buttons/HomeCategoryButton"
+
+
 
 export const HomeSection = () => {
     return (

@@ -2,25 +2,9 @@ import Image from "next/image"
 import placeholder from "../../../public/next.svg"
 
 
-export const HomeCategoryButton = ({ children }: { children: React.ReactNode }) => {
+export const RatingIcon = ({children}:{children: React.ReactNode}) => {
     return (
-        <button type="button">
-            {children}
-        </button>
-    )
-}
-
-export const FormSubmitButton = ({ children }: { children: React.ReactNode }) => {
-    return (
-        <button type="submit">
-            {children}
-        </button>
-    )
-}
-
-export const RatingButton = ({children}:{children: React.ReactNode}) => {
-    return (
-        <button type="button">
+        <div>
             <Image
                 src={placeholder}
                 height={30}
@@ -28,13 +12,13 @@ export const RatingButton = ({children}:{children: React.ReactNode}) => {
                 alt="Ícone de Estrela"
             />
             <span>{children}</span>
-        </button>
+        </div>
     )
 }
 
-export const CommentaryButton = ({children}:{children: React.ReactNode}) => {
+export const CommentaryIcon = ({children}:{children: React.ReactNode}) => {
     return (
-        <button type="button">
+        <div>
             <Image
                 src={placeholder}
                 height={30}
@@ -42,80 +26,80 @@ export const CommentaryButton = ({children}:{children: React.ReactNode}) => {
                 alt="Ícone de comentário"
             />
             <span>{children}</span>
-        </button>
+        </div>
     )
 }
 
-export const AddButton = () => {
+export const AddIcon = () => {
     return (
-        <button type="button">
+        <div>
             <Image
                 src={placeholder}
                 height={30}
                 width={30}
                 alt="Ícone de adicionar"
             />
-        </button>
+        </div>
     )
 }
 
-export const SubtractButton = () => {
+export const SubtractIcon = () => {
     return (
-        <button type="button">
+        <div>
             <Image
                 src={placeholder}
                 height={30}
                 width={30}
                 alt="Ícone de diminuir"
             />
-        </button>
-    )
-}
-
-export const BuyButton = () => {
-    return (
-        <div>
-            <span>COMPRAR</span>
-            <AddButton />
         </div>
     )
 }
 
-export const GoogleButton = () => {
+export const BuyIcon = () => {
     return (
-        <button type="button">
+        <div>
+            <span>COMPRAR</span>
+            <AddIcon />
+        </div>
+    )
+}
+
+export const GoogleIcon = () => {
+    return (
+        <div>
             <Image
                 src={placeholder}
                 height={30}
                 width={30}
                 alt="Ícone do Google"
             />
-        </button>
+        </div>
     )
 }
 
-export const FacebookButton = () => {
+export const FacebookIcon = () => {
     return (
-        <button type="button">
+        <div>
             <Image
                 src={placeholder}
                 height={30}
                 width={30}
                 alt="Ícone do facebook"
             />
-        </button>
+        </div>
     )
 }
 
-export const AppleButton = () => {
+export const AppleIcon = () => {
     return (
-        <button type="button">
+        <div>
             <Image
                 src={placeholder}
                 height={30}
                 width={30}
                 alt="Ícone da Apple"
             />
-        </button>
+        </div>
     )
 }

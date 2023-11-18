@@ -1,8 +1,9 @@
 import Image from "next/image"
-import { BuyButton, CommentaryButton, RatingButton } from "../_fragments/Buttons"
+
 import { IProduct } from "@/contexts/@productTypes"
 import { getAverageScore } from "@/utils/getAverageScore"
 import { CategoryButton } from "../_fragments/buttons/CategoryButton"
+import { BuyIcon, CommentaryIcon, RatingIcon } from "../_fragments/Icons"
 
 
 interface IProductsHomeCardProps{
@@ -36,9 +37,9 @@ export const ProductsHomeCard = ({product}: IProductsHomeCardProps) => {
         </div>
         <div>
           <CategoryButton>{product.category}</CategoryButton>
-          <RatingButton>{getAverageScore(product.comments)}</RatingButton>
-          <CommentaryButton>{product.comments.length}</CommentaryButton>
-          <BuyButton />
+          <RatingIcon>{getAverageScore(product.comments)}</RatingIcon>
+          <CommentaryIcon>{product.comments.length}</CommentaryIcon>
+          <BuyIcon />
         </div>
       </div>
     </li>
