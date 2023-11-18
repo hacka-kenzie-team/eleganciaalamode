@@ -2,14 +2,6 @@ import Image from "next/image"
 import placeholder from "../../../public/next.svg"
 
 
-export const CategoryButton = ({ children }: { children: React.ReactNode }) => {
-    return (
-        <button type="button">
-            {children}
-        </button>
-    )
-}
-
 export const HomeCategoryButton = ({ children }: { children: React.ReactNode }) => {
     return (
         <button type="button">
@@ -40,7 +32,7 @@ export const RatingButton = ({children}:{children: React.ReactNode}) => {
     )
 }
 
-export const ComentaryButton = ({children}:{children: React.ReactNode}) => {
+export const CommentaryButton = ({children}:{children: React.ReactNode}) => {
     return (
         <button type="button">
             <Image

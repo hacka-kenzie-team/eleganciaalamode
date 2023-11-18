@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import { IOrder, IUser, IUserData, IUserState, TToken } from './@userTypes'
 import { api } from '@/app/api/api';
 import { jwtDecode } from 'jwt-decode';
+import { useRouter } from 'next/navigation';
 
 
 export const userStore = create<IUserState>()((set) => ({
@@ -50,21 +51,29 @@ export const userStore = create<IUserState>()((set) => ({
 
     loadUser: async () => {
         if (typeof window !== "undefined") {
-            let token = localStorage.getItem("@elegancia:token");
-            if (token) {
-                token = JSON.parse(token) as string
-                const decoded: any = jwtDecode(token)
-                const userID: number = decoded.user_id
-                const user = await api.get<IUser>(`/users/${userID}/`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`
+            try {
+                let token = localStorage.getItem("@elegancia:token");
+                if (token) {
+                    token = JSON.parse(token) as string
+                    const decoded: any = jwtDecode(token)
+                    const userID: number = decoded.user_id
+                    const user = await api.get<IUser>(`/users/${userID}/`, {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    })
+                    const new_userData = {
+                        accessToken: token,
+                        user: user.data
                     }
-                })
-                const new_userData = {
-                    accessToken: token,
-                    user: user.data
+                    set({ userData: new_userData });
                 }
-                set({ userData: new_userData });
+            } catch (error) {
+                console.log(error)
+                localStorage.removeItem("@elegancia:token");
+                set({ userData: null });
+                const {push} = useRouter()
+                push('/')
             }
         }
     },

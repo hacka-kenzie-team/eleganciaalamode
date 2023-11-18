@@ -4,7 +4,7 @@ import { getAverageScore } from "@/utils/getAverageScore";
 import { 
     BuyButton,
     CategoryButton,
-    ComentaryButton,
+    CommentaryButton,
     RatingButton
 } from "./Buttons";
 
@@ -17,7 +17,7 @@ export const ProductHomeCardInfo = ({productId}: IProductHomeCardInfoProps) => {
         <div>
           <CategoryButton>product.category</CategoryButton>
           <RatingButton>getAverageScore(product.comments)</RatingButton>
-          <ComentaryButton>product.comments.length</ComentaryButton>
+          <CommentaryButton>product.comments.length</CommentaryButton>
           <BuyButton />
         </div>
     )

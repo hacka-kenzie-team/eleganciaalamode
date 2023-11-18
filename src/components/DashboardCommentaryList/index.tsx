@@ -1,11 +1,11 @@
 'use client'
 
 import { userStore } from "@/contexts/userStore"
-import { ComentaryCard } from "../ComentaryCard"
+import { CommentaryCard } from "../CommentaryCard"
 import { UserNameTag } from "../UserNameTag"
-import { IUser } from "@/contexts/@userTypes"
 
-export const DashboardComentaryList = () => {
+
+export const DashboardCommentaryList = () => {
     const user = userStore((state) => state.userData?.user)
     return (
         <section>
@@ -17,7 +17,7 @@ export const DashboardComentaryList = () => {
                     (!user.comments ?
                     <li>Nenhum comentário feito ainda.</li> :
                     user.comments.map((comment) => 
-                    <ComentaryCard 
+                    <CommentaryCard 
                     comment={comment}
                     key={comment.id}
                     />))

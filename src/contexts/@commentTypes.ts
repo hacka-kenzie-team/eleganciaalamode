@@ -17,6 +17,7 @@ export interface ICommentState {
     error: string;
     message: string;
     commentaryModal: (("post" | "edit" | "delete") | boolean)[];
+    activeComment: IComment | null
 
     loadComments: ({ token }: {
         token: string;
@@ -44,5 +45,5 @@ export interface ICommentState {
         mode: ("post" | "edit" | "delete")
     ) => void
 
-    commentaryModalReset: () => void
+    setActiveComment: (comment: IComment) => void
 }

@@ -1,7 +1,7 @@
 import { IProduct } from "@/contexts/@productTypes"
 import { ProductsHomeCard } from "../ProductsHomeCard"
-import { CategoryButton } from "../_fragments/Buttons"
 import { SearchInput } from "../_fragments/Inputs"
+import { CategoryButton } from "../_fragments/buttons/CategoryButton"
 
 
 interface IProductsHomeProps{

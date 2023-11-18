@@ -27,5 +27,14 @@ export interface IProduct {
 
 export interface IProductState {
     productList: IProduct[];
+    loading: boolean;
+    error: string;
+    message: string;
+    searchInput: string;
+
     loadProducts: () => Promise<IProduct[] | null>;
+    loadSearchedProducts: 
+        (searchInput: string) => 
+        Promise<IProduct[] | undefined>;
+    setSearchInput: (string: string) => void
 }

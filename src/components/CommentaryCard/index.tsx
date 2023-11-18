@@ -7,7 +7,7 @@ import { userStore } from "@/contexts/userStore"
 import { CommentModerationButtons } from "../_fragments/buttons/CommentModerationButtons"
 
 
-export const ComentaryCard = ({ comment }: { comment: IComment }) => {
+export const CommentaryCard = ({ comment }: { comment: IComment }) => {
     const admin = userStore((state) => state.userData?.user.is_superuser)
     const pathname = usePathname()
 
@@ -25,8 +25,8 @@ export const ComentaryCard = ({ comment }: { comment: IComment }) => {
                     {comment.content}
                 </p>
                 <RatingButton>{comment.rating}</RatingButton>
-                {pathname === "/dashboard" || admin &&
-                    <CommentModerationButtons commentId={comment.id} />
+                {(pathname === "/dashboard" || admin) &&
+                    <CommentModerationButtons comment={comment} />
                 }
             </div>
         </li>

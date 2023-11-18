@@ -1,8 +1,8 @@
 import Image from "next/image"
-import placeholder from "../../../public/next.svg"
-import { BuyButton, CategoryButton, ComentaryButton, RatingButton } from "../_fragments/Buttons"
+import { BuyButton, CommentaryButton, RatingButton } from "../_fragments/Buttons"
 import { IProduct } from "@/contexts/@productTypes"
 import { getAverageScore } from "@/utils/getAverageScore"
+import { CategoryButton } from "../_fragments/buttons/CategoryButton"
 
 
 interface IProductsHomeCardProps{
@@ -37,7 +37,7 @@ export const ProductsHomeCard = ({product}: IProductsHomeCardProps) => {
         <div>
           <CategoryButton>{product.category}</CategoryButton>
           <RatingButton>{getAverageScore(product.comments)}</RatingButton>
-          <ComentaryButton>{product.comments.length}</ComentaryButton>
+          <CommentaryButton>{product.comments.length}</CommentaryButton>
           <BuyButton />
         </div>
       </div>

@@ -1,5 +1,6 @@
 'use client'
-import { DashboardComentaryList } from "@/components/DashboardComentaryList";
+import { CommentaryModal } from "@/components/CommentaryModal";
+import { DashboardCommentaryList } from "@/components/DashboardCommentaryList";
 import { DashboardOrdersList } from "@/components/DashboardOrdersList";
 import { SalesList } from "@/components/SalesList";
 import { userStore } from "@/contexts/userStore";
@@ -19,9 +20,10 @@ export default function DashboardPage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <h1>DashboardPage</h1>
-      <DashboardComentaryList />
+      <DashboardCommentaryList />
       <DashboardOrdersList />
       <SalesList />
+      <CommentaryModal />
     </main>
   )
 }

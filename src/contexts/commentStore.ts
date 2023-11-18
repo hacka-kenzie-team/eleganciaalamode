@@ -1,7 +1,6 @@
 import { create } from 'zustand'
 import { IComment, ICommentState } from './@commentTypes'
 import { api } from '@/app/api/api';
-import { boolean } from 'zod';
 
 
 export const commentStore = create<ICommentState>()((set) => ({
@@ -10,6 +9,7 @@ export const commentStore = create<ICommentState>()((set) => ({
     error: "",
     message: "",
     commentaryModal: [false, "post"],
+    activeComment: null,
 
     loadComments: async ({ token }) => {
         try {
@@ -86,7 +86,7 @@ export const commentStore = create<ICommentState>()((set) => ({
         try {
             set({ loading: true });
             set({ loading: true });
-            const { data } = await api.delete(`/comments/${commentId}/`, {
+            await api.delete(`/comments/${commentId}/`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 },
@@ -112,6 +112,9 @@ export const commentStore = create<ICommentState>()((set) => ({
         }))
     },
 
-    commentaryModalReset: () => {
-        set({commentaryModal: [false, "post"]})},
+    setActiveComment: (comment) => {
+        set((state) => ({
+            activeComment: comment
+        }))
+    }
 }))

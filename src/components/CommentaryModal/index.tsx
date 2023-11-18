@@ -9,7 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { commentSchema } from "./schema";
 
 
-export const ComentaryModal = ({ comment }: { comment?: IComment }) => {
+export const CommentaryModal = () => {
   const { loadUser, userData } = userStore((state) => state);
   const { loadProducts, productList } = productStore((state) => state)
   const {
@@ -19,8 +19,9 @@ export const ComentaryModal = ({ comment }: { comment?: IComment }) => {
     editComment,
     removeComment
   } = commentStore((state) => state);
+  const comment = commentStore((state) => state.activeComment)
 
-  const submitButtonText = () => {
+  const submitButtonText = (): string => {
     switch (commentaryModal[1]) {
       case "delete":
         return "REMOVER";
@@ -39,28 +40,34 @@ export const ComentaryModal = ({ comment }: { comment?: IComment }) => {
     resolver: zodResolver(commentSchema),
   });
 
-  const handleComentaryClick = async (formData: ICommentCreate) => {
+  const handleCommentaryClick = async (formData: ICommentCreate): Promise<void> => {
     switch (commentaryModal[1]) {
       case "delete":
         await removeComment({
           commentId: Number(comment?.id),
           token: String(userData?.accessToken)
         })
+      break;
+
       case "edit":
         await editComment({
           comment: formData,
           token: String(userData?.accessToken),
           commentId: Number(comment?.id)
         })
+      break;
+
       default:
         await addComment({
           comment: formData,
           token: String(userData?.accessToken),
           productId: Number(productList.find((product) => {
             product.name === comment?.product_name
-          }))
+          })?.id)
         })
+      break;
     }
+
     await loadUser();
     await loadProducts();
     commentaryModalToggle(false, "post")
@@ -68,9 +75,18 @@ export const ComentaryModal = ({ comment }: { comment?: IComment }) => {
 
   return (
     <div>
-      <dialog open={commentaryModal[0] as boolean}>
-        <form>
-          <UserNameTag />
+      <dialog open={commentaryModal[0] as boolean} role="dialog" aria-modal="true">
+        <form
+          onSubmit={handleSubmit((formData) => handleCommentaryClick(formData))}
+        >
+          <div>
+            <UserNameTag />
+            <button type="button"
+              onClick={() => commentaryModalToggle(false, "post")}
+            >
+              FECHAR
+            </button>
+          </div>
           {
             commentaryModal[1] === "delete" ?
               <h1>Tem Certeza que que quer deletar seu comentário?</h1> :
@@ -78,7 +94,7 @@ export const ComentaryModal = ({ comment }: { comment?: IComment }) => {
               <div>
                 <textarea
                   placeholder={comment?.content || "Digite seu Comentário"}
-                  id="comentary-post" cols={30} rows={10}
+                  id="commentary-post" cols={30} rows={10}
                   {...register("content")}>
 
                 </textarea>
@@ -98,9 +114,7 @@ export const ComentaryModal = ({ comment }: { comment?: IComment }) => {
                 </div>
               </div>
           }
-          <button type="submit"
-            onSubmit={handleSubmit((formData) => handleComentaryClick(formData))}
-          >{submitButtonText()}</button>
+          <button type="submit">{submitButtonText()}</button>
         </form>
       </dialog>
     </div>
