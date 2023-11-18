@@ -1,3 +1,8 @@
+export interface ICommentCreate {
+    content: string;
+    rating: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 ;
+}
+
 export interface IComment {
     id: number;
     content: string;
@@ -8,18 +13,36 @@ export interface IComment {
 
 export interface ICommentState {
     commentList: IComment[];
+    loading: boolean;
+    error: string;
+    message: string;
+    commentaryModal: (("post" | "edit" | "delete") | boolean)[];
 
-    loadComments: () => Promise<IComment[] | null>
-
+    loadComments: ({ token }: {
+        token: string;
+    }) => Promise<IComment[] | null>
+    
     addComment: ({ comment }: {
-        comment: IComment;
-    }) => Promise<IComment>;
+        comment: ICommentCreate;
+        token: string;
+        productId: number;
+    }) => Promise<IComment | undefined >;
 
-    editComment: ({ comment }: {
-        comment: IComment;
-    }) => Promise<void>;
+    editComment: ({ comment, token, commentId }: {
+        comment: ICommentCreate;
+        token: string;
+        commentId: number;
+    }) => Promise<void >;
 
-    removeComment: ({ commentId }: {
+    removeComment: ({ commentId, token }: {
+        token: string
         commentId: number;
     }) => Promise<void>
+
+    commentaryModalToggle: (
+        boolean: boolean,
+        mode: ("post" | "edit" | "delete")
+    ) => void
+
+    commentaryModalReset: () => void
 }

@@ -15,19 +15,19 @@ export const LoginForm = () => {
         register,
         handleSubmit,
         formState: { errors },
-      } = useForm<TLoginValues>({
+    } = useForm<TLoginValues>({
         resolver: zodResolver(loginSchema),
-      });
+    });
 
-      const parseLoginData = async (userData: TLoginValues) => {
+    const parseLoginData = async (userData: TLoginValues) => {
         await loginUser(userData) && push("dashboard");
-      };
+    };
 
     return (
         <section>
             <form
-                        onSubmit={handleSubmit((formData) => parseLoginData(formData))}>
-            <h1>LOGIN</h1>
+                onSubmit={handleSubmit((formData) => parseLoginData(formData))}>
+                <h1>LOGIN</h1>
                 <div>
                     <FormInput type="text" register={register("username")} error={errors.username}>Digite seu username</FormInput>
                     <FormInput type="password" register={register("password")} error={errors.password}>Digite sua senha</FormInput>

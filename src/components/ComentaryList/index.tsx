@@ -7,8 +7,8 @@ export const ComentaryList = () => {
         <section>
             <ComentaryButton>2 Deixe sua Avaliação</ComentaryButton>
             <ul>
-                <ComentaryCard />
-                <ComentaryCard />
+                {/* <ComentaryCard />
+                <ComentaryCard /> */}
             </ul>
         </section>
     )

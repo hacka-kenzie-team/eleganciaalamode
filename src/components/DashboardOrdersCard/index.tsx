@@ -1,8 +1,14 @@
-export const DashboardOrdersCard = () => {
+'use client'
+
+import { IOrder } from "@/contexts/@userTypes"
+import { getTotalFromOrder } from "@/utils/getTotalFromOrder"
+
+
+export const DashboardOrdersCard = ({order}:{order: IOrder}) => {
     return (
         <li>
-            <span>10/11/2023</span>
-            <span>R$: 2022,00</span>
+            <span>{String(order.date_paid)}</span>
+            <span>R$: {getTotalFromOrder(order.items_bought)}</span>
         </li>
     )
 }

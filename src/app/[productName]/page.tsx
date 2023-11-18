@@ -1,5 +1,5 @@
 import { ComentaryList } from "@/components/ComentaryList";
-import { ComentaryPostModal } from "@/components/ComentaryPostModal";
+import { ComentaryModal } from "@/components/ComentaryModal";
 import { DetailedProductMainCard } from "@/components/DetailedProductMainCard";
 import { DetailedProductSearchList } from "@/components/DetailedProductSearchList";
 import { SalesList } from "@/components/SalesList";
@@ -16,7 +16,7 @@ export default function DetailedProductPage() {
       {/* descomentar para ver o modal
       -----------------------------------------*/}
 
-      {/* <ComentaryPostModal /> */}
+      {/* <ComentaryModal /> */}
     </main>
   )
 }

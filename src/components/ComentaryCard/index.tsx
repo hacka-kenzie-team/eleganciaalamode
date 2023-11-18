@@ -1,16 +1,33 @@
+'use client'
+import { IComment } from "@/contexts/@commentTypes"
 import { UserNameTag } from "../UserNameTag"
 import { RatingButton } from "../_fragments/Buttons"
+import { usePathname } from "next/navigation"
+import { userStore } from "@/contexts/userStore"
+import { CommentModerationButtons } from "../_fragments/buttons/CommentModerationButtons"
 
-export const ComentaryCard = () => {
+
+export const ComentaryCard = ({ comment }: { comment: IComment }) => {
+    const admin = userStore((state) => state.userData?.user.is_superuser)
+    const pathname = usePathname()
+
     return (
         <li>
             <UserNameTag />
+            {
+                pathname === "/dashboard" &&
+                <div>
+                    <span>{comment.product_name}</span>
+                </div>
+            }
             <div>
                 <p>
-                    Contrary to popular belief, Lorem Ipsum is not simply
-                    random text. It has roots in a piece of
+                    {comment.content}
                 </p>
-                <RatingButton>10</RatingButton>
+                <RatingButton>{comment.rating}</RatingButton>
+                {pathname === "/dashboard" || admin &&
+                    <CommentModerationButtons commentId={comment.id} />
+                }
             </div>
         </li>
     )
