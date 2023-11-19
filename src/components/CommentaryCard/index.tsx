@@ -1,10 +1,10 @@
 'use client'
 import { IComment } from "@/contexts/@commentTypes"
-import { UserNameTag } from "../UserNameTag"
 import { RatingIcon } from "../_fragments/Icons"
 import { usePathname } from "next/navigation"
 import { userStore } from "@/contexts/userStore"
 import { CommentModerationButtons } from "../_fragments/buttons/CommentModerationButtons"
+import { CommentNameTag } from "../CommentNameTag"
 
 
 export const CommentaryCard = ({ comment }: { comment: IComment }) => {
@@ -13,7 +13,7 @@ export const CommentaryCard = ({ comment }: { comment: IComment }) => {
 
     return (
         <li>
-            <UserNameTag />
+            <CommentNameTag comment={comment}/>
             {
                 pathname === "/dashboard" &&
                 <div>
