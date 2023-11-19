@@ -4,43 +4,41 @@ import { IProduct } from "@/contexts/@productTypes"
 import { getAverageScore } from "@/utils/getAverageScore"
 import { CategoryButton } from "../_fragments/buttons/CategoryButton"
 import { BuyIcon, CommentaryIcon, RatingIcon } from "../_fragments/Icons"
+import { ProductHomeCardInfo } from "../_fragments/ProductHomeCardInfo"
+import { ProductHomeCardStock } from "../_fragments/ProductHomeCardStock"
+import Link from "next/link"
 
 
-interface IProductsHomeCardProps{
+interface IProductsHomeCardProps {
   product: IProduct
 }
 
-export const ProductsHomeCard = ({product}: IProductsHomeCardProps) => {
+export const ProductsHomeCard = ({ product }: IProductsHomeCardProps) => {
 
   return (
     <li>
-      <Image
-        src={product.style.url}
-        width={400}
-        height={600}
-        alt="Imagem do produto"
-      />
+      <Link href={`/${product.slug}`}>
+        <Image
+          src={product.style.url}
+          width={400}
+          height={600}
+          alt="Imagem do produto"
+        />
+      </Link>
       <div>
-        <div>
+        <Link href={`/${product.slug}`}>
           <div>
-            <h1>{product.name}</h1>
-            <span>Descrição: </span>
-            <p>
-              {product.description || "Generic description"}
-            </p>
+            <div>
+              <h1>{product.name}</h1>
+              <span>Descrição: </span>
+              <p>
+                {product.description || "Generic description"}
+              </p>
+            </div>
+            <ProductHomeCardStock productId={product.id} />
           </div>
-          <div>
-            <h1>{product.price}</h1>
-            <p>Estoque:</p>
-            <p>x{product.stock}</p>
-          </div>
-        </div>
-        <div>
-          <CategoryButton>{product.category}</CategoryButton>
-          <RatingIcon>{getAverageScore(product.comments)}</RatingIcon>
-          <CommentaryIcon>{product.comments.length}</CommentaryIcon>
-          <BuyIcon />
-        </div>
+        </Link>
+        <ProductHomeCardInfo productId={product.id} />
       </div>
     </li>
   )

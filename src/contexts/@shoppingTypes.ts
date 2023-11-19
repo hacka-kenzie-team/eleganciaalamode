@@ -7,14 +7,12 @@ export interface IShoppingItem {
 
 export interface IShoppingState {
     shoppingList: IShoppingItem[];
+    shoppingModal: boolean
 
-    addItem: ({ item }: {
-        item: IShoppingItem;
-    }) => void;
+    addItem: (item: IProduct) => void;
 
-    removeItem: ({ productId }: {
-        productId: number;
-    }) => void
+    removeItem: (productId: number) => void
 
     clearShoppingList: () => void
+    setShoppingModal: (boolean: boolean) => void
 }

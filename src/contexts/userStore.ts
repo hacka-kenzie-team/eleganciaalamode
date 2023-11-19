@@ -72,8 +72,6 @@ export const userStore = create<IUserState>()((set) => ({
                 console.log(error)
                 localStorage.removeItem("@elegancia:token");
                 set({ userData: null });
-                const {push} = useRouter()
-                push('/')
             }
         }
     },

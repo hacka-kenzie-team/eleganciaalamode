@@ -2,27 +2,35 @@ import { create } from 'zustand'
 import { IShoppingState } from './@shoppingTypes'
 
 
-export const productStore = create<IShoppingState>()((set) => ({
+export const shoppingStore = create<IShoppingState>()((set) => ({
+    loading: false,
     shoppingList: [],
+    shoppingModal: false,
 
-    addItem: ({ item }) => {
+    addItem: (item) => {
         set((state) => ({
             shoppingList: state.shoppingList.find((oldItem) =>
-                oldItem.product.id === item.product.id) ?
+                oldItem.product.id === item.id) ?
                 state.shoppingList.map((shopItem) => {
-                    if (shopItem.product.id === item.product.id) {
+                    if (shopItem.product.id === item.id) {
                         return {
-                            ...item,
+                            ...shopItem,
                             quantity: shopItem.quantity + 1,
                         }
                     } else {
                         return shopItem
                     };
-                }) : [...state.shoppingList, item]
+                }) : [
+                    ...state.shoppingList,
+                    {
+                        product: item,
+                        quantity: 1
+                    }
+                ]
         }));
     },
 
-    removeItem: ({ productId }) => {
+    removeItem: (productId) => {
         set((state) => ({
             shoppingList: state.shoppingList.some((oldItem)=> 
                 oldItem.product.id === productId && oldItem.quantity > 1) ?
@@ -42,4 +50,5 @@ export const productStore = create<IShoppingState>()((set) => ({
 
     clearShoppingList: () => { set((state) => ({shoppingList: []}))},
 
+    setShoppingModal: (boolean) => { set((state) => ({shoppingModal: boolean}))}
 }))
