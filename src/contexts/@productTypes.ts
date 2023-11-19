@@ -18,7 +18,7 @@ export interface IProduct {
         collection: string; //marcar opções depois
         sale: boolean;
         spotlight: boolean;
-        keyword: IKeyWord[];
+        keywords: IKeyWord[];
         style: {
             url: string;
         };

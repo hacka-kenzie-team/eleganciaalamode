@@ -1,6 +1,5 @@
 'use client'
 import { productStore } from "@/contexts/productStore"
-import { pathnameContainsWord } from "@/utils/pathnameContainsString";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { FieldError, UseFormRegisterReturn } from "react-hook-form"
@@ -14,7 +13,7 @@ export const SearchInput = () => {
     const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setSearchInput(input);
-        if (!pathnameContainsWord(pathname, "products")) {
+        if (pathname === "/" || pathname === "/products") {
             push("/products/all")
         }
     }

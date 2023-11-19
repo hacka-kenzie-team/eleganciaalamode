@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { IProduct, IProductState } from './@productTypes'
 import { api } from '@/app/api/api';
-import { IOrderCreate, IOrderItemCreate } from './@userTypes';
+import { IOrderItemCreate } from './@userTypes';
 
 
 export const productStore = create<IProductState>()((set) => ({

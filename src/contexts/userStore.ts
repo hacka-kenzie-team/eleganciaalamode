@@ -3,8 +3,12 @@ import { IOrder, IUser, IUserData, IUserState, TToken } from './@userTypes'
 import { api } from '@/app/api/api';
 import { jwtDecode } from 'jwt-decode';
 import { productStore } from './productStore';
+import { shoppingStore } from './shoppingStore';
+
 
 const updateProductsStock = productStore.getState().updateProductsStock
+const clearShoppingList = shoppingStore.getState().clearShoppingList
+const setShoppingModal = shoppingStore.getState().setShoppingModal
 
 export const userStore = create<IUserState>()((set) => ({
     userData: null,
@@ -128,7 +132,10 @@ export const userStore = create<IUserState>()((set) => ({
                   }
                 };
               });
+            set({ message: "Compra realizada com sucesso" })
             updateProductsStock(order.items_bought)
+            clearShoppingList()
+            setShoppingModal(false)
             return data
         } catch (error) {
             console.log(error);

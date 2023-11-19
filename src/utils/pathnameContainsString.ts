@@ -1,3 +1,3 @@
-export const pathnameContainsWord = (pathname:string, word:string) => {
-    return pathname.indexOf(word) >= 0;
+export const nameContainsWord = (name:string, word:string) => {
+    return name.indexOf(word) >= 0;
 }

@@ -4,19 +4,22 @@ import { DetailedProductMainCard } from "@/components/DetailedProductMainCard";
 import { DetailedProductSearchList } from "@/components/DetailedProductSearchList";
 import { SalesList } from "@/components/SalesList";
 
-export default function DetailedProductPage() {
+
+interface IDetailedProductMainCardProps{
+  params: {
+      productName: string
+  }
+}
+
+export default function DetailedProductPage({params}: IDetailedProductMainCardProps) {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <h1>DetailedProductPage</h1>
-      <DetailedProductMainCard />
+      <DetailedProductMainCard productName={params.productName}/>
       <DetailedProductSearchList />
-      <CommentaryList />
+      <CommentaryList productName={params.productName} />
       <SalesList />
-
-      {/* descomentar para ver o modal
-      -----------------------------------------*/}
-
-      {/* <CommentaryModal /> */}
+      <CommentaryModal />
     </main>
   )
 }
