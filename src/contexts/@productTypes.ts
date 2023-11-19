@@ -1,4 +1,5 @@
 import { IComment } from "./@commentTypes";
+import { IOrderItemCreate } from "./@userTypes";
 
 
 export interface IKeyWord{
@@ -37,4 +38,5 @@ export interface IProductState {
         (searchInput: string) => 
         Promise<IProduct[] | undefined>;
     setSearchInput: (string: string) => void
+    updateProductsStock: (list: IOrderItemCreate[]) => void
 }

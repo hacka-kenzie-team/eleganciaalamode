@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { IProduct, IProductState } from './@productTypes'
 import { api } from '@/app/api/api';
+import { IOrderCreate, IOrderItemCreate } from './@userTypes';
 
 
 export const productStore = create<IProductState>()((set) => ({
@@ -43,7 +44,30 @@ export const productStore = create<IProductState>()((set) => ({
         };
     },
 
-    setSearchInput: (string) => {set({searchInput: string})}
+    setSearchInput: (string) => { set({ searchInput: string }) },
+
+    updateProductsStock: (list: IOrderItemCreate[]) => {
+        set((state) => {
+            const productList = state.productList
+
+            return {
+                productList: productList.map((product) => {
+                    const foundItem = list.find((item) => item.productId === product.id)
+                    if (foundItem) {
+                        return {
+                            ...product,
+                            stock: product.stock - foundItem.quantity
+                        }
+                    } else {
+                        return {
+                            ...product
+                        }
+                    }
+                }
+                )
+            }
+        })
+    }
     //add product
     //edit product
     //remove product

@@ -1,7 +1,7 @@
 'use client'
 import { IComment } from "@/contexts/@commentTypes"
 import { UserNameTag } from "../UserNameTag"
-import { RatingButton } from "../_fragments/Icons"
+import { RatingIcon } from "../_fragments/Icons"
 import { usePathname } from "next/navigation"
 import { userStore } from "@/contexts/userStore"
 import { CommentModerationButtons } from "../_fragments/buttons/CommentModerationButtons"
@@ -24,7 +24,7 @@ export const CommentaryCard = ({ comment }: { comment: IComment }) => {
                 <p>
                     {comment.content}
                 </p>
-                <RatingButton>{comment.rating}</RatingButton>
+                <RatingIcon>{comment.rating}</RatingIcon>
                 {(pathname === "/dashboard" || admin) &&
                     <CommentModerationButtons comment={comment} />
                 }

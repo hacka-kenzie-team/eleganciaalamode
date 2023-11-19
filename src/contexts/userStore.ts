@@ -2,8 +2,9 @@ import { create } from 'zustand'
 import { IOrder, IUser, IUserData, IUserState, TToken } from './@userTypes'
 import { api } from '@/app/api/api';
 import { jwtDecode } from 'jwt-decode';
-import { useRouter } from 'next/navigation';
+import { productStore } from './productStore';
 
+const updateProductsStock = productStore.getState().updateProductsStock
 
 export const userStore = create<IUserState>()((set) => ({
     userData: null,
@@ -94,15 +95,19 @@ export const userStore = create<IUserState>()((set) => ({
     buy: async ({order}) => {
         try {
             set({ loading: true });
-            const token = localStorage.getItem("@elegancia:token");
+            const token = JSON.parse((localStorage.getItem("@elegancia:token") as string));
             const { data } = await api.post<IOrder>("/user/buy/", order, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 },
             });
             const patchPromises = order.items_bought.map(async (item) => {
-                await api.patch(`/products/${item.productId}/`, {
-                    quantity: item.quantityTotal - item.quantity
+                await api.patch(`/products/${item.productId}/stock/`, {
+                    stock: item.quantityTotal - item.quantity
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
                 });
             });
             await Promise.all(patchPromises);
@@ -123,6 +128,7 @@ export const userStore = create<IUserState>()((set) => ({
                   }
                 };
               });
+            updateProductsStock(order.items_bought)
             return data
         } catch (error) {
             console.log(error);

@@ -8,6 +8,7 @@ import {
 } from "./Icons";
 import { CategoryButton } from "./buttons/CategoryButton";
 import { getAverageScore } from "@/utils/getAverageScore";
+import { shoppingStore } from "@/contexts/shoppingStore";
 
 
 interface IProductHomeCardInfoProps{
@@ -15,15 +16,18 @@ interface IProductHomeCardInfoProps{
 }
 
 export const ProductHomeCardInfo = ({productId}: IProductHomeCardInfoProps) => {
-    const {productList} = productStore((state) => state);
+    const { productList } = productStore((state) => state);
     const product = productList.find((product) => product.id === productId);
+    const { addItem } = shoppingStore((state)=> state)
 
     return (
         <div>
           <CategoryButton>{product?.category}</CategoryButton>
           <RatingIcon>{product && getAverageScore(product.comments)}</RatingIcon>
           <CommentaryIcon>{product?.comments.length}</CommentaryIcon>
-          <BuyIcon />
+          <button type="button" onClick={() => product && addItem(product)}>
+            <BuyIcon />
+          </button>
         </div>
     )
 }
