@@ -21,10 +21,6 @@ export const userStore = create<IUserState>()((set, get) => ({
     logoutUser: () => {
         localStorage.removeItem("@elegancia:token");
         set({ userData: null });
-        const { data: session } = useSession()
-        if (session) {
-            signOut()
-        }
     },
 
     googleLogin: async (session) => {
