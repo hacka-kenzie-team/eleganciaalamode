@@ -2,16 +2,28 @@
 import { LoginForm } from "@/components/LoginForm";
 import { Loading } from "@/components/_fragments/loading";
 import { userStore } from "@/contexts/userStore";
+import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { useEffect } from "react";
 
 
 export default function LoginPage() {
-  const { loading, userData } = userStore((state) => state)
+  const { loading, userData, googleLogin } = userStore((state) => state)
+  const { data: session } = useSession()
+  
+  if(session && !userData){
+    googleLogin(session)
+    console.log(session.user?.name)
+  }
+
 
   useEffect(() => {
     if (userData && window) {
       redirect('/dashboard');
+    }
+    if(session && !userData){
+      googleLogin(session)
+      console.log(session.user?.name)
     }
   }, [userData]);
 

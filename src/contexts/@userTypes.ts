@@ -1,3 +1,4 @@
+import { Session } from "next-auth";
 import { IComment } from "./@commentTypes";
 
 export interface IOrderItemCreate{
@@ -35,6 +36,10 @@ export type TToken = {
     access: string;
 }
 
+export type TEmailExists = {
+    email_exists: boolean;
+}
+
 export interface IUserCreate{
     username: string,
 	email: string,
@@ -69,6 +74,7 @@ export interface IUserState {
         username: string;
         password: string;
     }) => Promise<true | undefined>
+    googleLogin: (session: Session | null) => Promise<true | undefined>
     loadUser: () => Promise<void>
     registerUser: (userData: {
         userData: IUserCreate;
