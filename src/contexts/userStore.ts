@@ -27,7 +27,7 @@ export const userStore = create<IUserState>()((set, get) => ({
             set({ loading: true });
             if (session) {
                 const userCheck = await api.post<TEmailExists>(`check/${session.user?.email}/`)
-                if (!userCheck) {
+                if (!userCheck.data.email_exists) {
                      await get().registerUser({
                         userData: {
                             username: `${session.user?.email}@@` ?? "",
