@@ -4,7 +4,6 @@ import { api } from '@/app/api/api';
 import { jwtDecode } from 'jwt-decode';
 import { productStore } from './productStore';
 import { shoppingStore } from './shoppingStore';
-import { signOut, useSession } from 'next-auth/react';
 
 
 const updateProductsStock = productStore.getState().updateProductsStock

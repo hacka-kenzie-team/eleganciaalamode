@@ -10,12 +10,6 @@ import { useEffect } from "react";
 export default function LoginPage() {
   const { loading, userData, googleLogin } = userStore((state) => state)
   const { data: session } = useSession()
-  
-  if(session && !userData){
-    googleLogin(session)
-    console.log(session.user?.name)
-  }
-
 
   useEffect(() => {
     if (userData && window) {
