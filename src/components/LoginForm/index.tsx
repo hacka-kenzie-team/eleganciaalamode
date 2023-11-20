@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { TLoginValues, loginSchema } from "./schema";
 import { FormSubmitButton } from "../_fragments/buttons/FormSubmitButton";
 import { AppleIcon, FacebookIcon, GoogleIcon } from "../_fragments/Icons";
+import { GoogleSignInButton } from "../_fragments/buttons/GoogleSignInButton";
 
 
 export const LoginForm = () => {
@@ -34,11 +35,9 @@ export const LoginForm = () => {
                     <FormInput type="text" register={register("username")} error={errors.username}>Digite seu username</FormInput>
                     <FormInput type="password" register={register("password")} error={errors.password}>Digite sua senha</FormInput>
                 </div>
-                <span>Ou entre com sua rede social</span>
+                <span>Ou entre com Google</span>
                 <div>
-                    <GoogleIcon />
-                    <FacebookIcon />
-                    <AppleIcon />
+                    <GoogleSignInButton />
                 </div>
                 <FormSubmitButton>Entrar</FormSubmitButton>
             </form>

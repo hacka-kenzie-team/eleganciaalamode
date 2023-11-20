@@ -1,5 +1,6 @@
 'use client'
 import { userStore } from "@/contexts/userStore";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link"
 import { useRouter } from "next/navigation";
 
@@ -7,8 +8,12 @@ import { useRouter } from "next/navigation";
 export const HeaderNav = () => {
     const { userData, logoutUser } = userStore((state) => state);
     const { push } = useRouter()
+    const { data: session } = useSession()
 
     const handleLogoutClick = async () => {
+        if (session) {
+            signOut()
+        }
         logoutUser()
         push("/")
     }

@@ -8,6 +8,7 @@ import { useEffect } from "react"
 import { productStore } from "@/contexts/productStore"
 import { shoppingStore } from "@/contexts/shoppingStore"
 import { IShoppingItem } from "@/contexts/@shoppingTypes"
+import { useSession } from "next-auth/react"
 
 
 export const Header = () => {
@@ -15,9 +16,13 @@ export const Header = () => {
   const { loadProducts } = productStore((state) => state)
   const { setShoppingModal, shoppingList } = shoppingStore((state) => state)
 
+  
   useEffect(() => {
-    loadUser()
-    loadProducts()
+    const initiate = async () => {
+      await loadUser()
+      loadProducts()
+    }
+    initiate()
   }, []);
 
   const getTotatShoppingItems = (list:IShoppingItem[]) => {
