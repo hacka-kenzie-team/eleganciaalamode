@@ -1,5 +1,3 @@
-
-
 export default function Privacy() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -22,7 +20,7 @@ export default function Privacy() {
         <p className="text-xs">Nome</p>
         <h1 className="text-lg">Dados de Registro</h1>
         <p className="text-xs">
-          Coletamos informações que seu navegador envia sempre que você visita nosso website ("Dados de Registro"). Esses Dados de Registro podem incluir informações como o endereço de Protocolo de Internet ("IP") do seu computador, tipo de navegador, versão do navegador, as páginas de nosso website que você visita, a hora e data de sua visita, o tempo gasto nessas páginas e outras estatísticas.
+          Coletamos informações que seu navegador envia sempre que você visita nosso website Dados de Registro. Esses Dados de Registro podem incluir informações como o endereço de Protocolo de Internet IP do seu computador, tipo de navegador, versão do navegador, as páginas de nosso website que você visita, a hora e data de sua visita, o tempo gasto nessas páginas e outras estatísticas.
         </p>
         <h1 className="text-lg">Comunicações</h1>
         <p className="text-xs">
