@@ -69,6 +69,7 @@ export interface IUserState {
     loading: boolean,
     error: string,
     message: string,
+    setLoading: (boolean: boolean) => void
     logoutUser: () => void
     loginUser: ({ username, password }: {
         username: string;
@@ -76,9 +77,7 @@ export interface IUserState {
     }) => Promise<true | undefined>
     googleLogin: (session: Session | null) => Promise<true | undefined>
     loadUser: () => Promise<void>
-    registerUser: (userData: {
-        userData: IUserCreate;
-    }) => Promise<boolean | undefined>
+    registerUser: (userData:IUserCreate) => Promise<boolean | undefined>
     buy: ({ order }: {
         order: IOrderCreate;
     }) => Promise<IOrder | undefined>

@@ -8,7 +8,8 @@ import { useEffect } from "react";
 
 
 export default function LoginPage() {
-  const { loading, userData, googleLogin } = userStore((state) => state)
+  const { loading, userData } = userStore((state) => state)
+  const googleLogin = userStore((state) => state.googleLogin)
   const { data: session } = useSession()
 
   useEffect(() => {
@@ -18,7 +19,7 @@ export default function LoginPage() {
     if(session && !userData){
       googleLogin(session)
     }
-  }, [userData]);
+  }, [userData, session]);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
