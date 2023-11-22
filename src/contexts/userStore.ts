@@ -16,6 +16,9 @@ export const userStore = create<IUserState>()((set, get) => ({
     error: "",
     message: "",
 
+    setMessage: (string) => { set({message: string})},
+    setError: (string) => { set({error: string})},
+
     setLoading: (boolean) => {
         set({loading: boolean})
     },

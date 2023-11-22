@@ -12,7 +12,9 @@ export const shoppingStore = create<IShoppingState>()((set) => ({
             shoppingList: state.shoppingList.find((oldItem) =>
                 oldItem.product.id === item.id) ?
                 state.shoppingList.map((shopItem) => {
-                    if (shopItem.product.id === item.id) {
+                    if (item.stock - shopItem.quantity < 1){
+                        return shopItem
+                    } else if (shopItem.product.id === item.id) {
                         return {
                             ...shopItem,
                             quantity: shopItem.quantity + 1,
