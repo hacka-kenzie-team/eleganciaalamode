@@ -16,13 +16,13 @@ const nextConfig = {
           },
           {
             protocol: 'https',
-            hostname: 'https://catbox.moe',
+            hostname: 'catbox.moe',
             port: '',
             pathname: '/**',
           },
           {
             protocol: 'https',
-            hostname: 'https://files.catbox.moe',
+            hostname: 'files.catbox.moe',
             port: '',
             pathname: '/**',
           },
