@@ -6,15 +6,17 @@ import { useRouter } from "next/navigation";
 
 
 export const HeaderNav = () => {
-    const { userData, logoutUser } = userStore((state) => state);
+    const { userData, logoutUser, setLoading } = userStore((state) => state);
     const { push } = useRouter()
     const { data: session } = useSession()
 
     const handleLogoutClick = async () => {
+        setLoading(true)
         if (session) {
             signOut()
         }
         logoutUser()
+        setLoading(false)
         push("/")
     }
 

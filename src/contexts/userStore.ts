@@ -16,6 +16,9 @@ export const userStore = create<IUserState>()((set, get) => ({
     error: "",
     message: "",
 
+    setLoading: (boolean) => {
+        set({loading: boolean})
+    },
 
     logoutUser: () => {
         localStorage.removeItem("@elegancia:token");
@@ -36,6 +39,7 @@ export const userStore = create<IUserState>()((set, get) => ({
                     }
                      await get().registerUser(userData)
                 }
+                set({ loading: true });
                 const { data } = await api.post<TToken>("/login/", {
                     username: `${session.user?.email}@@`,
                     password: process.env.NEXT_PUBLIC_GOOGLE_USER_PASSWORD as string

@@ -69,6 +69,7 @@ export interface IUserState {
     loading: boolean,
     error: string,
     message: string,
+    setLoading: (boolean: boolean) => void
     logoutUser: () => void
     loginUser: ({ username, password }: {
         username: string;
