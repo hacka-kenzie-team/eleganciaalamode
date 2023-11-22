@@ -17,7 +17,7 @@ const { addItem, removeItem } = shoppingStore((state) => state)
     return (
         <li>
             <Image
-            src={placeholder}
+            src={shoppingItem.product.style.url}
             width={60}
             height={60}
             alt="Product picture"
