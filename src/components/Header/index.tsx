@@ -9,10 +9,13 @@ import { productStore } from "@/contexts/productStore"
 import { shoppingStore } from "@/contexts/shoppingStore"
 import { IShoppingItem } from "@/contexts/@shoppingTypes"
 import { useSession } from "next-auth/react"
+import buttonModalMobile from '@/assets/icons/ButtonModalMobileIcon.svg'
+import cartIcon from "@/assets/icons/cartIcon.svg"
+import { DefaultButton } from "../_fragments/buttons/DefaultButton"
 
 
 export const Header = () => {
-  const { loadUser } = userStore((state) => state)
+  const { loadUser, userData } = userStore((state) => state)
   const { loadProducts } = productStore((state) => state)
   const { setShoppingModal, shoppingList } = shoppingStore((state) => state)
 
@@ -33,27 +36,21 @@ export const Header = () => {
   }
 
   return (
-    <header>
-      <div>
-        <Link href={"/"}>HOME</Link>
-        <Image
-          src={placeholder}
-          height={50}
-          width={50}
-          alt="Logo de Elegancia á La Mode"
-        />
-      </div>
-      <div>
+    <header className="bg-primary flex items-center justify-between px-2 h-24 md:px-[50px]">
+      <Link href={"/"}><h2 className="text-3xl text-second">ElegênciaÀLaMode</h2></Link>
+      <Image src={buttonModalMobile} height={60} width={60} alt="três linhas representando um botão" className="lg:hidden"/>
+      <div className="items-center justify-center  hidden lg:flex">
         <HeaderNav />
-        <button type="button" onClick={() => setShoppingModal(true)}>
-          <p>carrinho de compras</p>
-          <span>{getTotatShoppingItems(shoppingList)}</span>
-          <Image
-            src={placeholder}
-            height={50}
-            width={50}
-            alt="Ícone de carrinho de compras"
-          />
+      </div>
+      <div className=" hidden lg:flex gap-8">
+        <div>
+          { userData ? <h3>{`Olá, ${userData.user.name}`}</h3>: <DefaultButton>login</DefaultButton> }
+        </div>
+        <button className="relative" type="button" onClick={() => setShoppingModal(true)}>
+          <Image src={cartIcon} height={30} width={30} alt="Uma sacola de compra, representando o carrinho de compra"/>
+          <div className="absolute top-[20px] left-[15px] right-0 bg-white w-[20px] rounded-md text-primary">
+            <span>{getTotatShoppingItems(shoppingList)}</span>
+          </div>
         </button>
       </div>
     </header>
