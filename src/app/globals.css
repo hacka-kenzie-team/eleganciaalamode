@@ -19,10 +19,5 @@
 body {
   font-family: var(--font-marcellusSC);
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: #191F25;
 }
