@@ -17,7 +17,6 @@ export default function LoginPage() {
     }
     if(session && !userData){
       googleLogin(session)
-      console.log(session.user?.name)
     }
   }, [userData]);
 
