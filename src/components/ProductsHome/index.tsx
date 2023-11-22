@@ -15,10 +15,10 @@ export const ProductsHome = ({allProducts}: IProductsHomeProps) => {
         <section>
             <SearchInput />
             <ul>
-                <li><CategoryButton>roupas</CategoryButton></li>
-                <li><CategoryButton>calcados</CategoryButton></li>
-                <li><CategoryButton>acessorio</CategoryButton></li>
-                <li><CategoryButton>ternos</CategoryButton></li>
+                <li><CategoryButton>Roupas</CategoryButton></li>
+                <li><CategoryButton>Calçados</CategoryButton></li>
+                <li><CategoryButton>Acessórios</CategoryButton></li>
+                <li><CategoryButton>Ternos</CategoryButton></li>
             </ul>
             <ul>
                 {allProducts.map(

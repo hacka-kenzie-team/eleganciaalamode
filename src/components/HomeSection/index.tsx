@@ -16,10 +16,10 @@ export const HomeSection = () => {
             />
             <nav>
                 <SearchInput />
-                <HomeCategoryButton>roupas</HomeCategoryButton>
-                <HomeCategoryButton>calcados</HomeCategoryButton>
-                <HomeCategoryButton>acessorio</HomeCategoryButton>
-                <HomeCategoryButton>ternos</HomeCategoryButton>
+                <HomeCategoryButton>Roupas</HomeCategoryButton>
+                <HomeCategoryButton>Calçados</HomeCategoryButton>
+                <HomeCategoryButton>Acessórios</HomeCategoryButton>
+                <HomeCategoryButton>Ternos</HomeCategoryButton>
             </nav>
         </section>
     )

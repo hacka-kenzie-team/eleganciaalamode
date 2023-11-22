@@ -27,20 +27,18 @@ export const userStore = create<IUserState>()((set, get) => ({
             set({ loading: true });
             if (session) {
                 const userCheck = await api.get<TEmailExists>(`check/${session.user?.email}/`)
-                if (!userCheck.data.email_exists) {
-                     await get().registerUser({
-                        userData: {
-                            username: `${session.user?.email}@@` ?? "",
-                            email: session.user?.email ?? "",
-                            name: session.user?.name ?? "",
-                            password: process.env.GOOGLE_USER_PASSWORD as string
-                        }
-                    })
+                if (userCheck.data.email_exists == false) {
+                    const userData = {
+                        username: `${session.user?.email}@@` ?? "",
+                        email: session.user?.email ?? "",
+                        name: session.user?.name ?? "",
+                        password: process.env.NEXT_PUBLIC_GOOGLE_USER_PASSWORD as string
+                    }
+                     await get().registerUser(userData)
                 }
-
                 const { data } = await api.post<TToken>("/login/", {
                     username: `${session.user?.email}@@`,
-                    password: process.env.GOOGLE_USER_PASSWORD as string
+                    password: process.env.NEXT_PUBLIC_GOOGLE_USER_PASSWORD as string
                 })
                 const token = data.access;
                 localStorage.setItem("@elegancia:token", JSON.stringify(token));
@@ -132,7 +130,7 @@ export const userStore = create<IUserState>()((set, get) => ({
     registerUser: async (userData) => {
         try {
             set({ loading: true });
-            const { data } = await api.post<IUser>("/login/", userData);
+            const { data } = await api.post<IUser>("/users/", userData);
             set({ message: "Usuário registrado com sucesso!" });
             return true;
         } catch (error) {
