@@ -1,8 +1,6 @@
 'use client'
 import Image from "next/image"
 import { HeaderNav } from "../HeaderNav"
-import eleganciaLogo from "../../../public/hero/elganciaalamode.png"
-import shopCart from "../../../public/icons/shop-cart.svg"
 import Link from "next/link"
 import { userStore } from "@/contexts/userStore"
 import { useEffect } from "react"
@@ -37,7 +35,7 @@ export const Header = () => {
       <div className="max-w-[1400px] m-auto flex items-center justify-between">
         <Link href={"/"}>
           <Image
-            src={eleganciaLogo}
+            src={"/hero/elganciaalamode.png"}
             height={394}
             width={672}
             alt="Logo de Elegancia á La Mode"
@@ -48,13 +46,13 @@ export const Header = () => {
           <button className="flex gap-1 items-center justify-center"
           type="button" onClick={() => setShoppingModal(true)}>
             <Image
-              src={shopCart}
+              src={"/icons/shop-cart.svg"}
               height={50}
               width={50}
               alt="Ícone de carrinho de compras"
               />
               <div className="w-8 h-8 flex-shrink-0 rounded-[50%] bg-egray">
-                <span className="flex align-bottom justify-center">
+                <span className="flex align-bottom justify-center pt-[3px]">
                 {getTotatShoppingItems(shoppingList)}
                 </span>
               </div>

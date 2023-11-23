@@ -1,9 +1,5 @@
 import Link from "next/link"
 import Image from "next/image"
-import acessorio from "../../../../../public/category/acessorios.png"
-import calcados from "../../../../../public/category/calçados.png"
-import roupas from "../../../../../public/category/roupas.png"
-import ternos from "../../../../../public/category/ternos.png"
 
 
 export const HomeCategoryButton = ({ children }: { children: React.ReactNode }) => {
@@ -11,19 +7,19 @@ export const HomeCategoryButton = ({ children }: { children: React.ReactNode }) 
     let categoryBackground
     switch (category) {
         case "Acessorios":
-            categoryBackground = acessorio;
+            categoryBackground = "/category/acessorios.png";
             break;
         case "Calcados":
-            categoryBackground = calcados;
+            categoryBackground = "/category/calçados.png";
             break;
         case "Roupas":
-            categoryBackground = roupas;
+            categoryBackground = "/category/roupas.png";
             break;
         case "Ternos":
-            categoryBackground = ternos;
+            categoryBackground = "/category/ternos.png";
             break;
         default:
-            categoryBackground = acessorio;
+            categoryBackground = "/category/ternos.png";
     }
 
     return (

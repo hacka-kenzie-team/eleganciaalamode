@@ -1,6 +1,5 @@
 'use client'
 import Image from "next/image"
-import placeholder from "../../../public/vercel.svg"
 import { AddIcon, SubtractIcon } from "../_fragments/Icons"
 import { IShoppingItem } from "@/contexts/@shoppingTypes"
 import { shoppingStore } from "@/contexts/shoppingStore"
@@ -15,27 +14,25 @@ export const ShoppingCartModalCard = ({shoppingItem}:IShoppingCartModalCardProps
 const { addItem, removeItem } = shoppingStore((state) => state)
 
     return (
-        <li>
+        <li className="flex h-[200px] w-full px-3 items-center justify-between overflow-hidden">
             <Image
             src={shoppingItem.product.style.url}
-            width={60}
-            height={60}
+            width={356}
+            height={200}
             alt="Product picture"
-            />
-            <div>
-                <h2>{shoppingItem.product.name}</h2>
-                <span>X {shoppingItem.quantity}</span>
+            className="w-[auto]"/>
+            <div className="flex flex-col justify-around mr-auto pl-3">
+                <h2 className="text-ewhite">{shoppingItem.product.name}</h2>
+                <span className="text-ewhite">X {shoppingItem.quantity}</span>
             </div>
-            <div>
-                <span>R$: {Number(shoppingItem.product.price).toFixed(2)}</span>
-                <div>
+            <div className="flex flex-col gap-5">
+                <span className="text-ewhite">R$: {Number(shoppingItem.product.price * shoppingItem.quantity).toFixed(2)}</span>
+                <div className="flex justify-between">
                     <button type="button" onClick={() => addItem(shoppingItem.product)}>
                         <AddIcon />
-                        add
                     </button>
                     <button type="button" onClick={() => removeItem(shoppingItem.product.id)}>
                         <SubtractIcon />
-                        subtract
                     </button>
                 </div>
             </div>

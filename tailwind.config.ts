@@ -17,6 +17,11 @@ const config: Config = {
         'white': '0px 0px 4px 2px rgba(61,61,61,0.41)',
       },
       backgroundColor: {
+        'ewhite': '#C7C9C6',
+        'egray': '#3D3D3D'
+      },
+      textColor: {
+        'ewhite': '#C7C9C6',
         'egray': '#3D3D3D'
       }
     },

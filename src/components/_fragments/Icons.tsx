@@ -34,9 +34,9 @@ export const AddIcon = () => {
     return (
         <div>
             <Image
-                src={placeholder}
-                height={30}
-                width={30}
+                src={"/icons/add-icon.png"}
+                height={40}
+                width={40}
                 alt="Ícone de adicionar"
             />
         </div>
@@ -47,9 +47,9 @@ export const SubtractIcon = () => {
     return (
         <div>
             <Image
-                src={placeholder}
-                height={30}
-                width={30}
+                src={"/icons/sub-icon.png"}
+                height={40}
+                width={40}
                 alt="Ícone de diminuir"
             />
         </div>
