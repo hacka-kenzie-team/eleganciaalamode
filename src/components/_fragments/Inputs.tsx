@@ -3,6 +3,8 @@ import { productStore } from "@/contexts/productStore"
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { FieldError, UseFormRegisterReturn } from "react-hook-form"
+import searchIcon from "../../../public/icons/search-glass.svg"
+import Image from "next/image"
 
 
 export const SearchInput = () => {
@@ -23,13 +25,21 @@ export const SearchInput = () => {
     }
 
     return (
-        <form onSubmit={handleSearchSubmit}>
+        <form onSubmit={handleSearchSubmit}
+        className="flex gap-3 min-w-full justify-end">
             <label htmlFor="search">PESQUISA</label>
             <input 
             placeholder="Procure um item"
             id="search" 
             onChange={handleInputChange}/>
-            <button type="submit">PESQUISAR</button>
+            <button type="submit">
+                <Image
+                    src={searchIcon}
+                    height={30}
+                    width={30}
+                    alt="Ícone de uma lupa para pesquisa"
+                />
+            </button>
         </form>
     )
 }

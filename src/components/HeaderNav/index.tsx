@@ -23,12 +23,12 @@ export const HeaderNav = () => {
     return (
         <>
             {userData ?
-                (<nav>
+                (<nav className="flex gap-7">
                     <Link href={"/products"}>PRODUTOS </Link>
                     <Link href={"/dashboard"}>AREA DO CLIENTE </Link>
                     <button type="button" onClick={() => handleLogoutClick()}>SAIR</button>
                 </nav>) :
-                (<nav>
+                (<nav className="flex gap-7">
                     <Link href={"/products"}>PRODUTOS </Link>
                     <Link href={"/login"}>LOGIN </Link>
                     <Link href={"/register"}>CADASTRO </Link>
