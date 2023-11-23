@@ -22,6 +22,9 @@ const config: Config = {
         'third': '#444649'
       }
     },
+    fontFamily: {
+      'inter': ['Inter', 'sans-serif']
+    }
   },
   plugins: [],
 }

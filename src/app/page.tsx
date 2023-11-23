@@ -11,14 +11,14 @@ export default function Home() {
       <section className="flex flex-col-reverse items-center lg:flex-row">
         <div className="w-full lg:w-[49.6vw] h-[100vh] lg:h-[90vh] bg-[#D9D9D9] px-10 flex flex-col justify-center items-center gap-10 text-primary">
           <h1 className="text-5xl pb-7">Elegance in Fashion</h1>
-          <p className="text-xl">
+          <p className="text-xl font-inter">
             Os materiais de alta qualidade e os cortes 
             impecáveis são marcas registradas da 
             ElegânciaÀLaMode, destacando-se
             pela atenção aos detalhes e pela busca 
             constante pela perfeição. 
           </p>
-          <p className="text-xl">
+          <p className="text-xl font-inter">
             Além disso, a equipe de atendimento ao 
             cliente é treinada para oferecer 
             um serviço personalizado, auxiliando os 
@@ -33,7 +33,7 @@ export default function Home() {
       <section className="flex flex-col lg:flex-row items-center justify-center p-10 gap-10 text-second">
         <div className="h-[400px] lg:h-[300px] flex flex-col justify-around items-center">
           <h3 className="text-2xl">o mais elegante do mercado</h3>
-          <p>
+          <p className="font-inter">
             O estoque da ElegânciaÀLaMode 
             apresenta uma cuidadosa seleção de roupas 
             contemporâneas e atemporais, cuidadosamente 
@@ -48,7 +48,7 @@ export default function Home() {
         </div>
         <div className="h-[400px] lg:h-[300px] flex flex-col justify-around items-center">
           <h3 className="text-2xl">calçados das melhores grifes</h3>
-          <p>
+          <p className="font-inter">
             A ElegânciaÀLaMode não é apenas uma loja de roupas; é um destino para quem busca expressar sua individualidade através da moda com elegância e sofisticação.
           </p>
           <Link href={'/'}><DefaultButton>calçados</DefaultButton></Link>
