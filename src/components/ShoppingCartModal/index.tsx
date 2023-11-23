@@ -5,6 +5,7 @@ import { IShoppingItem } from "@/contexts/@shoppingTypes"
 import { userStore } from "@/contexts/userStore"
 import Link from "next/link"
 import { MouseEvent } from "react"
+import { Loading } from "../_fragments/loading"
 
 
 export const ShoppingCartModal = () => {
@@ -15,7 +16,7 @@ export const ShoppingCartModal = () => {
     clearShoppingList
   } = shoppingStore((state) => state)
 
-  const { userData, buy } = userStore((state) => state)
+  const { userData, buy, loading } = userStore((state) => state)
 
   const handleBuyClick = (shoppingList: IShoppingItem[]) => {
     userData &&
@@ -46,8 +47,8 @@ export const ShoppingCartModal = () => {
 
   return (
     <div>
-      <dialog open={shoppingModal} className="fixed inset-0 w-full h-full bg-white/30" 
-      onClick={(e) => handleClickOutside(e)}>
+      <dialog open={shoppingModal} className="fixed inset-0 w-full h-full bg-white/30"
+        onClick={(e) => handleClickOutside(e)}>
         <div className="flex flex-col h-full w-1/2 bg-black shadow-white justify-between">
           <div className="flex items-center justify-between h-[13dvh] bg-red-900 shadow-white pl-10 pr-4">
             <h1 className="text-ewhite m-auto">CARRINHO DE COMPRAS</h1>
@@ -57,14 +58,18 @@ export const ShoppingCartModal = () => {
               X
             </button>
           </div>
-          <ul className="mb-auto overflow-y-auto flex flex-col gap-3 h-[100%] pt-3">
-            {!shoppingList ? <li><p className="text-ewhite">Nenhum Item Adicionado</p></li> :
-              shoppingList.map((shoppingItem) =>
-                <ShoppingCartModalCard
-                  shoppingItem={shoppingItem}
-                  key={shoppingItem.product.id} />)
-            }
-          </ul>
+          {
+            loading ?
+              <Loading /> :
+              <ul className="mb-auto overflow-y-auto flex flex-col gap-3 h-[100%] pt-3">
+                {!shoppingList ? <li><p className="text-ewhite">Nenhum Item Adicionado</p></li> :
+                  shoppingList.map((shoppingItem) =>
+                    <ShoppingCartModalCard
+                      shoppingItem={shoppingItem}
+                      key={shoppingItem.product.id} />)
+                }
+              </ul>
+          }
           <div className="flex items-center justify-between h-[13dvh] bg-red-900 shadow-white p-10">
             <div>
               <span className="text-ewhite">Total </span>
@@ -85,7 +90,7 @@ export const ShoppingCartModal = () => {
                   type="button" onClick={() => handleBuyClick(shoppingList)}>Finalizar pedido</button>
                 :
                 <Link className="text-ewhite"
-                  href={"/login"}>Entre para finalizar compra</Link>
+                  href={"/login"} onClick={() => setShoppingModal(false)}>Entre para finalizar compra</Link>
             }
           </div>
         </div>

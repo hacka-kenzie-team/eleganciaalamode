@@ -16,22 +16,22 @@ interface IProductsHomeCardProps {
 export const ProductsHomeCard = ({ product }: IProductsHomeCardProps) => {
 
   return (
-    <li>
-      <Link href={`/${product.slug}`}>
+    <li className="w-full flex justify-between bg-red-900 items-center px-12 gap-7 rounded-[40px] border-2 border-[#FFFFFF50]">
+      <Link href={`/${product.slug}`}
+      className="flex-shrink-0 rounded-l-[20px] overflow-hidden">
         <Image
           src={product.style.url}
-          width={400}
-          height={600}
+          width={712}
+          height={400}
           alt="Imagem do produto"
-        />
+        className="h-[80%] w-auto"/>
       </Link>
-      <div>
+      <div className="p-4">
         <Link href={`/${product.slug}`}>
           <div>
             <div>
-              <h1>{product.name}</h1>
-              <span>Descrição: </span>
-              <p>
+              <h1 className="h-[75px] flex flex-col justify-center text-2xl text-center mb-3 border-b-2 border-[#FFFFFF50]">{product.name}</h1>
+              <p className="text-sm h-[100px] overflow-y-auto">
                 {product.description || "Generic description"}
               </p>
             </div>

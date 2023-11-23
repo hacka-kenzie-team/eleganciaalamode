@@ -142,7 +142,7 @@ export const userStore = create<IUserState>()((set, get) => ({
             return true;
         } catch (error) {
             console.log(error);
-            set({ error: "Tentativa de registro falhou" });
+            set({ error: "Tentativa de registro falhou, usuário ou senha inválidos" });
         } finally {
             set({ loading: false });
             setTimeout(() => { set({ message: "", error: "" }) }, 2000);

@@ -21,8 +21,7 @@ export const RegisterForm = () => {
       });
 
       const parseRegisterData = async (userData: TRegisterValues) => {
-        await registerUser(userData);
-        push("/login");
+        await registerUser(userData) && push("/login");
       };
 
     return (
