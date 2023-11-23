@@ -23,13 +23,13 @@ export const HeaderNav = () => {
     return (
         <>
             {userData ?
-                (<nav className="flex justify-between w-[400px] text-second">
+                (<nav className="flex justify-between w-[400px] text-second z-10">
                     <Link href={"/"}>HOME</Link>
                     <Link href={"/products"}>PRODUTOS </Link>
                     <Link href={"/dashboard"}>AREA DO CLIENTE </Link>
                     <button type="button" onClick={() => handleLogoutClick()}>SAIR</button>
                 </nav>) :
-                (<nav className="flex justify-between w-[400px] text-second">
+                (<nav className="flex justify-between w-[400px] text-second z-10">
                     <Link href={"/"}>HOME</Link>
                     <Link href={"/products"}>PRODUTOS </Link>
                     <Link href={"/login"}>LOGIN </Link>

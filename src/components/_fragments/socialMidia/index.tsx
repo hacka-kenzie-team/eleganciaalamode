@@ -20,7 +20,9 @@ export const SocialMidia = () => {
                 </ul>
             </div>
             <p>Recursos exclusivos diretamente na sua caixa de entrada</p>
-            <DefaultButton>inscreva-se</DefaultButton>
+            <div className="flex items-center justify-center">
+                <DefaultButton>inscreva-se</DefaultButton>
+            </div>
         </div>
     )
 }

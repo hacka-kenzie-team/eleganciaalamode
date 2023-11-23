@@ -42,7 +42,7 @@ export const Header = () => {
       <div className="items-center justify-center  hidden lg:flex">
         <HeaderNav />
       </div>
-      <div className=" hidden lg:flex gap-8">
+      <div className=" hidden lg:flex gap-8 z-10">
         <div>
           { userData ? <h3>{`Olá, ${userData.user.name}`}</h3>: <DefaultButton>login</DefaultButton> }
         </div>
