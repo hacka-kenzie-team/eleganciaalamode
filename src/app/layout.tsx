@@ -29,9 +29,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} ${marcellusSC.className}`}>
         <Providers>
-          <Header />
           {children}
-          <Footer />
           <Toast />
           <ShoppingCartModal />
         </Providers>

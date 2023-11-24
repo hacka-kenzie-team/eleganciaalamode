@@ -21,13 +21,15 @@ export const ProductHomeCardInfo = ({productId}: IProductHomeCardInfoProps) => {
     const { addItem } = shoppingStore((state)=> state)
 
     return (
-        <div>
-          <CategoryButton>{product?.category}</CategoryButton>
+      <>
+        {/* <CategoryButton>{product?.category}</CategoryButton> */}
+        <div className="flex items-center justify-between">
           <RatingIcon>{product && getAverageScore(product.comments)}</RatingIcon>
           <CommentaryIcon>{product?.comments.length}</CommentaryIcon>
           <button type="button" onClick={() => product && addItem(product)}>
             <BuyIcon />
           </button>
         </div>
+      </>
     )
 }

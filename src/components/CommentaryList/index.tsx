@@ -9,8 +9,8 @@ export const CommentaryList = ({productName}:{productName: string}) => {
     const product = productList.find((product) => product.slug === productName);
 
     return (
-        <section>
-            <CommentaryIcon>{product?.comments.length} Deixe sua Avaliação</CommentaryIcon>
+        <section className="flex flex-col gap-5">
+            <CommentaryIcon>Avaliações: {product?.comments.length}</CommentaryIcon>
             <ul>
                 {
                     !product ?

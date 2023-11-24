@@ -13,33 +13,37 @@ export const DetailedProductMainCard = ({ productName }: { productName: string }
   const product = productList.find((product) => product.slug === productName);
 
   return (
-    <section>
+    <section className="flex justify-center items-center flex-col">
       {
         !product ?
           <p>Produto não encontrado</p> :
           (<>
-            <div>
-              <div>
-                <h1>{product.name}</h1>
-                <span>Descrição</span>
-                <p>
+            <div className="flex flex-col-reverse justify-center items-center lg:flex-row lg:gap-8">
+              <div className="flex flex-col items-center gap-5 pt-3 lg:max-w-[500px]">
+                <h1 className="text-xl">{product.name}</h1>
+                <p className="font-inter">
                   {product.description}
                 </p>
-                <div>
-                  <span>Estoque</span><span> X {product.stock}</span>
+                <div className="flex justify-between w-full">
+                  <div>
+                    <span>em estoque:</span><span> {product.stock}</span>
+                  </div>
+                  <span>R$ {product.price}</span>
                 </div>
-                <span>R$: {product.price}</span>
               </div>
               <Image
                 src={product.style.url}
                 height={550}
                 width={330}
                 alt="Imagem detalhada do Item a venda"
+                className="lg:w-[500px] lg:h-[300px] rounded-md"
               />
             </div>
-            <div>
-              <CategoryButton>{product.category}</CategoryButton>
-              <RatingIcon>{getAverageScore(product.comments)}</RatingIcon>
+            <div className="flex justify-between w-full pt-2 lg:pt-8">
+              <div className="items-center gap-5 hidden sm:flex">
+                <CategoryButton>{product.category}</CategoryButton>
+                <RatingIcon>{getAverageScore(product.comments)}</RatingIcon>
+              </div>
               <button type="button" onClick={() => addItem(product)}>
                 <BuyIcon />
               </button>

@@ -3,6 +3,7 @@ import { productStore } from "@/contexts/productStore"
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { FieldError, UseFormRegisterReturn } from "react-hook-form"
+import { DefaultButton } from "./buttons/DefaultButton";
 
 
 export const SearchInput = () => {
@@ -23,13 +24,15 @@ export const SearchInput = () => {
     }
 
     return (
-        <form onSubmit={handleSearchSubmit}>
-            <label htmlFor="search">PESQUISA</label>
+        <form onSubmit={handleSearchSubmit} className="flex flex-col sm:flex-row items-center w-full justify-center gap-5">
             <input 
             placeholder="Procure um item"
             id="search" 
-            onChange={handleInputChange}/>
-            <button type="submit">PESQUISAR</button>
+            onChange={handleInputChange}
+            className="w-[300px] lg:w-[400px] h-12 rounded-md p-5 outline-none text-primary"/>
+            <DefaultButton>
+                <button type="submit">pesquisar</button>
+            </DefaultButton>
         </form>
     )
 }
@@ -44,7 +47,7 @@ interface IFormInputProps {
 export const FormInput = ({children, type, register, error}: IFormInputProps) => {
     return (
         <div>
-            <input className="text-slate-800 placeholder-shown:text-slate-800"
+            <input className="text-slate-800 placeholder-shown:text-slate-800 p-5 h-12 w-[280px] rounded-md sm:w-[380px] outline-none"
             placeholder={String(children)} type={type} {...register}></input>
             {error && <p className="text-red">{error.message}</p>}
         </div>
