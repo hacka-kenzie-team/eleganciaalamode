@@ -1,6 +1,7 @@
 'use client'
 
 import { useRouter } from "next/navigation"
+import { DefaultButton } from "../DefaultButton"
 
 
 export const CategoryButton = ({ children }: { children: React.ReactNode }) => {
@@ -10,10 +11,10 @@ export const CategoryButton = ({ children }: { children: React.ReactNode }) => {
     }
 
     return (
-        <button
-        onClick={() => handleCategoryClick()}
-        type="button">
-            {children}
-        </button>
+        <DefaultButton>
+            <button type="button" onClick={() => handleCategoryClick()}>
+                {children}
+            </button>
+        </DefaultButton>
     )
 }

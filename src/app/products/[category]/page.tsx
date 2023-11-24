@@ -33,8 +33,7 @@ export default function ProductsCategoryPage({ params }: IProductsCategoryParams
     }, [searchInput]);
 
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            <h1>Produtos</h1>
+        <main className="flex min-h-screen flex-col items-center justify-between p-24 text-second">
             {loading ? (
                 <section>
                     <h1>Loading...</h1>
@@ -45,7 +44,7 @@ export default function ProductsCategoryPage({ params }: IProductsCategoryParams
                         <ProductsHome allProducts={filteredProducts} />
                     ) : (
                         <section>
-                            <h1>Nenhum Produto encontrado</h1>
+                            <h1 className="text-3xl">Nenhum Produto encontrado</h1>
                         </section>
                     )}
                 </>

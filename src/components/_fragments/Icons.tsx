@@ -1,14 +1,17 @@
 import Image from "next/image"
 import placeholder from "../../../public/next.svg"
+import { DefaultButton } from "./buttons/DefaultButton"
+import likeIcon from "@/assets/icons/likeIcon.svg"
+import iconAvaliabre from "@/assets/icons/icon-avaliabre.svg"
 
 
 export const RatingIcon = ({children}:{children: React.ReactNode}) => {
     return (
-        <div>
+        <div className="flex gap5 items-center gap-2">
             <Image
-                src={placeholder}
-                height={30}
-                width={30}
+                src={likeIcon}
+                height={20}
+                width={20}
                 alt="Ícone de Estrela"
             />
             <span>{children}</span>
@@ -18,9 +21,9 @@ export const RatingIcon = ({children}:{children: React.ReactNode}) => {
 
 export const CommentaryIcon = ({children}:{children: React.ReactNode}) => {
     return (
-        <div>
+        <div className="flex gap-2 items-center">
             <Image
-                src={placeholder}
+                src={iconAvaliabre}
                 height={30}
                 width={30}
                 alt="Ícone de comentário"
@@ -58,10 +61,9 @@ export const SubtractIcon = () => {
 
 export const BuyIcon = () => {
     return (
-        <div>
-            <span>COMPRAR</span>
-            <AddIcon />
-        </div>
+        <DefaultButton type="button">
+            <span>comprar</span>
+        </DefaultButton>
     )
 }
 

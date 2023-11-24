@@ -1,9 +1,10 @@
+import { Hrs } from "../_fragments/hr"
 import { SocialMidia } from "../_fragments/socialMidia"
 
 export const Footer = () => {
     return (
         <>
-            <hr className="bg-second lg:mx-10 h-[1px] opacity-50"/>
+            <Hrs />
             <footer className="bg-primary h-[350px] flex-col items-center justify-center lg:justify-between flex px-3 lg:px-0 pt-10">
                 <div className="items-center justify-between lg:mx-10 text-second hidden lg:flex lg:w-full lg:px-10">
                     <div className=" flex flex-col gap-5">
