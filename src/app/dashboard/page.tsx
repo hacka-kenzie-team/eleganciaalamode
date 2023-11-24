@@ -18,10 +18,11 @@ export default function DashboardPage() {
   }, [userData]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>DashboardPage</h1>
-      <DashboardCommentaryList />
-      <DashboardOrdersList />
+    <main className="min-h-[80dvh] max-w-[1400px] m-auto">
+      <div className="flex justify-between flex-wrap">
+        <DashboardCommentaryList />
+        <DashboardOrdersList />
+      </div>
       <SalesList />
       <CommentaryModal />
     </main>

@@ -8,9 +8,9 @@ export const DashboardOrdersList = () => {
   const user = userStore((state) => state.userData?.user);
 
   return (
-    <section>
-      <h1>Histórico de compras</h1>
-      <ul>
+    <section className="flex flex-col items-center gap-3 mb-auto mt-10 bg-egray p-5 h-[60dvh] overflow-y-auto border-2 border-white/20">
+      <h1 className="border-b-4 border-white/50 border-spacing-6">Histórico de compras</h1>
+      <ul className="flex flex-col gap-4">
         {
           user &&
           (user.orders.length < 1 ?

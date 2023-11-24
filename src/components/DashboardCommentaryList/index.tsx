@@ -8,10 +8,10 @@ import { UserNameTag } from "../UserNameTag"
 export const DashboardCommentaryList = () => {
     const user = userStore((state) => state.userData?.user)
     return (
-        <section>
+        <section className="mb-6">
             <UserNameTag />
-            <h1>Minhas Avaliações</h1>
-            <ul>
+            <h1>Avaliações e comentários</h1>
+            <ul className="flex flex-col gap-8 [width: min(600px, 100%)]">
                 {
                     user &&
                     (!user.comments ?
