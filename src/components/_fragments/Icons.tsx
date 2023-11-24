@@ -61,7 +61,7 @@ export const SubtractIcon = () => {
 
 export const BuyIcon = () => {
     return (
-        <DefaultButton type="button">
+        <DefaultButton>
             <span>comprar</span>
         </DefaultButton>
     )
