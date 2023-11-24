@@ -6,10 +6,15 @@ import { IOrderItemCreate } from './@userTypes';
 
 export const productStore = create<IProductState>()((set) => ({
     productList: [],
+    activeProduct: null,
     loading: false,
     error: "",
     message: "",
     searchInput: "",
+
+    setActiveProduct: (product) => {
+        set((state) => ({activeProduct: product}))
+    },
 
     loadProducts: async () => {
         try {

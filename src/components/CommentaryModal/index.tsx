@@ -1,5 +1,5 @@
 'use client'
-import { IComment, ICommentCreate } from "@/contexts/@commentTypes"
+import { ICommentCreate } from "@/contexts/@commentTypes"
 import { UserNameTag } from "../UserNameTag"
 import { commentStore } from "@/contexts/commentStore"
 import { userStore } from "@/contexts/userStore";
@@ -11,7 +11,7 @@ import { commentSchema } from "./schema";
 
 export const CommentaryModal = () => {
   const { loadUser, userData } = userStore((state) => state);
-  const { loadProducts, productList } = productStore((state) => state)
+  const { loadProducts, productList, activeProduct } = productStore((state) => state)
   const {
     commentaryModal,
     commentaryModalToggle,
@@ -61,9 +61,7 @@ export const CommentaryModal = () => {
         await addComment({
           comment: formData,
           token: String(userData?.accessToken),
-          productId: Number(productList.find((product) => {
-            product.name === comment?.product_name
-          })?.id)
+          productId: Number(activeProduct?.id)
         })
       break;
     }

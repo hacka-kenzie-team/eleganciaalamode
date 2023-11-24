@@ -28,6 +28,7 @@ export interface IProduct {
 
 export interface IProductState {
     productList: IProduct[];
+    activeProduct: null | IProduct;
     loading: boolean;
     error: string;
     message: string;
@@ -39,4 +40,5 @@ export interface IProductState {
         Promise<IProduct[] | undefined>;
     setSearchInput: (string: string) => void
     updateProductsStock: (list: IOrderItemCreate[]) => void
+    setActiveProduct: (product: IProduct) => void;
 }

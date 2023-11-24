@@ -5,21 +5,24 @@ import { DetailedProductSearchList } from "@/components/DetailedProductSearchLis
 import { SalesList } from "@/components/SalesList";
 
 
-interface IDetailedProductMainCardProps{
+interface IDetailedProductMainCardProps {
   params: {
-      productName: string
+    productName: string
   }
 }
 
-export default function DetailedProductPage({params}: IDetailedProductMainCardProps) {
+export default function DetailedProductPage({ params }: IDetailedProductMainCardProps) {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>DetailedProductPage</h1>
-      <DetailedProductMainCard productName={params.productName}/>
-      <DetailedProductSearchList />
-      <CommentaryList productName={params.productName} />
-      <SalesList />
+    <main className="flex flex-col container max-w-[1400px] m-auto">
+      <div className="flex justify-between">
+        <DetailedProductMainCard productName={params.productName} />
+        <CommentaryList productName={params.productName} />
+      </div>
+      <div className="flex justify-between">
+        <SalesList />
+        <DetailedProductSearchList />
+      </div>
       <CommentaryModal />
     </main>
   )
-}
+};

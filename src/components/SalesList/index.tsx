@@ -8,7 +8,8 @@ export const SalesList = () => {
 
     return (
         <section>
-            <ul>
+            <ul className="flex flex-col gap-4">
+                <li>Promoções</li>
                 {!salesList ?
                     <li>
                         nenhum item em promoção por enquanto

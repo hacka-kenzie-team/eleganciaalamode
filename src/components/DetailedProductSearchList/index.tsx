@@ -23,8 +23,8 @@ export const DetailedProductSearchList = () => {
     return (
         <section>
             <SearchInput />
-            <ul>
-                {!productList ? (
+            <ul className="flex flex-col gap-4 mt-5">
+                {!searchedList ? (
                     <li>Nenhum produto encontrado</li>
                 ) : !searchInput ? (
                     spotlightList.map((product) => (

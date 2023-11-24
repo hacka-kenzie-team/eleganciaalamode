@@ -4,7 +4,7 @@ import placeholder from "../../../public/next.svg"
 
 export const RatingIcon = ({children}:{children: React.ReactNode}) => {
     return (
-        <div className="bg-egray rounded-full flex gap-2 px-2 items-center border-1 border-[#FFFFFF50] shadow-sm shadow-gray-400 hover:shadow-sm hover:shadow-gray-300">
+        <div className="w-fit bg-egray rounded-full flex gap-2 px-2 items-center border-1 border-[#FFFFFF50] shadow-sm shadow-gray-400 hover:shadow-sm hover:shadow-gray-300">
             <Image
                 src={"/icons/star.png"}
                 height={26}
@@ -18,7 +18,7 @@ export const RatingIcon = ({children}:{children: React.ReactNode}) => {
 
 export const CommentaryIcon = ({children}:{children: React.ReactNode}) => {
     return (
-        <div className="bg-egray rounded-full flex gap-2 px-2 items-center border-1 border-[#FFFFFF50] shadow-sm shadow-gray-400 hover:shadow-sm hover:shadow-gray-300">
+        <div className="w-fit bg-egray rounded-full flex gap-2 px-2 items-center border-1 border-[#FFFFFF50] shadow-sm shadow-gray-400 hover:shadow-sm hover:shadow-gray-300">
             <Image
                 src={"/icons/comment.svg"}
                 height={30}

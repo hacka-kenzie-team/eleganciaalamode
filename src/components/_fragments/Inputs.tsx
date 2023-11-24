@@ -30,7 +30,8 @@ export const SearchInput = () => {
             <input 
             placeholder="Procure um item"
             id="search" 
-            onChange={handleInputChange}/>
+            onChange={handleInputChange}
+            className="text-black"/>
             <button type="submit">
                 <Image
                     src={"/icons/search-glass.svg"}

@@ -13,7 +13,7 @@ export const CommentaryCard = ({ comment }: { comment: IComment }) => {
 
     return (
         <li>
-            <CommentNameTag comment={comment}/>
+            <CommentNameTag comment={comment} />
             {
                 pathname === "/dashboard" &&
                 <div>
@@ -21,13 +21,15 @@ export const CommentaryCard = ({ comment }: { comment: IComment }) => {
                 </div>
             }
             <div>
-                <p>
+                <p className="bg-egray/80 p-3 rounded-lg mb-1 border-2 border-gray-200/30 hover:bg-egray transition ease-in-out duration-300">
                     {comment.content}
                 </p>
-                <RatingIcon>{comment.rating}</RatingIcon>
-                {(pathname === "/dashboard" || admin) &&
-                    <CommentModerationButtons comment={comment} />
-                }
+                <div className="flex justify-around items-center">
+                    <RatingIcon>{comment.rating}</RatingIcon>
+                    {(pathname === "/dashboard" || admin) &&
+                        <CommentModerationButtons comment={comment} />
+                    }
+                </div>
             </div>
         </li>
     )
