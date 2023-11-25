@@ -7,7 +7,7 @@ export const AdminStock = () => {
         <section>
             <h1>Lista de produtos em baixo estoque</h1>
             <ul>
-                {lowStockList.map((product) => <li>
+                {lowStockList.map((product) => <li key={product.id}>
                     <p>{product.name}</p>
                     <p>{product.stock}</p>
                     <button>
