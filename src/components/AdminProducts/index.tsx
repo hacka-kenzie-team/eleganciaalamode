@@ -7,7 +7,7 @@ export const AdminProducts = () => {
         <section>
             <p>Lista de todos produtos</p>
             <ul>
-                {productsList.map((product) => <li>{product.name}</li>)}
+                {productsList.map((product) => <li key={product.id}>{product.name}</li>)}
             </ul>
         </section>
     )

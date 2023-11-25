@@ -12,25 +12,25 @@ export const AdminCategories = () => {
             <div>
                 <h1>Calçados</h1>
                 <ul>
-                    {calcados.map((product) => <li>{product.name}</li>)}
+                    {calcados.map((product) => <li key={product.id}>{product.name}</li>)}
                 </ul>
             </div>
             <div>
                 <h1>Roupas</h1>
                 <ul>
-                    {roupas.map((product) => <li>{product.name}</li>)}
+                    {roupas.map((product) => <li key={product.id}>{product.name}</li>)}
                 </ul>
             </div>
             <div>
                 <h1>Acessórios</h1>
                 <ul>
-                    {acessorios.map((product) => <li>{product.name}</li>)}
+                    {acessorios.map((product) => <li key={product.id}>{product.name}</li>)}
                 </ul>
             </div>
             <div>
                 <h1>ternos</h1>
                 <ul>
-                    {ternos.map((product) => <li>{product.name}</li>)}
+                    {ternos.map((product) => <li key={product.id}>{product.name}</li>)}
                 </ul>
             </div>
         </section>

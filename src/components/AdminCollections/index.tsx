@@ -11,19 +11,19 @@ export const AdminCollections = () => {
             <div>
                 <h1>outono-inverno</h1>
                 <ul>
-                    {outonoInverno.map((product) => <li>{product.name}</li>)}
+                    {outonoInverno.map((product) => <li key={product.id}>{product.name}</li>)}
                 </ul>
             </div>
             <div>
                 <h1>primavera-verao</h1>
                 <ul>
-                    {primaveraVerao.map((product) => <li>{product.name}</li>)}
+                    {primaveraVerao.map((product) => <li key={product.id}>{product.name}</li>)}
                 </ul>
             </div>
             <div>
                 <h1>business</h1>
                 <ul>
-                    {business.map((product) => <li>{product.name}</li>)}
+                    {business.map((product) => <li key={product.id}>{product.name}</li>)}
                 </ul>
             </div>
         </section>

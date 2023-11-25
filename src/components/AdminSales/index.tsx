@@ -8,7 +8,7 @@ export const AdminSales = () => {
             <h1>Lista de itens em promoção</h1>
             <ul>
                 {salesList.map((product) => 
-                <li>
+                <li key={product.id}>
                     {product.name}
                     <button>
                         remover da promoção

@@ -24,7 +24,7 @@ export default function AdminPage() {
     return (
         <>
             <Header />
-            <main className="flex min-h-screen flex-col items-center justify-between p-24 text-second">
+            <main>
                 <p>BEM VINDO {user?.name}</p>
                 <nav>
                     <p>Selecione sua lista</p>
