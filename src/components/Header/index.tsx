@@ -4,7 +4,7 @@ import { HeaderNav } from "../HeaderNav"
 import placeholder from "../../../public/next.svg"
 import Link from "next/link"
 import { userStore } from "@/contexts/userStore"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { productStore } from "@/contexts/productStore"
 import { shoppingStore } from "@/contexts/shoppingStore"
 import { IShoppingItem } from "@/contexts/@shoppingTypes"
@@ -12,12 +12,14 @@ import { useSession } from "next-auth/react"
 import buttonModalMobile from '@/assets/icons/ButtonModalMobileIcon.svg'
 import cartIcon from "@/assets/icons/cartIcon.svg"
 import { DefaultButton } from "../_fragments/buttons/DefaultButton"
+import { OptionMobileModal } from "../OptionMobileModal"
 
 
 export const Header = () => {
   const { loadUser, userData } = userStore((state) => state)
   const { loadProducts } = productStore((state) => state)
   const { setShoppingModal, shoppingList } = shoppingStore((state) => state)
+  const [ isModalOpen, setIsModaOpen] = useState<boolean>(false)
 
   
   useEffect(() => {
@@ -38,7 +40,14 @@ export const Header = () => {
   return (
     <header className="bg-primary flex items-center justify-between px-2 h-24 md:px-[50px]">
       <Link href={"/"}><h2 className="text-3xl text-second">ElegênciaÀLaMode</h2></Link>
-      <Image src={buttonModalMobile} height={60} width={60} alt="três linhas representando um botão" className="lg:hidden"/>
+      <Image 
+        src={buttonModalMobile} 
+        height={60} 
+        width={60} 
+        alt="três linhas representando um botão" 
+        className="lg:hidden"
+        onClick={() => setIsModaOpen(true)}
+        />
       <div className="items-center justify-center  hidden lg:flex">
         <HeaderNav />
       </div>
@@ -53,6 +62,7 @@ export const Header = () => {
           </div>
         </button>
       </div>
+      <OptionMobileModal isModalOpen={isModalOpen} setIsModaOpen={setIsModaOpen}/>
     </header>
   )
 }
