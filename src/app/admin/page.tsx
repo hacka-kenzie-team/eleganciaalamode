@@ -24,10 +24,10 @@ export default function AdminPage() {
     return (
         <>
             <Header />
-            <main>
+            <main className="flex min-h-screen flex-col items-center justify-between p-24 text-second">
                 <p>BEM VINDO {user?.name}</p>
-                <nav>
                     <p>Selecione sua lista</p>
+                <nav className="w-full justify-between items-center hidden lg:flex">
                     <button onClick={() => setActiveAdminlist("add")}>Adicionar novo produto</button>
                     <button onClick={() => setActiveAdminlist("all")}>Todos</button>
                     <button onClick={() => setActiveAdminlist("sale")}>Promoções</button>

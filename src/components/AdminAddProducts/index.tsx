@@ -1,9 +1,11 @@
+import { ProductModalAddAdmin } from "../ProductModalAddAdmin"
+
 export const AdminAddProducts = () => {
     //adicionar produto
     return (
-        <section>
+        <section className="flex flex-col gap-9">
             <h1>Novo produto</h1>
-            {/* adminAddProductForm */}
+            {/* <ProductModalAddAdmin /> */}
         </section>
     )
 }
