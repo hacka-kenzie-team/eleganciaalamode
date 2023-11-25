@@ -17,10 +17,10 @@ export const ProductsAdmin = () => {
         <section className="flex flex-col gap-9">
             <SearchInput />
             <ul className="w-full justify-between items-center hidden lg:flex">
-                <li><CategoryButton>roupas</CategoryButton></li>
-                <li><CategoryButton>calçados</CategoryButton></li>
-                <li><CategoryButton>acessórios</CategoryButton></li>
-                <li><CategoryButton>ternos</CategoryButton></li>
+                <li><CategoryButton>Roupas</CategoryButton></li>
+                <li><CategoryButton>Calçados</CategoryButton></li>
+                <li><CategoryButton>Acessórios</CategoryButton></li>
+                <li><CategoryButton>Ternos</CategoryButton></li>
                 <li>
                     <button type="button" onClick={() => setIsOpenModal(true)}>
                         <p className="border px-2 text-primary bg-second border-second rounded-md">+ ADICIONAR PRODUTO</p>
