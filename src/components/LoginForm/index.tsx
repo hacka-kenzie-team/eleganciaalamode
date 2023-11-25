@@ -33,7 +33,7 @@ export const LoginForm = () => {
             <form
                 onSubmit={handleSubmit((formData) => parseLoginData(formData))}
                 className="flex flex-col gap-9">
-                <div className="flex flex-col gap-9">
+                <div className="flex flex-col gap-9 text-second">
                     <FormInput type="text" register={register("username")} error={errors.username}>Digite seu username</FormInput>
                     <FormInput type="password" register={register("password")} error={errors.password}>Digite sua senha</FormInput>
                 </div>

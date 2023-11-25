@@ -9,6 +9,7 @@ import {
 import { CategoryButton } from "./buttons/CategoryButton";
 import { getAverageScore } from "@/utils/getAverageScore";
 import { shoppingStore } from "@/contexts/shoppingStore";
+import { toast } from "react-toastify";
 
 
 interface IProductHomeCardInfoProps{
@@ -26,7 +27,7 @@ export const ProductHomeCardInfo = ({productId}: IProductHomeCardInfoProps) => {
         <div className="flex items-center justify-between">
           <RatingIcon>{product && getAverageScore(product.comments)}</RatingIcon>
           <CommentaryIcon>{product?.comments.length}</CommentaryIcon>
-          <button type="button" onClick={() => product && addItem(product)}>
+          <button type="button" onClick={() => {product && addItem(product)}} >
             <BuyIcon />
           </button>
         </div>

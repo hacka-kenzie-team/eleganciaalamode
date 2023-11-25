@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { IShoppingState } from './@shoppingTypes'
+import { toast } from 'react-toastify';
 
 
 export const shoppingStore = create<IShoppingState>()((set) => ({
@@ -13,6 +14,7 @@ export const shoppingStore = create<IShoppingState>()((set) => ({
                 oldItem.product.id === item.id) ?
                 state.shoppingList.map((shopItem) => {
                     if (item.stock - shopItem.quantity < 1){
+                        toast.warn("Sem mais produtos em estoque!")
                         return shopItem
                     } else if (shopItem.product.id === item.id) {
                         return {

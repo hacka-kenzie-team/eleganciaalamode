@@ -146,7 +146,14 @@ export const ShoppingCartModal = () => {
                           </Link>
                         )}
                       </div>
-                      <div className="mt-6 flex justify-center text-center text-sm text-second">
+                      <div className="mt-6 flex gap-2 justify-center text-center text-sm text-second">
+                        <button
+                          type="button"
+                          onClick={() => clearShoppingList()}
+                          className="underline decoration-1"
+                        >
+                          limpar carrinho
+                        </button>
                         <p>
                           {`ou `}
                           <button
