@@ -6,10 +6,8 @@ import {
     CommentaryIcon,
     RatingIcon,
 } from "./Icons";
-import { CategoryButton } from "./buttons/CategoryButton";
 import { getAverageScore } from "@/utils/getAverageScore";
 import { shoppingStore } from "@/contexts/shoppingStore";
-import { toast } from "react-toastify";
 
 
 interface IProductHomeCardInfoProps{

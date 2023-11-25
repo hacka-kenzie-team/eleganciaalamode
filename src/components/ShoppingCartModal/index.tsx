@@ -131,7 +131,7 @@ export const ShoppingCartModal = () => {
                         {userData ? (
                           <button
                             type="button"
-                            className="flex items-center justify-center rounded-md border border-transparent bg-second px-6 py-3 text-base font-medium text-primary shadow-sm"
+                            className="flex items-center justify-center w-full rounded-md border border-transparent bg-second px-6 py-3 text-base font-medium text-primary shadow-sm"
                             onClick={() => handleBuyClick(shoppingList)}
                           >
                             finalizar pedido
