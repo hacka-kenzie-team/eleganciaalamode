@@ -9,14 +9,14 @@ export const HeaderNav = () => {
   const { push } = useRouter();
   const { data: session } = useSession();
 
-  const handleLogoutClick = async () => {
-    setLoading(true);
-    if (session) {
-      signOut();
-    }
-    logoutUser();
-    setLoading(false);
-    push("/");
+
+    const handleLogoutClick = async () => {
+        setLoading(true)
+        if (session) {
+            signOut()
+        }
+        logoutUser()
+        setLoading(false)
   };
 
   return (

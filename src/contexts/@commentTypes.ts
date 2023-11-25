@@ -45,5 +45,5 @@ export interface ICommentState {
         mode: ("post" | "edit" | "delete")
     ) => void
 
-    setActiveComment: (comment: IComment) => void
+    setActiveComment: (comment: IComment | null) => void
 }

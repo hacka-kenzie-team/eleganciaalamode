@@ -28,11 +28,13 @@ export interface IProduct {
 
 export interface IProductState {
     productList: IProduct[];
+    activeProduct: null | IProduct;
     loading: boolean;
     error: string;
     message: string;
     searchInput: string;
 
+    setActiveProduct: (product: IProduct) => void;
     loadProducts: () => Promise<IProduct[] | null>;
     loadSearchedProducts: 
         (searchInput: string) => 

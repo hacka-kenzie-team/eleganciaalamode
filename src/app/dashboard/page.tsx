@@ -13,11 +13,9 @@ import { useEffect } from "react";
 export default function DashboardPage() {
   const { userData } = userStore((state) => state)
 
-  useEffect(() => {
-    if (!userData && window) {
-      redirect('/login');
-    }
-  }, [userData]);
+  if (!userData) {
+    redirect('/login')
+  }
 
   return (
     <>

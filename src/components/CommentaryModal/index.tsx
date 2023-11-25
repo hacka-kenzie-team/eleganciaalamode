@@ -10,7 +10,7 @@ import { commentSchema } from "./schema";
 
 export const CommentaryModal = () => {
   const { loadUser, userData } = userStore((state) => state);
-  const { loadProducts, productList } = productStore((state) => state);
+  const { loadProducts, activeProduct } = productStore((state) => state)
   const {
     commentaryModal,
     commentaryModalToggle,
@@ -62,13 +62,9 @@ export const CommentaryModal = () => {
         await addComment({
           comment: formData,
           token: String(userData?.accessToken),
-          productId: Number(
-            productList.find((product) => {
-              product.name === comment?.product_name;
-            })?.id
-          ),
-        });
-        break;
+          productId: Number(activeProduct?.id)
+        })
+      break;
     }
 
     await loadUser();
