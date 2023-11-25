@@ -3,7 +3,6 @@ import { RegisterForm } from "@/components/RegisterForm";
 import { Loading } from "@/components/_fragments/loading";
 import { userStore } from "@/contexts/userStore";
 import { redirect } from "next/navigation";
-import { useEffect } from "react";
 import Image from "next/image";
 import heroRegister from "@/assets/imgs/hero-register.png"
 import Link from "next/link";
@@ -12,11 +11,9 @@ import Link from "next/link";
 export default function RegisterPage() {
   const { loading, userData } = userStore((state) => state)
 
-  useEffect(() => {
-    if (userData && window) {
-      redirect('/dashboard');
-    }
-  }, [userData]);
+  if (userData) {
+    redirect('/dashboard')
+  }
 
   return (
     <>

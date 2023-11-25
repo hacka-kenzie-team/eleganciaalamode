@@ -1,14 +1,12 @@
 'use client'
 import Image from "next/image"
 import { HeaderNav } from "../HeaderNav"
-import placeholder from "../../../public/next.svg"
 import Link from "next/link"
 import { userStore } from "@/contexts/userStore"
 import { useEffect, useState } from "react"
 import { productStore } from "@/contexts/productStore"
 import { shoppingStore } from "@/contexts/shoppingStore"
-import { IShoppingItem } from "@/contexts/@shoppingTypes"
-import { useSession } from "next-auth/react"
+import { IShoppingItem } from "@/contexts/@shoppingTypes" 
 import buttonModalMobile from '@/assets/icons/ButtonModalMobileIcon.svg'
 import cartIcon from "@/assets/icons/cartIcon.svg"
 import { DefaultButton } from "../_fragments/buttons/DefaultButton"

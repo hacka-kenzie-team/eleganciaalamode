@@ -17,7 +17,6 @@ export const HeaderNav = () => {
         }
         logoutUser()
         setLoading(false)
-        push("/")
     }
 
     return (
