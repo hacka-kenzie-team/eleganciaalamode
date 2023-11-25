@@ -1,17 +1,17 @@
 "use client"
 
-import { getProducts } from "@/app/data";
 import { SearchInput } from "../_fragments/Inputs"
 import { CategoryButton } from "../_fragments/buttons/CategoryButton"
-import { ProductsAdminCard } from "../ProductsAdminCard";
 import { ProductModalAddAdmin } from "../ProductModalAddAdmin";
 import { useState } from "react";
+import { productStore } from "@/contexts/productStore";
 
-// const allProducts = await getProducts()
+
 
 export const ProductsAdmin = () => {
 
     const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
+    const { productList } = productStore((state) => state);
 
     return(
         <section className="flex flex-col gap-9">
