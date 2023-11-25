@@ -1,5 +1,7 @@
 'use client'
 
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
 import { ProductsHome } from "@/components/ProductsHome";
 import { productStore } from "@/contexts/productStore";
 import { useEffect } from "react";
@@ -33,22 +35,26 @@ export default function ProductsCategoryPage({ params }: IProductsCategoryParams
     }, [searchInput]);
 
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24 text-second">
-            {loading ? (
-                <section>
-                    <h1>Loading...</h1>
-                </section>
-            ) : (
-                <>
-                    {filteredProducts.length > 0 ? (
-                        <ProductsHome allProducts={filteredProducts} />
-                    ) : (
-                        <section>
-                            <h1 className="text-3xl">Nenhum Produto encontrado</h1>
-                        </section>
-                    )}
-                </>
-            )}
-        </main>
+        <>
+            <Header />
+            <main className="flex min-h-screen flex-col items-center justify-between p-24 text-second">
+                {loading ? (
+                    <section>
+                        <h1>Loading...</h1>
+                    </section>
+                ) : (
+                    <>
+                        {filteredProducts.length > 0 ? (
+                            <ProductsHome allProducts={filteredProducts} />
+                        ) : (
+                            <section>
+                                <h1 className="text-3xl">Nenhum Produto encontrado</h1>
+                            </section>
+                        )}
+                    </>
+                )}
+            </main>
+            <Footer />
+        </>
     );
 };

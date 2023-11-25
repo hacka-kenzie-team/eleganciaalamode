@@ -11,7 +11,7 @@ export const SalesList = () => {
         <section className="pt-8 w-[100vw]">
             <Hrs />
             <div className="w-full flex justify-center mb-5 pt-8">
-                <h3>promoções</h3>
+                <h3>promoções:</h3>
             </div>
             <ul className="flex justify-center items-center gap-10">
                 {!salesList ?

@@ -1,25 +1,24 @@
-'use client'
-import { IComment, ICommentCreate } from "@/contexts/@commentTypes"
-import { UserNameTag } from "../UserNameTag"
-import { commentStore } from "@/contexts/commentStore"
+"use client";
+import { IComment, ICommentCreate } from "@/contexts/@commentTypes";
+import { UserNameTag } from "../UserNameTag";
+import { commentStore } from "@/contexts/commentStore";
 import { userStore } from "@/contexts/userStore";
 import { productStore } from "@/contexts/productStore";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { commentSchema } from "./schema";
 
-
 export const CommentaryModal = () => {
   const { loadUser, userData } = userStore((state) => state);
-  const { loadProducts, productList } = productStore((state) => state)
+  const { loadProducts, productList } = productStore((state) => state);
   const {
     commentaryModal,
     commentaryModalToggle,
     addComment,
     editComment,
-    removeComment
+    removeComment,
   } = commentStore((state) => state);
-  const comment = commentStore((state) => state.activeComment)
+  const comment = commentStore((state) => state.activeComment);
 
   const submitButtonText = (): string => {
     switch (commentaryModal[1]) {
@@ -40,83 +39,94 @@ export const CommentaryModal = () => {
     resolver: zodResolver(commentSchema),
   });
 
-  const handleCommentaryClick = async (formData: ICommentCreate): Promise<void> => {
+  const handleCommentaryClick = async (
+    formData: ICommentCreate
+  ): Promise<void> => {
     switch (commentaryModal[1]) {
       case "delete":
         await removeComment({
           commentId: Number(comment?.id),
-          token: String(userData?.accessToken)
-        })
-      break;
+          token: String(userData?.accessToken),
+        });
+        break;
 
       case "edit":
         await editComment({
           comment: formData,
           token: String(userData?.accessToken),
-          commentId: Number(comment?.id)
-        })
-      break;
+          commentId: Number(comment?.id),
+        });
+        break;
 
       default:
         await addComment({
           comment: formData,
           token: String(userData?.accessToken),
-          productId: Number(productList.find((product) => {
-            product.name === comment?.product_name
-          })?.id)
-        })
-      break;
+          productId: Number(
+            productList.find((product) => {
+              product.name === comment?.product_name;
+            })?.id
+          ),
+        });
+        break;
     }
 
     await loadUser();
     await loadProducts();
-    commentaryModalToggle(false, "post")
-  }
+    commentaryModalToggle(false, "post");
+  };
 
   return (
-    <div>
-      <dialog open={commentaryModal[0] as boolean} role="dialog" aria-modal="true">
+    <div className="rounded-md">
+      <dialog
+        open={commentaryModal[0] as boolean}
+        role="dialog"
+        aria-modal="true"
+        className="fixed top-[50%] rounded-md"
+      >
         <form
           onSubmit={handleSubmit((formData) => handleCommentaryClick(formData))}
+          className="p-8 bg-primary text-second border-4 border-second flex flex-col gap-5"
         >
           <div>
             <UserNameTag />
-            <button type="button"
+            <button
+              type="button"
               onClick={() => commentaryModalToggle(false, "post")}
+              className="absolute top-5 right-5"
             >
-              FECHAR
+              X
             </button>
           </div>
-          {
-            commentaryModal[1] === "delete" ?
-              <h1>Tem Certeza que que quer deletar seu comentário?</h1> :
-
-              <div>
-                <textarea
-                  placeholder={comment?.content || "Digite seu Comentário"}
-                  id="commentary-post" cols={30} rows={10}
-                  {...register("content")}>
-
-                </textarea>
-                {errors.content && <p>{errors.content.message}</p>}
-                <div>
-                  {Array.from({ length: 10 }, (_, index) => (
-                    <label key={index}>
-                      <input
-                        type="radio"
-                        {...register("rating")}
-                        value={index + 1}
-                      />
-                      {index + 1}
-                    </label>
-                  ))}
-                  {errors.rating && <p>{errors.rating.message}</p>}
-                </div>
+          {commentaryModal[1] === "delete" ? (
+            <h1>Tem Certeza que que quer deletar seu comentário?</h1>
+          ) : (
+            <div>
+              <textarea
+                placeholder={comment?.content || "Digite seu Comentário"}
+                id="commentary-post"
+                className="w-full h-18 rounded-md p-5 outline-none text-primary"
+                {...register("content")}
+              ></textarea>
+              {errors.content && <p>{errors.content.message}</p>}
+              <div className="flex gap-3">
+                {Array.from({ length: 10 }, (_, index) => (
+                  <label key={index}>
+                    <input
+                      type="radio"
+                      {...register("rating")}
+                      value={index + 1}
+                    />
+                    {index + 1}
+                  </label>
+                ))}
+                {errors.rating && <p>{errors.rating.message}</p>}
               </div>
-          }
-          <button type="submit">{submitButtonText()}</button>
+            </div>
+          )}
+          <button type="submit" className="bg-second text-primary p-2 rounded-md">{submitButtonText()}</button>
         </form>
       </dialog>
     </div>
-  )
-}
+  );
+};
