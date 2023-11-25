@@ -1,11 +1,10 @@
 import type { Metadata } from 'next'
 import { Inter, Marcellus_SC } from 'next/font/google'
 import './globals.css'
-import { Header } from '@/components/Header'
-import { Footer } from '@/components/Footer'
 import { Toast } from '@/components/_fragments/toast'
 import { ShoppingCartModal } from '@/components/ShoppingCartModal'
 import { Providers } from '@/components/Providers'
+import 'react-toastify/dist/ReactToastify.css';
 
 const inter = Inter({ subsets: ['latin'] })
 const marcellusSC = Marcellus_SC({
@@ -26,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body className={`${inter.className} ${marcellusSC.className}`}>
         <Providers>
           {children}
