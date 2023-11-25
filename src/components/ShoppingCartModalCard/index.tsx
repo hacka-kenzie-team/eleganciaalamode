@@ -14,7 +14,7 @@ export const ShoppingCartModalCard = ({shoppingItem}:IShoppingCartModalCardProps
 const { addItem, removeItem } = shoppingStore((state) => state)
 
     return (
-        <li className="flex h-[200px] w-full px-3 items-center justify-between overflow-hidden">
+        <li className="flex h-[200px] flex-shrink-0 w-full px-3 items-center justify-between overflow-hidden bg-black/60">
             <Image
             src={shoppingItem.product.style.url}
             width={356}

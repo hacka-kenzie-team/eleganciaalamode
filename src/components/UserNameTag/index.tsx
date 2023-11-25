@@ -13,7 +13,6 @@ export const UserNameTag = () => {
 
     return (
         <>
-            <h1 className="pt-10 text-center">Bem vindo!</h1>
             <div className="flex items-center my-10 gap-3">
                 <div className="flex gap-3">
                     {session?.user ?

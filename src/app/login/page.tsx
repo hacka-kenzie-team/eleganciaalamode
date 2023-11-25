@@ -12,10 +12,11 @@ export default function LoginPage() {
   const googleLogin = userStore((state) => state.googleLogin)
   const { data: session } = useSession()
 
+  if (userData) {
+    redirect('/dashboard');
+  }
+
   useEffect(() => {
-    if (userData && window) {
-      redirect('/dashboard');
-    }
     if(session && !userData){
       googleLogin(session)
     }

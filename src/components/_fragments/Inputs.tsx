@@ -56,7 +56,7 @@ export const FormInput = ({children, type, register, error}: IFormInputProps) =>
         <div>
             <input className="text-slate-800 placeholder-shown:text-slate-800"
             placeholder={String(children)} type={type} {...register}></input>
-            {error && <p className="text-red">{error.message}</p>}
+            {error && <p className="p-1 text-xs">{error.message}</p>}
         </div>
     )
 }

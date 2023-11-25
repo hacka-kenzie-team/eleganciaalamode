@@ -33,7 +33,7 @@ export const HomeCategoryButton = ({ children }: { children: React.ReactNode }) 
                 alt="Imagem com um dos itens da categoria"
                 className="absolute inset-0 h-full w-auto object-cover z-[-1]"
                 />
-                <button className="bg-red-900 w-4/5 h-full transition-all duration-500 ease-in-out group-hover:w-1/2"
+                <button className="bg-luxo w-4/5 h-full transition-all duration-500 ease-in-out group-hover:w-1/2"
                     type="button">
                     {children}
                 </button>

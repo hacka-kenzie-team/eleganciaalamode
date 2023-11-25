@@ -31,7 +31,7 @@ export const Header = () => {
   }
 
   return (
-    <header className="bg-red-900 h-[10dvh] shadow-white">
+    <header className="bg-luxo h-[10dvh] shadow-white">
       <div className="max-w-[1400px] m-auto flex items-center justify-between">
         <Link href={"/"}>
           <Image

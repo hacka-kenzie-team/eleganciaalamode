@@ -9,6 +9,7 @@ export const DashboardCommentaryList = () => {
     const user = userStore((state) => state.userData?.user)
     return (
         <section className="mb-6">
+            <h1 className="pt-10 text-center">Bem vindo!</h1>
             <UserNameTag />
             <h1>Avaliações e comentários</h1>
             <ul className="flex flex-col gap-8 [width: min(600px, 100%)]">

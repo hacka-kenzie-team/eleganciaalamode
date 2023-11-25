@@ -47,12 +47,14 @@ export const ShoppingCartModal = () => {
 
   return (
     <div>
-      <dialog open={shoppingModal} className="fixed inset-0 w-full h-full bg-white/30"
-        onClick={(e) => handleClickOutside(e)}>
-        <div className="flex flex-col h-full w-1/2 bg-black shadow-white justify-between">
-          <div className="flex items-center justify-between h-[13dvh] bg-red-900 shadow-white pl-10 pr-4">
-            <h1 className="text-ewhite m-auto">CARRINHO DE COMPRAS</h1>
-            <button className="text-ewhite"
+      <dialog open={shoppingModal}
+        role="dialog" aria-modal="true"
+        onClick={(e) => handleClickOutside(e)}
+        className="fixed inset-0 w-full h-full bg-white/30">
+        <div className="right-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-luxo min-w-[600px]">
+          <div className="flex items-center justify-between bg-luxo pl-10 pr-4">
+            <h1 className="m-auto py-3">CARRINHO DE COMPRAS</h1>
+            <button 
               type="button"
               onClick={() => setShoppingModal(false)}>
               X
@@ -61,8 +63,8 @@ export const ShoppingCartModal = () => {
           {
             loading ?
               <Loading /> :
-              <ul className="mb-auto overflow-y-auto flex flex-col gap-3 h-[100%] pt-3">
-                {!shoppingList ? <li><p className="text-ewhite">Nenhum Item Adicionado</p></li> :
+              <ul className="mb-auto overflow-y-auto flex flex-col gap-3 h-[75dvh]">
+                {!shoppingList ? <li><p >Nenhum Item Adicionado</p></li> :
                   shoppingList.map((shoppingItem) =>
                     <ShoppingCartModalCard
                       shoppingItem={shoppingItem}
@@ -70,10 +72,10 @@ export const ShoppingCartModal = () => {
                 }
               </ul>
           }
-          <div className="flex items-center justify-between h-[13dvh] bg-red-900 shadow-white p-10">
+          <div className="flex items-center justify-between bg-red-900 p-10">
             <div>
-              <span className="text-ewhite">Total </span>
-              <span className="text-ewhite">R$: {
+              <span >Total </span>
+              <span >R$: {
                 !shoppingList ? "00,00" :
                   shoppingList.reduce(
                     (a, c) =>
@@ -82,15 +84,24 @@ export const ShoppingCartModal = () => {
               }
               </span>
             </div>
-            <button className="text-ewhite"
-              type="button" onClick={() => clearShoppingList()}>Limpar carrinho</button>
+            <button
+              type="button" onClick={() => clearShoppingList()}
+              className="flex gap-3 items-center bg-black rounded-full w-fit px-3 py-1 mt-2 shadow-sm shadow-gray-400 hover:shadow-sm hover:shadow-gray-300 hover:scale-110 ease-in-out duration-300">
+                Limpar carrinho
+            </button>
             {
               userData ?
-                <button className="text-ewhite"
-                  type="button" onClick={() => handleBuyClick(shoppingList)}>Finalizar pedido</button>
+                <button 
+                  type="button" onClick={() => handleBuyClick(shoppingList)}
+                  className="flex gap-3 items-center bg-black rounded-full w-fit px-3 py-1 mt-2 shadow-sm shadow-gray-400 hover:shadow-sm hover:shadow-gray-300 hover:scale-110 ease-in-out duration-300">
+                    Finalizar pedido
+                </button>
                 :
-                <Link className="text-ewhite"
-                  href={"/login"} onClick={() => setShoppingModal(false)}>Entre para finalizar compra</Link>
+                <Link 
+                  href={"/login"} onClick={() => setShoppingModal(false)}
+                  className="flex gap-3 items-center bg-black rounded-full w-fit px-3 py-1 mt-2 shadow-sm shadow-gray-400 hover:shadow-sm hover:shadow-gray-300 hover:scale-110 ease-in-out duration-300">
+                    Entre para finalizar compra
+                </Link>
             }
           </div>
         </div>

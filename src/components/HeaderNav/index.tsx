@@ -2,12 +2,10 @@
 import { userStore } from "@/contexts/userStore";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link"
-import { useRouter } from "next/navigation";
 
 
 export const HeaderNav = () => {
     const { userData, logoutUser, setLoading } = userStore((state) => state);
-    const { push } = useRouter()
     const { data: session } = useSession()
 
     const handleLogoutClick = async () => {
@@ -17,7 +15,6 @@ export const HeaderNav = () => {
         }
         logoutUser()
         setLoading(false)
-        push("/")
     }
 
     return (

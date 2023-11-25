@@ -12,6 +12,7 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'luxo': "url('/backgrounds/bg-resumo-luxo.png')",
       },
       boxShadow: {
         'white': '0px 0px 4px 2px rgba(61,61,61,0.41)',
@@ -23,7 +24,7 @@ const config: Config = {
       textColor: {
         'ewhite': '#C7C9C6',
         'egray': '#3D3D3D'
-      }
+      },
     },
   },
   plugins: [],
