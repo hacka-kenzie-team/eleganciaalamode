@@ -1,4 +1,5 @@
 'use client'
+
 import Image from "next/image"
 import { HeaderNav } from "../HeaderNav"
 import Link from "next/link"
@@ -14,53 +15,72 @@ import { OptionMobileModal } from "../OptionMobileModal"
 
 
 export const Header = () => {
-  const { loadUser, userData } = userStore((state) => state)
-  const { loadProducts } = productStore((state) => state)
-  const { setShoppingModal, shoppingList } = shoppingStore((state) => state)
-  const [ isModalOpen, setIsModaOpen] = useState<boolean>(false)
+  const { loadUser, userData } = userStore((state) => state);
+  const { loadProducts } = productStore((state) => state);
+  const { setShoppingModal, shoppingList } = shoppingStore((state) => state);
+  const [isModalOpen, setIsModaOpen] = useState<boolean>(false);
 
-  
   useEffect(() => {
     const initiate = async () => {
-      await loadUser()
-      loadProducts()
-    }
-    initiate()
+      await loadUser();
+      loadProducts();
+    };
+    initiate();
   }, []);
 
-  const getTotatShoppingItems = (list:IShoppingItem[]) => {
-    if (!list){
-      return 0
+  const getTotatShoppingItems = (list: IShoppingItem[]) => {
+    if (!list) {
+      return 0;
     }
     return list.reduce((a, c) => a + c.quantity, 0);
-  }
+  };
 
   return (
     <header className="bg-primary flex items-center justify-between px-2 h-24 md:px-[50px]">
-      <Link href={"/"}><h2 className="text-3xl text-second">ElegênciaÀLaMode</h2></Link>
-      <Image 
-        src={buttonModalMobile} 
-        height={60} 
-        width={60} 
-        alt="três linhas representando um botão" 
+      <Link href={"/"}>
+        <h2 className="text-3xl text-second">ElegênciaÀLaMode</h2>
+      </Link>
+      <Image
+        src={buttonModalMobile}
+        height={60}
+        width={60}
+        alt="três linhas representando um botão"
         className="lg:hidden"
         onClick={() => setIsModaOpen(true)}
-        />
+      />
       <div className="items-center justify-center  hidden lg:flex">
         <HeaderNav />
       </div>
-      <div className=" hidden lg:flex gap-8 z-10">
+      <div className=" hidden lg:flex gap-8 z-10 text-second">
         <div>
-          { userData ? <h3>{`Olá, ${userData.user.name}`}</h3>: <DefaultButton>login</DefaultButton> }
+          {userData ? (
+            <h3 className="text-2xl">{`Olá, ${userData.user.name}`}</h3>
+          ) : (
+            <Link href={"/login"}>
+              <DefaultButton>login</DefaultButton>
+            </Link>
+          )}
         </div>
-        <button className="relative" type="button" onClick={() => setShoppingModal(true)}>
-          <Image src={cartIcon} height={30} width={30} alt="Uma sacola de compra, representando o carrinho de compra"/>
+        <button
+          className="relative"
+          type="button"
+          onClick={() => setShoppingModal(true)}
+        >
+          <Image
+            src={cartIcon}
+            height={30}
+            width={30}
+            alt="Uma sacola de compra, representando o carrinho de compra"
+          />
           <div className="absolute top-[20px] left-[15px] right-0 bg-white w-[20px] rounded-md text-primary">
             <span>{getTotatShoppingItems(shoppingList)}</span>
           </div>
         </button>
       </div>
-      <OptionMobileModal isModalOpen={isModalOpen} setIsModaOpen={setIsModaOpen}/>
+      <OptionMobileModal
+        isModalOpen={isModalOpen}
+        setIsModaOpen={setIsModaOpen}
+      />
     </header>
-  )
-}
+  );
+};

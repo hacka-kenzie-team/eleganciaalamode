@@ -20,8 +20,7 @@ export default function DashboardPage() {
   return (
     <>
       <Header />
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <h1>DashboardPage</h1>
+      <main className="flex min-h-screen flex-col items-center justify-between p-5 text-second">
         <DashboardCommentaryList />
         <DashboardOrdersList />
         <SalesList />
