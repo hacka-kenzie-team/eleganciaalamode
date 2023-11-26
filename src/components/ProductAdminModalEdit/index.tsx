@@ -2,23 +2,23 @@ import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
 type IModalProps = {
-  isOpenModal: boolean;
-  setIsOpenModal: (boolean: boolean) => void;
+    isOpenModalEdit: boolean;
+  setIsOpenModalEdit: (boolean: boolean) => void;
 };
 
-export const ProductModalAddAdmin = ({
-  isOpenModal,
-  setIsOpenModal,
+export const ProductAdminModalEdit = ({
+    isOpenModalEdit,
+    setIsOpenModalEdit,
 }: IModalProps) => {
   const cancelButtonRef = useRef(null);
 
   return (
-    <Transition.Root show={isOpenModal} as={Fragment}>
+    <Transition.Root show={isOpenModalEdit} as={Fragment}>
       <Dialog
         as="div"
         className="relative z-10"
         initialFocus={cancelButtonRef}
-        onClose={setIsOpenModal}
+        onClose={setIsOpenModalEdit}
       >
         <Transition.Child
           as={Fragment}
@@ -71,7 +71,6 @@ export const ProductModalAddAdmin = ({
                   ></textarea>
                   <label>{`adicione palavras chave (separadas por virgula ",")`}</label>
                   <textarea
-                    placeholder="exemplo: camisa, preta, casual, masculina"
                     className="w-full h-18 rounded-md p-5 outline-none text-primary"
                   ></textarea>
                   <div className="flex gap-5">
@@ -98,7 +97,7 @@ export const ProductModalAddAdmin = ({
                   <div className="flex justify-between gap-2">
                     <button
                       type="button"
-                      onClick={() => setIsOpenModal(false)}
+                      onClick={() => setIsOpenModalEdit(false)}
                       className="mt-3 inline-flex w-full justify-center rounded-md bg-second px-3 py-2 text-sm font-semibold text-primary shadow-sm sm:mt-0 sm:w-auto"
                     >
                       cancelar

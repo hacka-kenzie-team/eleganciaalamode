@@ -7,6 +7,7 @@ import { BuyIcon, CommentaryIcon, RatingIcon } from "../_fragments/Icons"
 import { ProductHomeCardInfo } from "../_fragments/ProductHomeCardInfo"
 import { ProductHomeCardStock } from "../_fragments/ProductHomeCardStock"
 import Link from "next/link"
+import { SkeletonProducts } from "../SkeletonProducts"
 
 
 interface IProductsHomeCardProps {

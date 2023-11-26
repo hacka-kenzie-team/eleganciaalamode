@@ -7,12 +7,14 @@ import { AdminSales } from "@/components/AdminSales"
 import { AdminStock } from "@/components/AdminStock"
 import { Footer } from "@/components/Footer"
 import { Header } from "@/components/Header"
+import { ProductModalAddAdmin } from "@/components/ProductModalAddAdmin"
 import { ProductModalEditAdmin } from "@/components/ProductModalEditAdmin"
 import { ModalAdminConfirmDelete } from "@/components/_fragments/ModalAdminConfirmDelete"
 import { adminStore } from "@/contexts/adminStore"
 import { productStore } from "@/contexts/productStore"
 import { userStore } from "@/contexts/userStore"
 import { redirect } from "next/navigation"
+import { useEffect, useState } from "react"
 
 
 export default function AdminPage() {
@@ -29,30 +31,70 @@ export default function AdminPage() {
         setActiveProduct(null)
     }
 
-    return (
-        <>
-            <Header />
-            <main className="flex min-h-screen flex-col items-center justify-between p-24 text-second">
-                <p>BEM VINDO {user?.name}</p>
-                    <p>Selecione sua lista</p>
-                <nav className="w-full justify-between items-center hidden lg:flex">
-                    <button onClick={() => handleAddProductClick()}>Adicionar novo produto</button>
-                    <button onClick={() => setActiveAdminlist("all")}>Todos</button>
-                    <button onClick={() => setActiveAdminlist("sale")}>Promoções</button>
-                    <button onClick={() => setActiveAdminlist("stock")}>Controle de Estoque</button>
-                    <button onClick={() => setActiveAdminlist("category")}>Categorias</button>
-                    <button onClick={() => setActiveAdminlist("collections")}>Coleções</button>
-                </nav>
-                {activeAdminList === "add" && <AdminAddProducts />}
-                {activeAdminList === "all" && <AdminProducts />}
-                {activeAdminList === "sale" && <AdminSales />}
-                {activeAdminList === "stock" && <AdminStock />}
-                {activeAdminList === "category" && <AdminCategories />}
-                {activeAdminList === "collections" && <AdminCollections />}
-                <ProductModalEditAdmin />
-                <ModalAdminConfirmDelete />
-            </main>
-            <Footer />
-        </>
-    )
+    const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+
+    useEffect(() => {
+      setActiveAdminlist("all")
+    },[])
+
+  return (
+    <>
+      <Header />
+      <main className="flex min-h-screen flex-col items-center gap-5 p-8 text-second">
+        <p className="text-2xl">bem vindo, {user?.name}</p>
+        <p>Selecione sua lista</p>
+        <nav className="w-full justify-between items-center flex flex-col lg:flex-row gap-5">
+          <button
+            onClick={() => {
+              setActiveAdminlist("add"), setIsOpenModal(true);
+            }}
+            className="border border-second w-[90%] lg:w-auto lg:px-3 rounded-md hover:bg-second hover:text-primary"
+          >
+            + adicionar novo produto
+          </button>
+          <button
+            onClick={() => setActiveAdminlist("all")}
+            className="border border-second w-[90%] lg:w-auto lg:px-5 rounded-md hover:bg-second hover:text-primary"
+          >
+            todos
+          </button>
+          <button
+            onClick={() => setActiveAdminlist("sale")}
+            className="border border-second w-[90%] lg:w-auto lg:px-5 rounded-md hover:bg-second hover:text-primary"
+          >
+            promoções
+          </button>
+          <button
+            onClick={() => setActiveAdminlist("stock")}
+            className="border border-second w-[90%] lg:w-auto lg:px-5 rounded-md hover:bg-second hover:text-primary"
+          >
+            controle de Estoque
+          </button>
+          <button
+            onClick={() => setActiveAdminlist("category")}
+            className="border border-second w-[90%] lg:w-auto lg:px-5 rounded-md hover:bg-second hover:text-primary"
+          >
+            categorias
+          </button>
+          <button
+            onClick={() => setActiveAdminlist("collections")}
+            className="border border-second w-[90%] lg:w-auto lg:px-5 rounded-md hover:bg-second hover:text-primary"
+          >
+            coleções
+          </button>
+        </nav>
+        {activeAdminList === "add" && <AdminAddProducts />}
+        {activeAdminList === "all" && <AdminProducts />}
+        {activeAdminList === "sale" && <AdminSales />}
+        {activeAdminList === "stock" && <AdminStock />}
+        {activeAdminList === "category" && <AdminCategories />}
+        {activeAdminList === "collections" && <AdminCollections />}
+      </main>
+      <Footer />
+      <ProductModalAddAdmin
+        isOpenModal={isOpenModal}
+        setIsOpenModal={setIsOpenModal}
+      />
+    </>
+  );
 }

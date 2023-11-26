@@ -6,6 +6,7 @@ import { userStore } from "@/contexts/userStore";
 import Link from "next/link";
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import cartEmpty from "@/assets/icons/cart-empty-icon.svg"
 import Image from "next/image";
 
 export const ShoppingCartModal = () => {
@@ -95,8 +96,11 @@ export const ShoppingCartModal = () => {
                             role="list"
                             className="-my-6 divide-y divide-second"
                           >
-                            {!shoppingList ? (
-                              <li>nenhum item adicionado</li>
+                            {shoppingList.length <= 0 ? (
+                              <div className="flex items-center justify-center pt-20 flex-col h-full text-second">
+                                <Image width={100} src={cartEmpty} alt="Carrinho de compras"/>
+                                <p>seu carrinho está vazio</p>
+                              </div>
                             ) : (
                               shoppingList.map((shoppingItem) => (
                                 <ShoppingCartModalCard

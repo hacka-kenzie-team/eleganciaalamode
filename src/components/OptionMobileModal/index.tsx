@@ -1,7 +1,12 @@
-import { Fragment, useState } from "react";
+"use client";
+
+import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Link from "next/link";
 import { shoppingStore } from "@/contexts/shoppingStore";
+import { userStore } from "@/contexts/userStore";
+import { useRouter } from "next/navigation";
+import { signOut, useSession } from "next-auth/react";
 
 type IModalProps = {
   isModalOpen: boolean;
@@ -13,6 +18,19 @@ export const OptionMobileModal = ({
   setIsModaOpen,
 }: IModalProps) => {
   const { setShoppingModal, shoppingList } = shoppingStore((state) => state);
+
+  const { userData, logoutUser, setLoading } = userStore((state) => state);
+  const { push } = useRouter();
+  const { data: session } = useSession();
+
+  const handleLogoutClick = async () => {
+    setLoading(true);
+    if (session) {
+      signOut();
+    }
+    logoutUser();
+    setLoading(false);
+  };
 
   return (
     <Transition.Root show={isModalOpen} as={Fragment}>
@@ -67,36 +85,102 @@ export const OptionMobileModal = ({
                         </div>
                       </div>
                       <div>
-                        <ul className="-my-6 divide-y divide-second text-second mt-10">
-                          <li>
-                            <Link href={'/'} className="flex justify-center py-8 text-2xl">
+                        {userData ? (
+                          <nav
+                            className="
+                              flex 
+                              flex-col 
+                              justify-between 
+                              gap-8 
+                              mt-10 
+                              w-full 
+                              h-[50%} 
+                              divide-y 
+                              divide-second 
+                              text-second z-10"
+                          >
+                            <Link
+                              href={"/"}
+                              className="text-2xl flex items-center justify-center pt-7"
+                            >
                               HOME
                             </Link>
-                          </li>
-                          <li>
-                            <Link href={'/products'} className="flex justify-center py-8 text-2xl" >
-                              PRODUTOS
+                            <Link
+                              href={"/products"}
+                              className="text-2xl flex items-center justify-center pt-7"
+                            >
+                              PRODUTOS{" "}
                             </Link>
-                          </li>
-                          <li>
-                            <Link href={'/login'} className="flex justify-center py-8 text-2xl">
-                              LOGIN
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href={'/register'} className="flex justify-center py-8 text-2xl">
-                              CADASTRO
-                            </Link>
-                          </li>
-                          <li>
-                            <h3
-                              className="flex justify-center py-8 text-2xl"
+                            {userData.user.is_superuser ? (
+                              <Link
+                                href={"/admin"}
+                                className="text-2xl flex items-center justify-center pt-7"
+                              >
+                                AREA DO ADMIN{" "}
+                              </Link>
+                            ) : (
+                              <Link
+                                href={"/dashboard"}
+                                className="text-2xl flex items-center justify-center pt-7"
+                              >
+                                AREA DO CLIENTE{" "}
+                              </Link>
+                            )}
+                           <button
+                              type="button"
                               onClick={() => setShoppingModal(true)}
+                              className="text-2xl flex items-center justify-center pt-7"
                             >
                               CARRINHO
-                            </h3>
-                          </li>
-                        </ul>
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => handleLogoutClick()}
+                              className="text-2xl flex items-center justify-center pt-7"
+                            >
+                              SAIR
+                            </button>
+                          </nav>
+                        ) : (
+                          <nav
+                            className="
+                              flex 
+                              flex-col 
+                              justify-between 
+                              gap-8 
+                              mt-10 
+                              w-full 
+                              h-[50%} 
+                              divide-y 
+                              divide-second 
+                              text-second z-10"
+                            >
+                            <Link
+                              href={"/"}
+                              className="text-2xl flex items-center justify-center pt-7"
+                            >
+                              HOME
+                            </Link>
+                            <Link
+                              href={"/products"}
+                              className="text-2xl flex items-center justify-center pt-7"
+                            >
+                              PRODUTOS
+                            </Link>
+                            <Link
+                              href={"/#"}
+                              className="text-2xl flex items-center justify-center pt-7"
+                            >
+                              SOBRE
+                            </Link>
+                            <Link
+                              href={"/#"}
+                              className="text-2xl flex items-center justify-center pt-7"
+                            >
+                              CONTATO
+                            </Link>
+                          </nav>
+                        )}
                       </div>
                     </div>
                   </div>

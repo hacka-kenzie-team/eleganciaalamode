@@ -3,6 +3,7 @@
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { ProductsHome } from "@/components/ProductsHome";
+import { Loading } from "@/components/_fragments/loading";
 import { productStore } from "@/contexts/productStore";
 import { useEffect } from "react";
 
@@ -40,7 +41,7 @@ export default function ProductsCategoryPage({ params }: IProductsCategoryParams
             <main className="flex min-h-screen flex-col items-center justify-between p-24 text-second">
                 {loading ? (
                     <section>
-                        <h1>Loading...</h1>
+                        <Loading />
                     </section>
                 ) : (
                     <>
