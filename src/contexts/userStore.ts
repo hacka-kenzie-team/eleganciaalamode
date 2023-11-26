@@ -110,6 +110,7 @@ export const userStore = create<IUserState>()((set, get) => ({
     loadUser: async () => {
         if (typeof window !== "undefined") {
             try {
+                set({loading: true})
                 let token = localStorage.getItem("@elegancia:token");
                 if (token) {
                     token = JSON.parse(token) as string
@@ -130,6 +131,8 @@ export const userStore = create<IUserState>()((set, get) => ({
                 console.log(error)
                 localStorage.removeItem("@elegancia:token");
                 set({ userData: null });
+            } finally {
+                set({ loading: false });
             }
         }
     },

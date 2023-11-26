@@ -71,7 +71,7 @@ export const GoogleIcon = () => {
     return (
         <div>
             <Image
-                src={placeholder}
+                src="/icons/google.svg"
                 height={30}
                 width={30}
                 alt="Ícone do Google"

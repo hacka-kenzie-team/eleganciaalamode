@@ -4,7 +4,7 @@ import editIcon from "@/assets/icons/editIcon.svg"
 import Image from "next/image";
 import { adminStore } from "@/contexts/adminStore";
 import { productStore } from "@/contexts/productStore";
-import { ProductAdminModalEdit } from "../ProductAdminModalEdit";
+
 
 interface IProductHomeCardInfoProps{
     productId: number;

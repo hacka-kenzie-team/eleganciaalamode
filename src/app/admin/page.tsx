@@ -5,8 +5,6 @@ import { AdminCollections } from "@/components/AdminCollections"
 import { AdminProducts } from "@/components/AdminProducts"
 import { AdminSales } from "@/components/AdminSales"
 import { AdminStock } from "@/components/AdminStock"
-import { Footer } from "@/components/Footer"
-import { Header } from "@/components/Header"
 import { ProductModalEditAdmin } from "@/components/ProductModalEditAdmin"
 import { ModalAdminConfirmDelete } from "@/components/_fragments/ModalAdminConfirmDelete"
 import { adminStore } from "@/contexts/adminStore"
@@ -31,7 +29,6 @@ export default function AdminPage() {
 
   return (
     <>
-      <Header />
       <main className="flex min-h-screen flex-col items-center gap-5 p-8 text-second">
         <p className="text-2xl">bem vindo, {user?.name}</p>
         <p>Selecione sua lista</p>
@@ -82,7 +79,6 @@ export default function AdminPage() {
         {activeAdminList === "category" && <AdminCategories />}
         {activeAdminList === "collections" && <AdminCollections />}
       </main>
-      <Footer />
       <ProductModalEditAdmin />
       <ModalAdminConfirmDelete />
     </>

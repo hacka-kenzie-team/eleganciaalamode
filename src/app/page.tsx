@@ -3,14 +3,11 @@ import womanImage from "@/assets/imgs/retrato-jovem-mulher.png"
 import { DefaultButton } from "@/components/_fragments/buttons/DefaultButton";
 import threeSocialMan from "@/assets/imgs/3-homens-de-trerno.png"
 import Link from "next/link";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 
 
 export default function Home() {
   return (
     <>
-      <Header />
       <main className="flex min-h-screen flex-col items-center justify-between bg-primary">
         <section className="flex flex-col-reverse items-center lg:flex-row">
           <div className="w-full lg:w-[49.6vw] h-[100vh] lg:h-[90vh] bg-[#D9D9D9] px-10 flex flex-col justify-center items-center gap-10 text-primary">
@@ -59,7 +56,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   )
 }

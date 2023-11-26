@@ -7,7 +7,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TLoginValues, loginSchema } from "./schema";
 import { FormSubmitButton } from "../_fragments/buttons/FormSubmitButton";
-import { AppleIcon, FacebookIcon, GoogleIcon } from "../_fragments/Icons";
 import { GoogleSignInButton } from "../_fragments/buttons/GoogleSignInButton";
 import Link from "next/link";
 
@@ -41,10 +40,11 @@ export const LoginForm = () => {
                     <p className="">Caso ainda não tenha conta,</p>
                     <Link href={'/register'} className="underline decoration-1">REGISTRE-SE</Link>
                 </span>
-                {/* <div>
-                    <GoogleSignInButton />
-                </div> */}
                 <FormSubmitButton>ENTRAR</FormSubmitButton>
+                <span className="text-second flex flex-col gap-2">
+                    <p className="">Ou entre com sua conta do Google:</p>
+                    <GoogleSignInButton />
+                </span>
             </form>
         </section>
     )

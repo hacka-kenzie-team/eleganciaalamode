@@ -6,8 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { TRegisterValues, registerSchema } from "./schema";
 import { FormSubmitButton } from "../_fragments/buttons/FormSubmitButton";
-import { AppleIcon, FacebookIcon, GoogleIcon } from "../_fragments/Icons";
 import Link from "next/link";
+import { GoogleSignInButton } from "../_fragments/buttons/GoogleSignInButton";
 
 
 export const RegisterForm = () => {
@@ -17,14 +17,14 @@ export const RegisterForm = () => {
         register,
         handleSubmit,
         formState: { errors },
-      } = useForm<TRegisterValues>({
+    } = useForm<TRegisterValues>({
         resolver: zodResolver(registerSchema),
-      });
+    });
 
-      const parseRegisterData = async (userData: TRegisterValues) => {
+    const parseRegisterData = async (userData: TRegisterValues) => {
         await registerUser(userData);
         push("/login");
-      };
+    };
 
     return (
         <section>
@@ -43,12 +43,11 @@ export const RegisterForm = () => {
                     <p>caso já tenha uma conta</p>
                     <Link href={'/login'} className="underline decoration-1">ENTRE</Link>
                 </span>
-                {/* <div>
-                    <GoogleIcon />
-                    <FacebookIcon />
-                    <AppleIcon />
-                </div> */}
                 <FormSubmitButton>CADASTRAR</FormSubmitButton>
+                <span className="text-second flex-col gap-2">
+                    <p className="">Ou entre com sua conta do Google:</p>
+                    <GoogleSignInButton />
+                </span>
             </form>
         </section>
     )
