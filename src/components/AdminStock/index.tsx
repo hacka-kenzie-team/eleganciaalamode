@@ -1,5 +1,5 @@
 import { productStore } from "@/contexts/productStore";
-import { ProductsAdminCard } from "./ProductsAdminCard";
+import { ProductsAdminCard } from "../ProductsAdminCard";
 
 export const AdminStock = () => {
     const productsList = productStore((state) => state.productList);

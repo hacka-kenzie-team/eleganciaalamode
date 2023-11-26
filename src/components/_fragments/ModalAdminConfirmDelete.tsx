@@ -1,31 +1,33 @@
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Image from "next/image";
 import alertIcon from "@/assets/icons/alertIcon.svg"
+import { productStore } from "@/contexts/productStore";
+import { userStore } from "@/contexts/userStore";
+import { Loading } from "./loading";
+import { adminStore } from "@/contexts/adminStore";
 
-type IModalProps = {
-    isModalOpen: boolean;
-    setIsModaOpen: (boolean: boolean) => void;
-    productId: number
-};
 
-export const ModalAdminConfirmDelete = ({
-    isModalOpen,
-    setIsModaOpen,
-    productId
-  }: IModalProps) => {
+export const ModalAdminConfirmDelete = () => {
 
   const cancelButtonRef = useRef(null);
+  const { setAdminDeleteModal, adminDeleteModal } = adminStore((state) => state)
+  const { removeProduct, activeProduct, loading } = productStore((state) => state)
+  const token = userStore((state) => state.userData?.accessToken);
 
-  
+  const handleDeleteClick = () => {
+    token &&
+    removeProduct(activeProduct!.id, token)
+    setAdminDeleteModal(false)
+  };
 
   return (
-    <Transition.Root show={isModalOpen} as={Fragment}>
+    <Transition.Root show={adminDeleteModal} as={Fragment}>
       <Dialog
         as="div"
         className="relative z-10"
         initialFocus={cancelButtonRef}
-        onClose={setIsModaOpen}
+        onClose={setAdminDeleteModal}
       >
         <Transition.Child
           as={Fragment}
@@ -54,8 +56,26 @@ export const ModalAdminConfirmDelete = ({
                 <div className="bg-primary px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                   <div className="sm:flex sm:items-start">
                     <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                      <Image src={alertIcon} alt="Icone de um Alerta" width={25}/>
+                      <Image src={alertIcon} alt="Icone de um Alerta" width={25} />
                     </div>
+                    {loading ?
+                      <Loading /> :
+                      <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left text-second">
+                        <Dialog.Title
+                          as="h3"
+                          className="text-base font-semibold leading-6"
+                        >
+                          DESEJA APAGAR O PRODUTO?
+                        </Dialog.Title>
+                        <div className="mt-2">
+                          <p className="text-sm">
+                            está ação irá deletar permanentemente o produto do banco de dados,
+                            sendo esta uma ação irreversível, caso queira adicionar o
+                            produto novamente, terá que realizar a adição do zero.
+                          </p>
+                        </div>
+                      </div>
+                    }
                     <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left text-second">
                       <Dialog.Title
                         as="h3"
@@ -77,14 +97,14 @@ export const ModalAdminConfirmDelete = ({
                   <button
                     type="button"
                     className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-                    onClick={() => setIsModaOpen(false)}
+                    onClick={() => handleDeleteClick()}
                   >
                     APAGAR
                   </button>
                   <button
                     type="button"
                     className="mt-3 inline-flex w-full justify-center rounded-md bg-second px-3 py-2 text-sm font-semibold text-primary shadow-sm sm:mt-0 sm:w-auto"
-                    onClick={() => setIsModaOpen(false)}
+                    onClick={() => setAdminDeleteModal(false)}
                     ref={cancelButtonRef}
                   >
                     CANCELAR

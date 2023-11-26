@@ -44,7 +44,7 @@ export default function Home() {
               escolhidas para atender aos gostos refinados 
               de sua clientela.
             </p>
-            <Link href={'/'}><DefaultButton>acessórios</DefaultButton></Link>
+            <Link href={'/products/Acessorios'}><DefaultButton>Acessórios</DefaultButton></Link>
           </div>
           <div className="flex flex-col items-center justify-between gap-5">
             <h3 className="text-2xl">os melhores ternos do mercado</h3>
@@ -55,7 +55,7 @@ export default function Home() {
             <p className="font-inter">
               A ElegânciaÀLaMode não é apenas uma loja de roupas; é um destino para quem busca expressar sua individualidade através da moda com elegância e sofisticação.
             </p>
-            <Link href={'/'}><DefaultButton>calçados</DefaultButton></Link>
+            <Link href={'/products/Calcados'}><DefaultButton>Calçados</DefaultButton></Link>
           </div>
         </section>
       </main>

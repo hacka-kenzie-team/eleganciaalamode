@@ -1,31 +1,39 @@
-"use client";
-import { AdminAddProducts } from "@/components/AdminAddProducts";
-import { AdminCategories } from "@/components/AdminCategories";
-import { AdminCollections } from "@/components/AdminCollections";
-import { AdminProducts } from "@/components/AdminProducts";
-import { AdminSales } from "@/components/AdminSales";
-import { AdminStock } from "@/components/AdminStock";
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
-import { ProductModalAddAdmin } from "@/components/ProductModalAddAdmin";
-import { ProductsAdmin } from "@/components/ProductsAdmin";
-import { adminStore } from "@/contexts/adminStore";
-import { userStore } from "@/contexts/userStore";
-import { redirect } from "next/navigation";
-import { useEffect, useState } from "react";
+'use client'
+import { AdminAddProducts } from "@/components/AdminAddProducts"
+import { AdminCategories } from "@/components/AdminCategories"
+import { AdminCollections } from "@/components/AdminCollections"
+import { AdminProducts } from "@/components/AdminProducts"
+import { AdminSales } from "@/components/AdminSales"
+import { AdminStock } from "@/components/AdminStock"
+import { Footer } from "@/components/Footer"
+import { Header } from "@/components/Header"
+import { ProductModalEditAdmin } from "@/components/ProductModalEditAdmin"
+import { ModalAdminConfirmDelete } from "@/components/_fragments/ModalAdminConfirmDelete"
+import { adminStore } from "@/contexts/adminStore"
+import { productStore } from "@/contexts/productStore"
+import { userStore } from "@/contexts/userStore"
+import { redirect } from "next/navigation"
+
 
 export default function AdminPage() {
-  const admin = userStore((state) => state.userData?.user.is_superuser);
-  const user = userStore((state) => state.userData?.user);
-  const { activeAdminList, setActiveAdminlist } = adminStore((state) => state);
-  if (!admin) {
-    redirect("/login");
-  }
-  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+    const admin = userStore((state) => state.userData?.user.is_superuser)
+    const user = userStore((state) => state.userData?.user);
+    const { activeAdminList, setActiveAdminlist } = adminStore((state) => state)
+    const setActiveProduct = productStore((state) => state.setActiveProduct)
+    if (!admin) {
+        redirect('/login');
+    }
 
-  useEffect(() => {
-    setActiveAdminlist("all")
-  },[])
+    const handleAddProductClick = () => {
+        setActiveAdminlist("add")
+        setActiveProduct(null)
+    }
+
+    const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+
+    useEffect(() => {
+      setActiveAdminlist("all")
+    },[])
 
   return (
     <>
