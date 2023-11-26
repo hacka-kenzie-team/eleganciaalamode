@@ -7,12 +7,14 @@ import { AdminSales } from "@/components/AdminSales"
 import { AdminStock } from "@/components/AdminStock"
 import { Footer } from "@/components/Footer"
 import { Header } from "@/components/Header"
+import { ProductModalAddAdmin } from "@/components/ProductModalAddAdmin"
 import { ProductModalEditAdmin } from "@/components/ProductModalEditAdmin"
 import { ModalAdminConfirmDelete } from "@/components/_fragments/ModalAdminConfirmDelete"
 import { adminStore } from "@/contexts/adminStore"
 import { productStore } from "@/contexts/productStore"
 import { userStore } from "@/contexts/userStore"
 import { redirect } from "next/navigation"
+import { useEffect, useState } from "react"
 
 
 export default function AdminPage() {

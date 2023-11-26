@@ -36,7 +36,7 @@ export const ProductAdminCardEdit = ({productId}: IProductHomeCardInfoProps) => 
             <Image src={trashIcon} alt="Icone de uma lixeira"/>
           </button>
         </div>
-        <ModalAdminConfirmDelete isModalOpen={isModalOpen} setIsModaOpen={setIsModalOpen} productId={productId}/>
+        {/* <ModalAdminConfirmDelete isModalOpen={isModalOpen} setIsModaOpen={setIsModalOpen} productId={productId}/> */}
         <ProductAdminModalEdit isOpenModalEdit={isOpenModalEdit} setIsOpenModalEdit={setIsOpenModalEdit}/>
       </>
     )
