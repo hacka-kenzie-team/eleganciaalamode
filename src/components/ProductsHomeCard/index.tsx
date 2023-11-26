@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image"
 
 import { IProduct } from "@/contexts/@productTypes"
@@ -8,6 +9,7 @@ import { ProductHomeCardInfo } from "../_fragments/ProductHomeCardInfo"
 import { ProductHomeCardStock } from "../_fragments/ProductHomeCardStock"
 import Link from "next/link"
 import { SkeletonProducts } from "../SkeletonProducts"
+import { productStore } from "@/contexts/productStore"
 
 
 interface IProductsHomeCardProps {
@@ -15,9 +17,12 @@ interface IProductsHomeCardProps {
 }
 
 export const ProductsHomeCard = ({ product }: IProductsHomeCardProps) => {
-
+  const loading = productStore((store) => store.loading)
   return (
-    <li className="w-72 gap-2 flex flex-col justify-between">
+    <>
+    {loading ? 
+      <SkeletonProducts /> :
+      <li className="w-72 gap-2 flex flex-col justify-between">
       <Link href={`/${product.slug}`}>
         <Image
           src={product.style.url}
@@ -43,5 +48,7 @@ export const ProductsHomeCard = ({ product }: IProductsHomeCardProps) => {
         <ProductHomeCardInfo productId={product.id} />
       </div>
     </li>
+    }
+    </>
   )
 }
