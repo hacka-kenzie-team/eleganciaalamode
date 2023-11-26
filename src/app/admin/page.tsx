@@ -7,7 +7,10 @@ import { AdminSales } from "@/components/AdminSales"
 import { AdminStock } from "@/components/AdminStock"
 import { Footer } from "@/components/Footer"
 import { Header } from "@/components/Header"
+import { ProductModalEditAdmin } from "@/components/ProductModalEditAdmin"
+import { ModalAdminConfirmDelete } from "@/components/_fragments/ModalAdminConfirmDelete"
 import { adminStore } from "@/contexts/adminStore"
+import { productStore } from "@/contexts/productStore"
 import { userStore } from "@/contexts/userStore"
 import { redirect } from "next/navigation"
 
@@ -16,8 +19,14 @@ export default function AdminPage() {
     const admin = userStore((state) => state.userData?.user.is_superuser)
     const user = userStore((state) => state.userData?.user);
     const { activeAdminList, setActiveAdminlist } = adminStore((state) => state)
+    const setActiveProduct = productStore((state) => state.setActiveProduct)
     if (!admin) {
         redirect('/login');
+    }
+
+    const handleAddProductClick = () => {
+        setActiveAdminlist("add")
+        setActiveProduct(null)
     }
 
     return (
@@ -27,7 +36,7 @@ export default function AdminPage() {
                 <p>BEM VINDO {user?.name}</p>
                     <p>Selecione sua lista</p>
                 <nav className="w-full justify-between items-center hidden lg:flex">
-                    <button onClick={() => setActiveAdminlist("add")}>Adicionar novo produto</button>
+                    <button onClick={() => handleAddProductClick()}>Adicionar novo produto</button>
                     <button onClick={() => setActiveAdminlist("all")}>Todos</button>
                     <button onClick={() => setActiveAdminlist("sale")}>Promoções</button>
                     <button onClick={() => setActiveAdminlist("stock")}>Controle de Estoque</button>
@@ -40,6 +49,8 @@ export default function AdminPage() {
                 {activeAdminList === "stock" && <AdminStock />}
                 {activeAdminList === "category" && <AdminCategories />}
                 {activeAdminList === "collections" && <AdminCollections />}
+                <ProductModalEditAdmin />
+                <ModalAdminConfirmDelete />
             </main>
             <Footer />
         </>
