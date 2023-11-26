@@ -30,7 +30,7 @@ export const HeaderNav = () => {
           ) : (
             <Link href={"/dashboard"}>AREA DO CLIENTE </Link>
           )}
-          <button type="button" onClick={() => handleLogoutClick()}>
+          <button type="button" onClick={() => {handleLogoutClick()}}>
             SAIR
           </button>
         </nav>
