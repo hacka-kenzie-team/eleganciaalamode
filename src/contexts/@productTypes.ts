@@ -69,7 +69,7 @@ export interface IProductState {
     message: string;
     searchInput: string;
 
-    setActiveProduct: (product: IProduct) => void;
+    setActiveProduct: (product: IProduct | null) => void;
     loadProducts: () => Promise<IProduct[] | null>;
     loadSearchedProducts:
     (searchInput: string) =>

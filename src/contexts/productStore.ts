@@ -12,7 +12,7 @@ export const productStore = create<IProductState>()((set) => ({
     searchInput: "",
 
     setActiveProduct: (product) => {
-        set((state) => ({activeProduct: product}))
+        set((state) => ({ activeProduct: product }))
     },
 
     loadProducts: async () => {
@@ -75,7 +75,7 @@ export const productStore = create<IProductState>()((set) => ({
 
     addProduct: async (productData, token) => {
         try {
-            set({loading: true });
+            set({ loading: true });
             const { data } = await api.post<IProduct>(`/products/`, productData, {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -95,15 +95,15 @@ export const productStore = create<IProductState>()((set) => ({
 
     editProduct: async (productData, productId, token) => {
         try {
-            set({loading: true});
-            const { data } = await api.patch<IProduct>(`/products/${productId}/`, productData,{
+            set({ loading: true });
+            const { data } = await api.patch<IProduct>(`/products/${productId}/`, productData, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
             set((state) => ({
                 productList: state.productList.map((oldProduct) => {
-                    if (oldProduct.id === data.id){
+                    if (oldProduct.id === data.id) {
                         oldProduct.keywords = [...data.keywords];
                         return {
                             ...oldProduct,
@@ -114,7 +114,7 @@ export const productStore = create<IProductState>()((set) => ({
                     };
                 })
             }));
-            set({message: "Produto Modificado!"})
+            set({ message: "Produto Modificado!" })
         } catch (error) {
             console.log(error);
             set({ error: "falha em editar produto" });
@@ -126,13 +126,18 @@ export const productStore = create<IProductState>()((set) => ({
 
     removeProduct: async (productId, token) => {
         try {
-            set({loading: true});
+            set({ loading: true });
             await api.delete(`/products/${productId}/`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
-            set({message: "Produto removido com sucesso!"})
+            set((state) =>
+            ({
+                productList: state.productList.filter(oldProduct =>
+                    oldProduct.id !== productId)
+            }));
+            set({ message: "Produto removido com sucesso!" })
         } catch (error) {
             console.log(error);
             set({ error: "falha ao remover o produto." });
