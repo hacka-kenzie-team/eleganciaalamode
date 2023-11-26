@@ -4,8 +4,6 @@ import editIcon from "@/assets/icons/editIcon.svg"
 import Image from "next/image";
 import { adminStore } from "@/contexts/adminStore";
 import { productStore } from "@/contexts/productStore";
-import { ModalAdminConfirmDelete } from "./ModalAdminConfirmDelete";
-import { useState } from "react";
 import { ProductAdminModalEdit } from "../ProductAdminModalEdit";
 
 interface IProductHomeCardInfoProps{
@@ -24,20 +22,16 @@ export const ProductAdminCardEdit = ({productId}: IProductHomeCardInfoProps) => 
     setAdminDeleteModal(true)
     product && setActiveProduct(product);
   }
-  const [isOpenModalEdit, setIsOpenModalEdit] = useState<boolean>(false)
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
     return (
       <>
         <div className="flex items-center justify-between">
-          <button className="bg-second px-5 py-2 rounded-md" onClick={() => {handleEditClick(), setIsOpenModalEdit(true)}}>
+          <button className="bg-second px-5 py-2 rounded-md" onClick={() => handleEditClick()}>
             <Image src={editIcon} alt="Icone de um lápis"/>
           </button>
           <button className="bg-second px-5 py-2 rounded-md" onClick={() => handledeleteClick()}>
             <Image src={trashIcon} alt="Icone de uma lixeira"/>
           </button>
         </div>
-        {/* <ModalAdminConfirmDelete isModalOpen={isModalOpen} setIsModaOpen={setIsModalOpen} productId={productId}/> */}
-        <ProductAdminModalEdit isOpenModalEdit={isOpenModalEdit} setIsOpenModalEdit={setIsOpenModalEdit}/>
       </>
     )
 }

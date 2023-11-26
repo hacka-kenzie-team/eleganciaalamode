@@ -1,5 +1,6 @@
 import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import { ProductEditForm } from "../ProductEditForm";
 
 type IModalProps = {
     isOpenModalEdit: boolean;
@@ -43,73 +44,9 @@ export const ProductAdminModalEdit = ({
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-primary text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                <form className="bg-primary flex gap-5 flex-col p-2 md:p-8 text-second">
-                  <label>nome do produto</label>
-                  <input
-                    type="text"
-                    className="w-full h-12 rounded-md p-5 outline-none text-primary"
-                  />
-                  <div className="flex gap-5">
-                    <div className="flex flex-col gap-5">
-                      <label>preço</label>
-                      <input
-                        type="number"
-                        className="w-full h-12 rounded-md p-5 outline-none text-primary"
-                      />
-                    </div>
-                    <div className="flex flex-col gap-5">
-                      <label>estoque</label>
-                      <input
-                        type="number"
-                        className="w-full h-12 rounded-md p-5 outline-none text-primary"
-                      />
-                    </div>
-                  </div>
-                  <label>descrição</label>
-                  <textarea
-                    className="w-full h-18 rounded-md p-5 outline-none text-primary"
-                  ></textarea>
-                  <label>{`adicione palavras chave (separadas por virgula ",")`}</label>
-                  <textarea
-                    className="w-full h-18 rounded-md p-5 outline-none text-primary"
-                  ></textarea>
-                  <div className="flex gap-5">
-                    <div className="flex flex-col gap-5">
-                      <label>categoria</label>
-                      <input
-                        type="text"
-                        className="w-full h-12 rounded-md p-5 outline-none text-primary"
-                      />
-                    </div>
-                    <div className="flex flex-col gap-5">
-                      <label>coleção</label>
-                      <input
-                        type="text"
-                        className="w-full h-12 rounded-md p-5 outline-none text-primary"
-                      />
-                    </div>
-                  </div>
-                  <label>url da foto do produto</label>
-                  <input
-                    type="text"
-                    className="w-full h-12 rounded-md p-5 outline-none text-primary"
-                  />
-                  <div className="flex justify-between gap-2">
-                    <button
-                      type="button"
-                      onClick={() => setIsOpenModalEdit(false)}
-                      className="mt-3 inline-flex w-full justify-center rounded-md bg-second px-3 py-2 text-sm font-semibold text-primary shadow-sm sm:mt-0 sm:w-auto"
-                    >
-                      cancelar
-                    </button>
-                    <button
-                      type="submit"
-                      className="mt-3 inline-flex w-full justify-center rounded-md bg-second px-3 py-2 text-sm font-semibold text-primary shadow-sm sm:mt-0 sm:w-auto"
-                    >
-                      adicionar
-                    </button>
-                  </div>
-                </form>
+
+                <ProductEditForm />
+
               </Dialog.Panel>
             </Transition.Child>
           </div>
