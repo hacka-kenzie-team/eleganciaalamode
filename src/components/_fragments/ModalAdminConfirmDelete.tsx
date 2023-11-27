@@ -1,7 +1,6 @@
 import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Image from "next/image";
-import alertIcon from "@/assets/icons/alertIcon.svg"
 import { productStore } from "@/contexts/productStore";
 import { userStore } from "@/contexts/userStore";
 import { Loading } from "./loading";
@@ -56,7 +55,7 @@ export const ModalAdminConfirmDelete = () => {
                 <div className="bg-primary px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                   <div className="sm:flex sm:items-start">
                     <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                      <Image src={alertIcon} alt="Icone de um Alerta" width={25} />
+                      <Image src="/icons/alertIcon.svg" alt="Icone de um Alerta" width={25} />
                     </div>
                     {loading ?
                       <Loading /> :

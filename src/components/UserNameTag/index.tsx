@@ -4,7 +4,6 @@ import Image from "next/image";
 import placeholder from "../../../public/vercel.svg";
 import { userStore } from "@/contexts/userStore";
 import { useSession } from "next-auth/react";
-import userDefault from "@/assets/icons/userImageProfile.svg";
 
 export const UserNameTag = () => {
   const user = userStore((store) => store.userData?.user);
@@ -22,7 +21,7 @@ export const UserNameTag = () => {
           />
         ) : (
           <div>
-            <Image height={70} width={70} src={userDefault} alt="" />
+            <Image height={70} width={70} src="/icons/userImageProfile.svg" alt="" />
           </div>
         )}
       </div>

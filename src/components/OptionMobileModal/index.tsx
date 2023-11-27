@@ -66,7 +66,7 @@ export const OptionMobileModal = ({
                         <Dialog.Title className="text-lg font-medium text-gray-900">
                           <Link href={"/"}>
                             <h2 className="text-3xl text-second">
-                              ElegênciaÀLaMode
+                              ElegânciaÀLaMode
                             </h2>
                           </Link>
                         </Dialog.Title>

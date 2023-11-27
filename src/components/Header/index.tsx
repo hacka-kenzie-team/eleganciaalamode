@@ -8,8 +8,6 @@ import { useEffect, useState } from "react"
 import { productStore } from "@/contexts/productStore"
 import { shoppingStore } from "@/contexts/shoppingStore"
 import { IShoppingItem } from "@/contexts/@shoppingTypes"
-import buttonModalMobile from '@/assets/icons/ButtonModalMobileIcon.svg'
-import cartIcon from "@/assets/icons/cartIcon.svg"
 import { DefaultButton } from "../_fragments/buttons/DefaultButton"
 import { OptionMobileModal } from "../OptionMobileModal"
 import { usePathname } from "next/navigation"
@@ -50,10 +48,10 @@ export const Header = () => {
         displayHeader() &&
         <header className="bg-primary flex items-center justify-between px-2 h-24 md:px-[50px]">
           <Link href={"/"}>
-            <h2 className="text-3xl text-second">ElegênciaÀLaMode</h2>
+            <h2 className="text-3xl text-second">ElegânciaÀLaMode</h2>
           </Link>
           <Image
-            src={buttonModalMobile}
+            src="/icons/ButtonModalMobileIcon.svg"
             height={60}
             width={60}
             alt="três linhas representando um botão"
@@ -81,10 +79,11 @@ export const Header = () => {
               onClick={() => setShoppingModal(true)}
             >
               <Image
-                src={cartIcon}
+                src="/icons/cartIcon.svg"
                 height={30}
                 width={30}
                 alt="Uma sacola de compra, representando o carrinho de compra"
+                className="h-[30px] w-auto"
               />
               <div className="absolute top-[20px] left-[15px] right-0 bg-white w-[20px] rounded-md text-primary">
                 <span>{getTotatShoppingItems(shoppingList)}</span>
