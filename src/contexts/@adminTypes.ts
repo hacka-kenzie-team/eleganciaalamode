@@ -3,9 +3,13 @@ export interface IAdminState {
     adminAddModal: boolean
     adminEditModal: boolean
     adminDeleteModal: boolean
+    message: string
+    error: string
 
     setActiveAdminlist: (list: ("all" | "sale" | "category" | "collections" | "stock" | "add")) => void;
     setAdminAddModal: (boolean: boolean) => void
     setAdminEditModal: (boolean: boolean) => void
     setAdminDeleteModal: (boolean: boolean) => void
+    setError: (string: string) => void
+    setMessage: (string: any) => void
 }
