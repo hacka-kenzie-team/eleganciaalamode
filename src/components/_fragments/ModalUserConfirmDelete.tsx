@@ -3,21 +3,34 @@ import { Dialog, Transition } from "@headlessui/react";
 import Image from "next/image";
 import alertIcon from "@/assets/icons/alertIcon.svg"
 import { Loading } from "./loading";
+import { userStore } from "@/contexts/userStore";
+import { signOut, useSession } from "next-auth/react";
 
 
-export const ModalAdminConfirmDelete = () => {
+export const ModalUserConfirmDelete = () => {
 
+  const { deleteUser, logoutUser, setLoading, userDeleteModal, setUserDeleteModal, loading } = userStore((state) => state)
   const cancelButtonRef = useRef(null);
-  const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
-  const [loading, setLoading] = useState<boolean>(false)
+  const { data:session } = useSession();
 
-  return (
-    <Transition.Root show={isOpenModal} as={Fragment}>
+  const handleDeleteClick = async () => {
+    console.log("clicked")
+    await deleteUser();
+    setLoading(true);
+    if (session) {
+      signOut();
+    }
+    logoutUser();
+    setLoading(false);
+    setUserDeleteModal(false);
+  }
+  return (  
+    <Transition.Root show={userDeleteModal} as={Fragment}>
       <Dialog
         as="div"
         className="relative z-10"
         initialFocus={cancelButtonRef}
-        onClose={setIsOpenModal}
+        onClose={setUserDeleteModal}
       >
         <Transition.Child
           as={Fragment}
@@ -72,14 +85,14 @@ export const ModalAdminConfirmDelete = () => {
                   <button
                     type="button"
                     className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto md:hover:scale-[1.02] transition-all"
-                    onClick={() => setIsOpenModal(false)}
+                    onClick={() => handleDeleteClick()}
                   >
                     APAGAR
                   </button>
                   <button
                     type="button"
                     className="mt-3 inline-flex w-full justify-center rounded-md bg-second px-3 py-2 text-sm font-semibold text-primary shadow-sm sm:mt-0 sm:w-auto md:hover:scale-[1.02] transition-all"
-                    onClick={() => setIsOpenModal(false)}
+                    onClick={() => setUserDeleteModal(false)}
                     ref={cancelButtonRef}
                   >
                     CANCELAR

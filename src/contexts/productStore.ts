@@ -131,10 +131,6 @@ export const productStore = create<IProductState>()((set) => ({
             setError("falha em editar produto");
         } finally {
             set({ loading: false });
-            // setTimeout(() => { 
-            //     setError("");
-            //     setMessage(""); 
-            // }, 2000);
         };
     },
 

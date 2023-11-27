@@ -67,7 +67,9 @@ export interface IUserData{
 export interface IUserState {
     userData: IUserData | null;
     loading: boolean
+    userDeleteModal: boolean
     setLoading: (boolean: boolean) => void
+    setUserDeleteModal: (boolean: boolean) => void
     logoutUser: () => void
     loginUser: ({ username, password }: {
         username: string;
@@ -78,5 +80,6 @@ export interface IUserState {
     registerUser: (userData:IUserCreate) => Promise<boolean | undefined>
     buy: ({ order }: {
         order: IOrderCreate;
-    }) => Promise<IOrder | undefined>
+    }) => Promise<IOrder | undefined>,
+    deleteUser: () => Promise<void>
 }

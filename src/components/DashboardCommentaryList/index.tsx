@@ -7,10 +7,17 @@ import { DefaultButton } from "../_fragments/buttons/DefaultButton";
 
 export const DashboardCommentaryList = () => {
   const user = userStore((state) => state.userData?.user);
+  const {setUserDeleteModal, userDeleteModal} = userStore((state) => state)
+
+  const handleDeleteClick = () => {
+    setUserDeleteModal(true)
+  }
+
   return (
     <section className="flex flex-col gap-8 md:flex-row md:justify-around md:w-full md:items-start">
       <UserNameTag />
-      <button className="md:hover:scale-[1.02] transition-all">
+      <button onClick={() => handleDeleteClick()}
+      className="md:hover:scale-[1.02] transition-all">
         <DefaultButton>apagar conta</DefaultButton>
       </button>
       <div>

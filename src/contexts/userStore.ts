@@ -16,12 +16,14 @@ const setMessage = adminStore.getState().setMessage
 export const userStore = create<IUserState>()((set, get) => ({
     userData: null,
     loading: false,
-  
-    // setMessage: (string) => { set({message: string})},
-    // setError: (string) => { set({error: string})},
+    userDeleteModal: false,
 
     setLoading: (boolean) => {
         set({loading: boolean})
+    },
+
+    setUserDeleteModal: (boolean) => {
+        set({userDeleteModal: boolean})
     },
 
     logoutUser: () => {
@@ -71,10 +73,6 @@ export const userStore = create<IUserState>()((set, get) => ({
             setError("Tentativa de login falhou");
         } finally {
             set({ loading: false });
-            // setTimeout(() => { 
-            //     setError("");
-            //     setMessage(""); 
-            // }, 2000);
         };
     },
 
@@ -107,10 +105,6 @@ export const userStore = create<IUserState>()((set, get) => ({
             setError("Tentativa de login falhou");
         } finally {
             set({ loading: false });
-            // setTimeout(() => { 
-            //     setError("");
-            //     setMessage(""); 
-            // }, 2000);
         };
     },
 
@@ -155,10 +149,6 @@ export const userStore = create<IUserState>()((set, get) => ({
             setError("Tentativa de registro falhou");
         } finally {
             set({ loading: false });
-            // setTimeout(() => { 
-            //     setError("");
-            //     setMessage(""); 
-            // }, 2000);
         };
     },
 
@@ -208,10 +198,25 @@ export const userStore = create<IUserState>()((set, get) => ({
             setError("Tentativa de compra falhou");
         } finally {
             set({ loading: false });
-            setTimeout(() => { 
-                setError("");
-                setMessage("");
-            }, 2000);
+        }
+    },
+
+    deleteUser: async () => {
+        try {
+            set({loading: true});
+            const user = get().userData?.user
+            const token = get().userData?.accessToken
+            await api.delete(`/users/${user?.id}/`,{
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            setMessage("Usuário deletado com sucesso")
+        } catch (error) {
+            console.log(error);
+            setError("Tentativa de compra falhou");
+        } finally {
+            set({ loading: false });
         }
     }
 }))
