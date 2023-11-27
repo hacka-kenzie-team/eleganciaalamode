@@ -12,7 +12,7 @@ export const CommentaryCard = ({ comment }: { comment: IComment }) => {
     const pathname = usePathname()
 
     return (
-        <li>
+        <li className="flex flex-col gap-2">
             <CommentNameTag comment={comment}/>
             {
                 pathname === "/dashboard" &&

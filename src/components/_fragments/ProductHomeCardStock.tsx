@@ -10,10 +10,12 @@ export const ProductHomeCardStock = ({productId}: IProductHomeCardStockProps) =>
     const product = productList.find((product) => product.id === productId);
 
     return (
-        <div>
-            <h1>{product?.price}</h1>
-            <p>Estoque:</p>
-            <p>X {product?.stock}</p>
+        <div className="flex items-center justify-between">
+            <h1>R$ {product?.price}</h1>
+            <div className="flex items-center gap-2">
+                <p>Estoque:</p>
+                <p>{product?.stock}</p>
+            </div>
           </div>
     )
 }

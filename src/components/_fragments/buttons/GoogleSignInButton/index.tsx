@@ -8,7 +8,6 @@ export const GoogleSignInButton = () => {
     return (
         <button onClick={() => signIn()}>
             <GoogleIcon />
-            GOOOOOGLE
         </button>
     )
 }

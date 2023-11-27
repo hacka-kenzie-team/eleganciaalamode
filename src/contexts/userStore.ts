@@ -4,17 +4,18 @@ import { api } from '@/app/api/api';
 import { jwtDecode } from 'jwt-decode';
 import { productStore } from './productStore';
 import { shoppingStore } from './shoppingStore';
+import { adminStore } from './adminStore';
 
 
 const updateProductsStock = productStore.getState().updateProductsStock
 const clearShoppingList = shoppingStore.getState().clearShoppingList
 const setShoppingModal = shoppingStore.getState().setShoppingModal
+const setError = adminStore.getState().setError
+const setMessage = adminStore.getState().setMessage
 
 export const userStore = create<IUserState>()((set, get) => ({
     userData: null,
     loading: false,
-    error: "",
-    message: "",
 
     setMessage: (string) => { set({message: string})},
     setError: (string) => { set({error: string})},
@@ -63,14 +64,17 @@ export const userStore = create<IUserState>()((set, get) => ({
                 set({ userData: new_userData });
                 return true
             } else {
-                set({ error: "Tentativa de login falhou" });    
+                setError("Tentativa de login falhou");    
             }
         } catch (error) {
             console.log(error);
-            set({ error: "Tentativa de login falhou" });
+            setError("Tentativa de login falhou");
         } finally {
             set({ loading: false });
-            setTimeout(() => { set({ message: "", error: "" }) }, 2000);
+            // setTimeout(() => { 
+            //     setError("");
+            //     setMessage(""); 
+            // }, 2000);
         };
     },
 
@@ -96,20 +100,24 @@ export const userStore = create<IUserState>()((set, get) => ({
             }
 
             set({ userData: new_userData });
-            set({ message: "Login feito com sucesso!" });
+            setMessage("Login feito com sucesso!");
             return true
         } catch (error) {
             console.log(error);
-            set({ error: "Tentativa de login falhou" });
+            setError("Tentativa de login falhou");
         } finally {
             set({ loading: false });
-            setTimeout(() => { set({ message: "", error: "" }) }, 2000);
+            // setTimeout(() => { 
+            //     setError("");
+            //     setMessage(""); 
+            // }, 2000);
         };
     },
 
     loadUser: async () => {
         if (typeof window !== "undefined") {
             try {
+                set({loading: true})
                 let token = localStorage.getItem("@elegancia:token");
                 if (token) {
                     token = JSON.parse(token) as string
@@ -130,6 +138,8 @@ export const userStore = create<IUserState>()((set, get) => ({
                 console.log(error)
                 localStorage.removeItem("@elegancia:token");
                 set({ userData: null });
+            } finally {
+                set({ loading: false });
             }
         }
     },
@@ -138,14 +148,17 @@ export const userStore = create<IUserState>()((set, get) => ({
         try {
             set({ loading: true });
             const { data } = await api.post<IUser>("/users/", userData);
-            set({ message: "Usuário registrado com sucesso!" });
+            setMessage("Usuário registrado com sucesso!" );
             return true;
         } catch (error) {
             console.log(error);
-            set({ error: "Tentativa de registro falhou" });
+            setError("Tentativa de registro falhou");
         } finally {
             set({ loading: false });
-            setTimeout(() => { set({ message: "", error: "" }) }, 2000);
+            // setTimeout(() => { 
+            //     setError("");
+            //     setMessage(""); 
+            // }, 2000);
         };
     },
 
@@ -185,17 +198,20 @@ export const userStore = create<IUserState>()((set, get) => ({
                     }
                 };
             });
-            set({ message: "Compra realizada com sucesso" })
+            setMessage("Compra realizada com sucesso")
             updateProductsStock(order.items_bought)
             clearShoppingList()
             setShoppingModal(false)
             return data
         } catch (error) {
             console.log(error);
-            set({ error: "Tentativa de compra falhou" });
+            setError("Tentativa de compra falhou");
         } finally {
             set({ loading: false });
-            setTimeout(() => { set({ message: "", error: "" }) }, 2000);
+            setTimeout(() => { 
+                setError("");
+                setMessage("");
+            }, 2000);
         }
     }
 }))

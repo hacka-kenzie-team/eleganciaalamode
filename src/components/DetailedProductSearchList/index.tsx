@@ -21,9 +21,9 @@ export const DetailedProductSearchList = () => {
     })
 
     return (
-        <section>
+        <section className="w-full flex flex-col items-center justify-center">
             <SearchInput />
-            <ul>
+            {/* <ul>
                 {!productList ? (
                     <li>Nenhum produto encontrado</li>
                 ) : !searchInput ? (
@@ -35,7 +35,7 @@ export const DetailedProductSearchList = () => {
                         <DetailedProductSearchCard key={product.id} product={product} />
                     ))
                 )}
-            </ul>
+            </ul> */}
         </section>
     )
 }

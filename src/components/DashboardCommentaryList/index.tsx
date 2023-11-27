@@ -10,7 +10,7 @@ export const DashboardCommentaryList = () => {
     return (
         <section>
             <UserNameTag />
-            <h1>Minhas Avaliações</h1>
+            <h1>Minhas Avaliações:</h1>
             <ul>
                 {
                     user &&

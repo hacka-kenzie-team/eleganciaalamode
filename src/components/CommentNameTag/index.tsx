@@ -3,20 +3,19 @@
 import Image from "next/image"
 import placeholder from "../../../public/vercel.svg"
 import { IComment } from "@/contexts/@commentTypes"
+import userImageProfile from "@/assets/icons/userImageProfile.svg"
 
 
 export const CommentNameTag = ({ comment }: { comment: IComment }) => {
 
     return (
-        <div>
-            <div>
+        <div className="flex items-center gap-2">
             <Image
-            src={placeholder}
-            height={70}
-            width={70}
-            alt="User picture"
+                src={userImageProfile}
+                height={30}
+                width={30}
+                alt="User picture"
             />
-            </div>
             <span>{comment.user_name}</span>
         </div>
     )

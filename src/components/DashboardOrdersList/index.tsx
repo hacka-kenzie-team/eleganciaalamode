@@ -9,7 +9,7 @@ export const DashboardOrdersList = () => {
 
   return (
     <section>
-      <h1>Histórico de compras</h1>
+      <h1 className="text-lg">Histórico de compras:</h1>
       <ul>
         {
           user &&

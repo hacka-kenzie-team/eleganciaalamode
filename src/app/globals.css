@@ -17,11 +17,21 @@
 }
 
 body {
+  font-family: var(--font-marcellusSC);
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: #191F25;
+}
+
+*::-webkit-scrollbar {
+  width: 12px;               /* width of the entire scrollbar */
+}
+
+*::-webkit-scrollbar-track {
+  background: #191F25;        /* color of the tracking area */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #BBAE9B;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid #191F25;  /* creates padding around scroll thumb */
 }
