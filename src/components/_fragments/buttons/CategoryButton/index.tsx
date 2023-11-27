@@ -22,7 +22,7 @@ export const CategoryButton = ({ children }: { children: React.ReactNode }) => {
     return (
         <div>
             <button type="button" onClick={() => handleCategoryClick()}>
-                <h3 className="border px-2 border-second rounded-md">{children}</h3>
+                <h3 className="border px-2 border-second rounded-md md:hover:translate-y-px transition-all hover:bg-second hover:text-primary">{children}</h3>
             </button>
         </div>
     )
