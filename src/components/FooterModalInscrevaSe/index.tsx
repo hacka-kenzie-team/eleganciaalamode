@@ -45,17 +45,17 @@ export const FooterModalInscrevaSe = ({
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-primary text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                 <form className="bg-primary flex gap-5 flex-col p-2 md:p-8 text-second">
-                  <label>nome</label>
+                  <label>nome:</label>
                   <input
                     type="text"
                     className="w-full h-12 rounded-md p-5 outline-none text-primary"
                   />
-                  <label>email</label>
+                  <label>email:</label>
                   <input
                     type="text"
                     className="w-full h-12 rounded-md p-5 outline-none text-primary"
                   />
-                  <label>mensagem</label>
+                  <label>mensagem:</label>
                   <textarea
                     name=""
                     id=""
