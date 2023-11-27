@@ -23,23 +23,23 @@ export const HeaderNav = () => {
     <>
       {userData ? (
         <nav className="flex justify-between w-[400px] text-second z-10">
-          <Link href={"/"}>HOME</Link>
-          <Link href={"/products"}>PRODUTOS </Link>
+          <Link href={"/"} className="md:hover:translate-y-px transition-all">HOME</Link>
+          <Link href={"/products"} className="md:hover:translate-y-px transition-all">PRODUTOS </Link>
           {userData.user.is_superuser ? (
-            <Link href={"/admin"}>AREA DO ADMIN </Link>
+            <Link href={"/admin"} className="md:hover:translate-y-px transition-all">AREA DO ADMIN </Link>
           ) : (
-            <Link href={"/dashboard"}>AREA DO CLIENTE </Link>
+            <Link href={"/dashboard"} className="md:hover:translate-y-px transition-all">AREA DO CLIENTE </Link>
           )}
-          <button type="button" onClick={() => {handleLogoutClick()}}>
+          <button type="button" onClick={() => {handleLogoutClick()}} className="md:hover:translate-y-px transition-all">
             SAIR
           </button>
         </nav>
       ) : (
         <nav className="flex justify-between w-[400px] text-second z-10">
-          <Link href={"/"}>HOME</Link>
-          <Link href={"/products"}>PRODUTOS</Link>
-          <Link href={"/"}>SOBRE</Link>
-          <Link href={"/"}>CONTATO</Link>
+          <Link href={"/"} className="md:hover:translate-y-px transition-all">HOME</Link>
+          <Link href={"/products"} className="md:hover:translate-y-px transition-all">PRODUTOS</Link>
+          <Link href={"/"} className="md:hover:translate-y-px transition-all">SOBRE</Link>
+          <Link href={"/"} className="md:hover:translate-y-px transition-all">CONTATO</Link>
         </nav>
       )}
     </>

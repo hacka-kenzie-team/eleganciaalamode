@@ -22,7 +22,7 @@ export const SalesCard = ({product}:{product:IProduct}) => {
                 <h2>20% OFF</h2>
                 <span>{product.name}</span>
                 <span>R$: {product.price}</span>
-                <div onClick={() => addItem(product)}>
+                <div onClick={() => addItem(product)} className="md:hover:scale-[1.02] transition-all">
                     <DefaultButton>
                         <button type="button">comprar</button>
                     </DefaultButton> 

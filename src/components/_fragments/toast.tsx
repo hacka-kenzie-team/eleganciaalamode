@@ -9,8 +9,8 @@ export const Toast = () => {
 
   return (
     <>
-      {error && toast.error(error, {toastId: "errortoast"})}
-      {message && toast.success(message, {toastId: "successtoast"})}
+      <p className="hidden">{error && toast.error(error, {toastId: "errortoast"})}</p>
+      <p className="hidden">{message && toast.success(message, {toastId: "successtoast"})}</p>
       <ToastContainer
         position="top-right"
         autoClose={5000}

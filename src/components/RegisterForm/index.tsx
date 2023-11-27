@@ -32,7 +32,7 @@ export const RegisterForm = () => {
                 onSubmit={handleSubmit((formData) => parseRegisterData(formData))}
                 className="flex flex-col gap-8 text-second">
                 <h1 className="flex justify-center">CADASTRO</h1>
-                <div className="flex flex-col gap-8">
+                <div className="flex flex-col gap-8 ">
                     <FormInput type="text" register={register("name")} error={errors.name}>Digite seu nome</FormInput>
                     <FormInput type="text" register={register("username")} error={errors.username}>Digite seu usuário</FormInput>
                     <FormInput type="email" register={register("email")} error={errors.email}>Digite seu email</FormInput>
@@ -44,7 +44,7 @@ export const RegisterForm = () => {
                     <Link href={'/login'} className="underline decoration-1">ENTRE</Link>
                 </span>
                 <FormSubmitButton>CADASTRAR</FormSubmitButton>
-                <span className="text-second flex-col gap-2">
+                <span className="text-second flex items-center gap-5">
                     <p className="">Ou entre com sua conta do Google:</p>
                     <GoogleSignInButton />
                 </span>

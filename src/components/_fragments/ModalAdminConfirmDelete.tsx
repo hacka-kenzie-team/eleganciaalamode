@@ -67,8 +67,8 @@ export const ModalAdminConfirmDelete = () => {
                         >
                           DESEJA APAGAR O PRODUTO?
                         </Dialog.Title>
-                        <div className="mt-2">
-                          <p className="text-sm">
+                        <div className="mt-8">
+                          <p className="text-sm font-inter">
                             está ação irá deletar permanentemente o produto do banco de dados,
                             sendo esta uma ação irreversível, caso queira adicionar o
                             produto novamente, terá que realizar a adição do zero.
@@ -76,34 +76,19 @@ export const ModalAdminConfirmDelete = () => {
                         </div>
                       </div>
                     }
-                    <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left text-second">
-                      <Dialog.Title
-                        as="h3"
-                        className="text-base font-semibold leading-6"
-                      >
-                        DESEJA APAGAR O PRODUTO?
-                      </Dialog.Title>
-                      <div className="mt-2">
-                        <p className="text-sm font-inter">
-                          está ação irá deletar permanentemente o produto do banco de dados,
-                          sendo esta uma ação irreversível, caso queira adicionar o
-                          produto novamente, terá que realizar a adição do zero.
-                        </p>
-                      </div>
-                    </div>
                   </div>
                 </div>
                 <div className="bg-primary px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                   <button
                     type="button"
-                    className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                    className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto md:hover:scale-[1.02] transition-all"
                     onClick={() => handleDeleteClick()}
                   >
                     APAGAR
                   </button>
                   <button
                     type="button"
-                    className="mt-3 inline-flex w-full justify-center rounded-md bg-second px-3 py-2 text-sm font-semibold text-primary shadow-sm sm:mt-0 sm:w-auto"
+                    className="mt-3 inline-flex w-full justify-center rounded-md bg-second px-3 py-2 text-sm font-semibold text-primary shadow-sm sm:mt-0 sm:w-auto md:hover:scale-[1.02] transition-all"
                     onClick={() => setAdminDeleteModal(false)}
                     ref={cancelButtonRef}
                   >
