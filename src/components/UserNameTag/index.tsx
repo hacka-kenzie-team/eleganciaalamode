@@ -11,7 +11,7 @@ export const UserNameTag = () => {
   const { data: session } = useSession();
 
   return (
-    <div className="flex items-center gap-5">
+    <div className="flex items-start gap-5">
       <div>
         {session?.user ? (
           <Image
@@ -26,9 +26,9 @@ export const UserNameTag = () => {
           </div>
         )}
       </div>
-      <span className="flex flex-col justify-center items-center">
-       <p className="text-2xl">{user?.name}</p>
-       <p>@{!session ? user?.username : "Conta-google"}</p>
+      <span className="flex flex-col justify-center items-center gap-5">
+        <p className="text-2xl">{user?.name}</p>
+        <p>@{!session ? user?.username : "Conta-google"}</p>
       </span>
     </div>
   );
