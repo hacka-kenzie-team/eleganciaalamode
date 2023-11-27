@@ -29,7 +29,7 @@ export const ProductsHomeCard = ({ product }: IProductsHomeCardProps) => {
           width={400}
           height={600}
           alt="Imagem do produto"
-          className="rounded-t-lg"
+          className="rounded-t-lg max-h-[162px] object-cover"
         />
       </Link>
       <div className="flex flex-col gap-2">

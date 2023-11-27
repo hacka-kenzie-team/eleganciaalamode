@@ -11,7 +11,7 @@ export const ProductHomeCardStock = ({productId}: IProductHomeCardStockProps) =>
 
     return (
         <div className="flex items-center justify-between">
-            <h1>R$ {product?.price}</h1>
+            <h1>R$ {product?.price.toFixed(2)}</h1>
             <div className="flex items-center gap-2">
                 <p>Estoque:</p>
                 <p>{product?.stock}</p>

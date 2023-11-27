@@ -173,11 +173,18 @@ export const OptionMobileModal = ({
                             >
                               SOBRE
                             </Link>
-                            <Link
-                              href={"/#"}
+                            <button
+                              type="button"
+                              onClick={() => setShoppingModal(true)}
                               className="text-2xl flex items-center justify-center pt-7"
                             >
-                              CONTATO
+                              CARRINHO
+                            </button>
+                            <Link
+                              href={"/login"}
+                              className="text-2xl flex items-center justify-center pt-7"
+                            >
+                              LOGIN
                             </Link>
                           </nav>
                         )}
