@@ -4,12 +4,14 @@ import { CommentaryCard } from "../CommentaryCard"
 import { CommentaryIcon } from "../_fragments/Icons"
 import { userStore } from "@/contexts/userStore";
 import { commentStore } from "@/contexts/commentStore";
+import { adminStore } from "@/contexts/adminStore";
 
 
 export const CommentaryList = ({productName}:{productName: string}) => {
     const { productList, setActiveProduct } = productStore((state) => state);
     const product = productList.find((product) => product.slug === productName);
-    const {userData, setMessage} = userStore((state) => state)
+    const {userData} = userStore((state) => state)
+    const {setMessage} = adminStore((state) => state)
     const {commentaryModalToggle, setActiveComment} = commentStore((state) => state)
 
     const handleCommentaryClick = () => {
