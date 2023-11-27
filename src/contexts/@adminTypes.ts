@@ -4,7 +4,7 @@ export interface IAdminState {
     adminEditModal: boolean
     adminDeleteModal: boolean
     message: string
-    error: string
+    error: any
 
     setActiveAdminlist: (list: ("all" | "sale" | "category" | "collections" | "stock" | "add")) => void;
     setAdminAddModal: (boolean: boolean) => void

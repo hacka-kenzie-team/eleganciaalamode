@@ -17,8 +17,8 @@ export const userStore = create<IUserState>()((set, get) => ({
     userData: null,
     loading: false,
 
-    setMessage: (string) => { set({message: string})},
-    setError: (string) => { set({error: string})},
+    // setMessage: (string) => { set({message: string})},
+    // setError: (string) => { set({error: string})},
 
     setLoading: (boolean) => {
         set({loading: boolean})

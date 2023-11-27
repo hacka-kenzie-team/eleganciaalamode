@@ -28,7 +28,7 @@ export const CommentaryIcon = ({children}:{children: React.ReactNode}) => {
                 width={30}
                 alt="Ícone de comentário"
             />
-            <span>{children}</span>
+            <span className="flex gap-5">{children}</span>
         </div>
     )
 }
