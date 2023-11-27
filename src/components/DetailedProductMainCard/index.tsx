@@ -44,7 +44,7 @@ export const DetailedProductMainCard = ({ productName }: { productName: string }
                 <CategoryButton>{product.category}</CategoryButton>
                 <RatingIcon>{getAverageScore(product.comments)}</RatingIcon>
               </div>
-              <button type="button" onClick={() => addItem(product)}>
+              <button type="button" onClick={() => addItem(product)} className="md:scale-105 transition-all">
                 <BuyIcon />
               </button>
             </div>
