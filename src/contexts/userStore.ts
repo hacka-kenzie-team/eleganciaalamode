@@ -73,6 +73,8 @@ export const userStore = create<IUserState>()((set, get) => ({
             setError("Tentativa de login falhou");
         } finally {
             set({ loading: false });
+            setError("");
+            setMessage("");
         };
     },
 
@@ -105,6 +107,8 @@ export const userStore = create<IUserState>()((set, get) => ({
             setError("Tentativa de login falhou");
         } finally {
             set({ loading: false });
+            setError("");
+            setMessage("");
         };
     },
 
@@ -149,6 +153,8 @@ export const userStore = create<IUserState>()((set, get) => ({
             setError("Tentativa de registro falhou");
         } finally {
             set({ loading: false });
+            setError("");
+            setMessage("");
         };
     },
 

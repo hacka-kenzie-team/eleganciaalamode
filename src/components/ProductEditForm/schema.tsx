@@ -56,23 +56,7 @@ export const editProductSchema = z.object({
         }
         return e
     }),
-    sale: z
-        .union([z.string().length(0).nullable(), z.string()])
-        .optional()
-        .transform(e => {
-            if (e === ""){
-                return undefined
-            }
-            if (e === null) {
-                return undefined
-            }
-            if (e === "true"){
-                return true
-            }
-            if (e === "false"){
-                return false
-            }
-        }),
+    sale: z.boolean(),
     url: z.union([
         z.string().length(0, {message: "Url da imagem precisa ser do Google, catbox ou cloudinary!"}),
         z.string().includes("catbox", { message: "Tente uma URL de catbox.moe" }),
