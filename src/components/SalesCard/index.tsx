@@ -9,7 +9,6 @@ import Link from "next/link"
 
 export const SalesCard = ({product}:{product:IProduct}) => {
     const addItem = shoppingStore((state) => state.addItem)
-    console.log(product.slug)
 
     return (
         <li className="flex flex-col justify-center gap-5">
