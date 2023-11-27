@@ -1,14 +1,16 @@
 import { create } from 'zustand'
 import { IProduct, IProductState } from './@productTypes'
 import { api } from '@/app/api/api';
+import { adminStore } from './adminStore';
+
+const setError = adminStore.getState().setError
+const setMessage = adminStore.getState().setMessage
 
 
 export const productStore = create<IProductState>()((set) => ({
     productList: [],
     activeProduct: null,
     loading: false,
-    error: "",
-    message: "",
     searchInput: "",
 
     setActiveProduct: (product) => {
@@ -23,11 +25,14 @@ export const productStore = create<IProductState>()((set) => ({
             return data;
         } catch (error) {
             console.log(error);
-            set({ error: "Falha em carregar lista de produtos" });
+            setError("Falha em carregar lista de produtos" );
             return null;
         } finally {
             set({ loading: false });
-            setTimeout(() => { set({ message: "", error: "" }) }, 2000);
+            // setTimeout(() => { 
+            //     setError("");
+            //     setMessage(""); 
+            // }, 2000);
         };
     },
 
@@ -41,10 +46,13 @@ export const productStore = create<IProductState>()((set) => ({
             return data;
         } catch (error) {
             console.log(error);
-            set({ error: "Falha em carregar lista de produtos" });
+            setError("Falha em carregar lista de produtos");
         } finally {
             set({ loading: false });
-            setTimeout(() => { set({ message: "", error: "" }) }, 2000);
+            // setTimeout(() => { 
+            //     setError("");
+            //     setMessage(""); 
+            // }, 2000);
         };
     },
 
@@ -86,10 +94,13 @@ export const productStore = create<IProductState>()((set) => ({
             }))
         } catch (error) {
             console.log(error);
-            set({ error: "falha ao criar o produto." });
+            setError("falha ao criar o produto.");
         } finally {
             set({ loading: false });
-            setTimeout(() => { set({ message: "", error: "" }) }, 2000);
+            // setTimeout(() => { 
+            //     setError("");
+            //     setMessage(""); 
+            // }, 2000);
         };
     },
 
@@ -114,13 +125,16 @@ export const productStore = create<IProductState>()((set) => ({
                     };
                 })
             }));
-            set({ message: "Produto Modificado!" })
+            setMessage("Produto Modificado!")
         } catch (error) {
             console.log(error);
-            set({ error: "falha em editar produto" });
+            setError("falha em editar produto");
         } finally {
             set({ loading: false });
-            setTimeout(() => { set({ message: "", error: "" }) }, 2000);
+            // setTimeout(() => { 
+            //     setError("");
+            //     setMessage(""); 
+            // }, 2000);
         };
     },
 
@@ -137,13 +151,16 @@ export const productStore = create<IProductState>()((set) => ({
                 productList: state.productList.filter(oldProduct =>
                     oldProduct.id !== productId)
             }));
-            set({ message: "Produto removido com sucesso!" })
+            setMessage("Produto removido com sucesso!")
         } catch (error) {
             console.log(error);
-            set({ error: "falha ao remover o produto." });
+            setError("falha ao remover o produto.");
         } finally {
             set({ loading: false });
-            setTimeout(() => { set({ message: "", error: "" }) }, 2000);
+            // setTimeout(() => { 
+            //     setError("");
+            //     setMessage(""); 
+            // }, 2000);
         };
     },
 }));

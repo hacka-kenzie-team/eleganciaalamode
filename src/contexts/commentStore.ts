@@ -1,13 +1,15 @@
 import { create } from 'zustand'
 import { IComment, ICommentState } from './@commentTypes'
 import { api } from '@/app/api/api';
+import { adminStore } from './adminStore';
+
+const setError = adminStore.getState().setError
+const setMessage = adminStore.getState().setMessage
 
 
 export const commentStore = create<ICommentState>()((set) => ({
     commentList: [],
     loading: false,
-    error: "",
-    message: "",
     commentaryModal: [false, "post"],
     activeComment: null,
 
@@ -23,11 +25,14 @@ export const commentStore = create<ICommentState>()((set) => ({
             return data;
         } catch (error) {
             console.log(error);
-            set({ error: "falha em carregar lista de comentários" });
+            setError("falha em carregar lista de comentários");
             return null;
         } finally {
             set({ loading: false });
-            setTimeout(() => { set({ message: "", error: "" }) }, 2000);
+            // setTimeout(() => { 
+            //     setError("");
+            //     setMessage(""); 
+            // }, 2000);
         };
     },
 
@@ -40,14 +45,17 @@ export const commentStore = create<ICommentState>()((set) => ({
                 }
             })
             set((state) => ({ commentList: [...state.commentList, data] }));
-            set({ message: "Comentário foi adicionado!" })
+            setMessage("Comentário foi adicionado!");
             return data;
         } catch (error) {
             console.log(error);
-            set({ error: "falha postar o comentário." });
+            setError("falha postar o comentário.");
         } finally {
             set({ loading: false });
-            setTimeout(() => { set({ message: "", error: "" }) }, 2000);
+            // setTimeout(() => { 
+            //     setError("");
+            //     setMessage(""); 
+            // }, 2000);
         };
     },
 
@@ -72,13 +80,16 @@ export const commentStore = create<ICommentState>()((set) => ({
                     };
                 })
             }));
-            set({ message: "Comentário foi modificado!" })
+            setMessage("Comentário foi modificado!")
         } catch (error) {
             console.log(error);
-            set({ error: "falha em editar comentário" });
+            setError("falha em editar comentário");
         } finally {
             set({ loading: false });
-            setTimeout(() => { set({ message: "", error: "" }) }, 2000);
+            // setTimeout(() => { 
+            //     setError("");
+            //     setMessage(""); 
+            // }, 2000);
         };
     },
 
@@ -96,13 +107,16 @@ export const commentStore = create<ICommentState>()((set) => ({
                 commentList: state.commentList.filter(oldcomment =>
                     oldcomment.id !== commentId)
             }));
-            set({ message: "Comentário foi removido!" })
+            setMessage("Comentário foi removido!")
         } catch (error) {
             console.log(error);
-            set({ error: "falha em deletar comentário" });
+            setError("falha em deletar comentário");
         } finally {
             set({ loading: false });
-            setTimeout(() => { set({ message: "", error: "" }) }, 2000);
+            // setTimeout(() => { 
+            //     setError("");
+            //     setMessage(""); 
+            // }, 2000);
         };
     },
 

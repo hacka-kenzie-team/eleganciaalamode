@@ -67,10 +67,7 @@ export interface IUserData{
 export interface IUserState {
     userData: IUserData | null;
     loading: boolean
-    error: string
-    message: string
-    setMessage: (string: string) => void
-    setError: (string: string) => void
+    
     setLoading: (boolean: boolean) => void
     logoutUser: () => void
     loginUser: ({ username, password }: {

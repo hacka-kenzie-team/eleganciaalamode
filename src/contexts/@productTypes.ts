@@ -65,8 +65,6 @@ export interface IProductState {
     productList: IProduct[];
     activeProduct: null | IProduct;
     loading: boolean;
-    error: string;
-    message: string;
     searchInput: string;
 
     setActiveProduct: (product: IProduct | null) => void;
