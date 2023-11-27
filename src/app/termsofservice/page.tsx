@@ -2,8 +2,8 @@
 
 export default function TermsOfService() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <section>
+    <main className="flex min-h-screen flex-col items-center justify-between p-24 text-second">
+      <section className="flex flex-col gap-5">
         <h1 className="text-lg">Termos de Serviço</h1>
 
         <p className="text-xs">Bem-vindo à nossa loja virtual de comércio eletrônico construída para fins de teste. Estes Termos de Serviço regem o seu uso deste site e quaisquer serviços relacionados oferecidos por nós.</p>
