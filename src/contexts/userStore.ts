@@ -16,7 +16,7 @@ const setMessage = adminStore.getState().setMessage
 export const userStore = create<IUserState>()((set, get) => ({
     userData: null,
     loading: false,
-
+  
     // setMessage: (string) => { set({message: string})},
     // setError: (string) => { set({error: string})},
 
