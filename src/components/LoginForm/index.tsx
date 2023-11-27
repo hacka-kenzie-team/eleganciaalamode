@@ -38,10 +38,10 @@ export const LoginForm = () => {
                 </div>
                 <span className="text-second flex gap-2">
                     <p className="">Caso ainda não tenha conta,</p>
-                    <Link href={'/register'} className="underline decoration-1">REGISTRE-SE</Link>
+                    <Link href={'/register'} className="underline decoration-1 hover:translate-y-px transition-all">REGISTRE-SE</Link>
                 </span>
                 <FormSubmitButton>ENTRAR</FormSubmitButton>
-                <span className="text-second flex flex-col gap-2">
+                <span className="text-second flex items-center gap-5">
                     <p className="">Ou entre com sua conta do Google:</p>
                     <GoogleSignInButton />
                 </span>

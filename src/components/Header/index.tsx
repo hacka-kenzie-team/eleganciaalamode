@@ -68,13 +68,15 @@ export const Header = () => {
               {userData ? (
                 <h3 className="text-2xl">{`Olá, ${userData.user.name}`}</h3>
               ) : (
-                <Link href={"/login"}>
-                  <DefaultButton>login</DefaultButton>
-                </Link>
+                <div className="md:hover:scale-[1.02] transition-all">
+                  <Link href={"/login"}>
+                    <DefaultButton>login</DefaultButton>
+                  </Link>
+                </div>
               )}
             </div>
             <button
-              className="relative"
+              className="relative hover:translate-y-px transition-all"
               type="button"
               onClick={() => setShoppingModal(true)}
             >

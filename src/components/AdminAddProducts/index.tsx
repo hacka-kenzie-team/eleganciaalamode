@@ -60,7 +60,7 @@ export const AdminAddProducts = () => {
 
     return (
         <section className="flex flex-col gap-9">
-            <h1>Novo produto</h1>
+            <h1 className="flex justify-center mt-5">Novo produto</h1>
             {loading ?
                 <Loading />
                 :
@@ -143,7 +143,7 @@ export const AdminAddProducts = () => {
                     <div className="flex justify-center gap-2">
                         <button
                             type="submit"
-                            className="mt-3 inline-flex w-full justify-center rounded-md bg-second px-3 py-2 text-sm font-semibold text-primary shadow-sm sm:mt-0 sm:w-auto"
+                            className="mt-3 inline-flex w-full justify-center rounded-md bg-second px-3 py-2 text-sm font-semibold text-primary shadow-sm sm:mt-0 sm:w-auto md:hover:scale-[1.02] transition-all"
                         >
                             adicionar
                         </button>

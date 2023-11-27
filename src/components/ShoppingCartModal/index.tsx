@@ -135,7 +135,7 @@ export const ShoppingCartModal = () => {
                         {userData ? (
                           <button
                             type="button"
-                            className="flex items-center justify-center w-full rounded-md border border-transparent bg-second px-6 py-3 text-base font-medium text-primary shadow-sm"
+                            className="flex items-center justify-center w-full rounded-md border border-transparent bg-second px-6 py-3 text-base font-medium text-primary shadow-sm md:hover:scale-[1.02] transition-all"
                             onClick={() => handleBuyClick(shoppingList)}
                           >
                             finalizar pedido
@@ -154,7 +154,7 @@ export const ShoppingCartModal = () => {
                         <button
                           type="button"
                           onClick={() => clearShoppingList()}
-                          className="underline decoration-1"
+                          className="underline decoration-1 hover:translate-y-px transition-all"
                         >
                           limpar carrinho
                         </button>
@@ -162,7 +162,7 @@ export const ShoppingCartModal = () => {
                           {`ou `}
                           <button
                             type="button"
-                            className="font-medium text-second underline decoration-1"
+                            className="font-medium text-second underline decoration-1 hover:translate-y-px transition-all"
                             onClick={() => setShoppingModal(false)}
                           >
                             continue comprando

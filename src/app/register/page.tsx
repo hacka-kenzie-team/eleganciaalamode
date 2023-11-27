@@ -20,7 +20,7 @@ export default function RegisterPage() {
       <header className="flex items-center justify-center w-full h-24">
           <Link href={"/"}><h2 className="text-3xl text-second">ElegênciaÀLaMode</h2></Link>
         </header>
-      <main className="flex min-h-screen flex-col items-center justify-center p-24">
+      <main className="flex h-[89vh] flex-col items-center px-24 pt-8">
         <Image 
           src={heroRegister} 
           alt='um homem com um olhar sério' 

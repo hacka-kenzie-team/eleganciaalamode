@@ -10,7 +10,7 @@ interface IProductsAdminCardProps {
 
 export const ProductsAdminCard = ({ product }: IProductsAdminCardProps) => {
   return (
-    <li className="w-72 gap-2 flex flex-col justify-between">
+    <li className="w-72 gap-2 flex flex-col justify-between md:hover:scale-[1.02] transition-all">
       <Link href={`/${product.slug}`}>
         <Image
           src={product.style.url}
