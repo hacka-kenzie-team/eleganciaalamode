@@ -15,6 +15,7 @@ export const shoppingStore = create<IShoppingState>()((set) => ({
                 state.shoppingList.map((shopItem) => {
                     if (item.stock - shopItem.quantity < 1){
                         toast.warn("Sem mais produtos em estoque!")
+
                         return shopItem
                     } else if (shopItem.product.id === item.id) {
                         return {
