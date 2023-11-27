@@ -108,6 +108,7 @@ export const OptionMobileModal = ({
                             <Link
                               href={"/products"}
                               className="text-2xl flex items-center justify-center pt-7"
+                              onClick={() => setIsModaOpen(false)}
                             >
                               PRODUTOS{" "}
                             </Link>

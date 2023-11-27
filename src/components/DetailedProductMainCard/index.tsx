@@ -28,7 +28,7 @@ export const DetailedProductMainCard = ({ productName }: { productName: string }
                   <div>
                     <span>em estoque:</span><span> {product.stock}</span>
                   </div>
-                  <span>R$ {product.price}</span>
+                  <span>R$ {product.price.toFixed(2)}</span>
                 </div>
               </div>
               <Image
@@ -36,7 +36,7 @@ export const DetailedProductMainCard = ({ productName }: { productName: string }
                 height={550}
                 width={330}
                 alt="Imagem detalhada do Item a venda"
-                className="lg:w-[500px] lg:h-[300px] rounded-md"
+                className="lg:w-[500px] lg:h-[300px] rounded-md object-cover"
               />
             </div>
             <div className="flex justify-between w-full pt-2 lg:pt-8">

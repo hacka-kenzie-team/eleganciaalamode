@@ -22,8 +22,12 @@ export const CommentModerationButtons = ({
   };
 
   return (
-    <div className="flex gap-5 mt-5">
-      <button type="button" onClick={() => handleCommentManageClick("edit")} className="bg-second px-5 py-2 rounded-md">
+    <div className="flex gap-5 mt-5 ">
+      <button
+        type="button"
+        onClick={() => handleCommentManageClick("edit")}
+        className="bg-second px-5 py-2 rounded-md md:hover:scale-[1.02] transition-all"
+      >
         <Image
           src={editIcon}
           height={10}
@@ -31,7 +35,11 @@ export const CommentModerationButtons = ({
           alt="Ícone de uma caneta"
         />
       </button>
-      <button type="button" onClick={() => handleCommentManageClick("delete")} className="bg-second px-5 py-2 rounded-md">
+      <button
+        type="button"
+        onClick={() => handleCommentManageClick("delete")}
+        className="bg-second px-5 py-2 rounded-md md:hover:scale-[1.02] transition-all"
+      >
         <Image
           src={deleteIcon}
           height={10}
