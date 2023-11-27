@@ -47,7 +47,7 @@ interface IFormInputProps {
 export const FormInput = ({children, type, register, error}: IFormInputProps) => {
     return (
         <div>
-            <input className="text-slate-800 placeholder-shown:text-slate-800 p-5 h-12 w-[280px] rounded-md sm:w-[380px] outline-none"
+            <input className="text-slate-800 placeholder-shown:text-slate-800 p-5 h-12 w-full rounded-md sm:w-[380px] outline-none"
             placeholder={String(children)} type={type} {...register}></input>
             {error && <p className="text-red sm:w-[380px]">{error.message}</p>}
         </div>
