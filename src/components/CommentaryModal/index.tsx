@@ -82,7 +82,7 @@ export const CommentaryModal = () => {
       >
         <form
           onSubmit={handleSubmit((formData) => handleCommentaryClick(formData))}
-          className="p-8 bg-primary text-second border-4 border-second flex flex-col gap-5"
+          className="p-8 bg-primary text-second border-4 border-second flex flex-col gap-5 z-10"
         >
           <div>
             <UserNameTag />

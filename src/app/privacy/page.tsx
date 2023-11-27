@@ -1,7 +1,7 @@
 export default function Privacy() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <section>
+    <main className="flex min-h-screen flex-col items-center justify-between p-24 text-second">
+      <section className="flex flex-col gap-5">
         <h1 className="text-lg">Política de Privacidade</h1>
 
         <p className="text-xs">

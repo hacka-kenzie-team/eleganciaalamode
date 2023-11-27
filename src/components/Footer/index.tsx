@@ -62,13 +62,13 @@ export const Footer = () => {
                                 <nav>
                                     <ul className="flex flex-col gap-3 underline decoration-1">
                                         <li>
-                                            <a href="">Termos e condições</a>
+                                            <a href="/termsofservice">Termos e condições</a>
                                         </li>
                                         <li>
                                             <a href="">Contrato de licença</a>
                                         </li>
                                         <li>
-                                            <a href="">Política de privacidade</a>
+                                            <a href="/privacy">Política de privacidade</a>
                                         </li>
                                         <li>
                                             <a href="">Política de cookies</a>
