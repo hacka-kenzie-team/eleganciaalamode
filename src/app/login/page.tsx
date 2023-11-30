@@ -7,7 +7,6 @@ import { redirect } from "next/navigation";
 import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import heroLogin from "@/assets/imgs/hero-login.png"
 
 
 export default function LoginPage() {
@@ -28,12 +27,13 @@ export default function LoginPage() {
   return (
       <div className="w-screen min-h-screen relative text-primary">
         <Image 
-          src={heroLogin} 
-          alt="Imagem de uma mulher" 
-          className="absolute -z-10 bottom-0 right-0 blur-sm md:blur-none md:max-h-[100%] md:max-w-[50%] xl:max-w-[30%]"
+          src="/imgs/hero-login.png" 
+          alt="Imagem de uma mulher"
+          fill
+          className="absolute -z-10 bottom-0 right-0 blur-sm md:blur-none md:max-h-[100%] md:max-w-[50%] xl:max-w-[30%] object-cover"
         />
         <header className="flex items-center justify-center w-full h-24">
-          <Link href={"/"}><h2 className="text-3xl text-second">ElegênciaÀLaMode</h2></Link>
+          <Link href={"/"}><h2 className="text-3xl text-second">ElegânciaÀLaMode</h2></Link>
         </header>
         <main className="flex h-[88vh] flex-col items-center justify-center">
         {loading ?

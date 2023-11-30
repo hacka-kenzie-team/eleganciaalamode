@@ -1,32 +1,35 @@
 import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Image from "next/image";
-import { productStore } from "@/contexts/productStore";
-import { userStore } from "@/contexts/userStore";
 import { Loading } from "./loading";
-import { adminStore } from "@/contexts/adminStore";
+import { userStore } from "@/contexts/userStore";
+import { signOut, useSession } from "next-auth/react";
 
 
-export const ModalAdminConfirmDelete = () => {
+export const ModalUserConfirmDelete = () => {
 
+  const { deleteUser, logoutUser, setLoading, userDeleteModal, setUserDeleteModal, loading } = userStore((state) => state)
   const cancelButtonRef = useRef(null);
-  const { setAdminDeleteModal, adminDeleteModal } = adminStore((state) => state)
-  const { removeProduct, activeProduct, loading } = productStore((state) => state)
-  const token = userStore((state) => state.userData?.accessToken);
+  const { data:session } = useSession();
 
-  const handleDeleteClick = () => {
-    token &&
-    removeProduct(activeProduct!.id, token)
-    setAdminDeleteModal(false)
-  };
-
-  return (
-    <Transition.Root show={adminDeleteModal} as={Fragment}>
+  const handleDeleteClick = async () => {
+    console.log("clicked")
+    await deleteUser();
+    setLoading(true);
+    if (session) {
+      signOut();
+    }
+    logoutUser();
+    setLoading(false);
+    setUserDeleteModal(false);
+  }
+  return (  
+    <Transition.Root show={userDeleteModal} as={Fragment}>
       <Dialog
         as="div"
         className="relative z-10"
         initialFocus={cancelButtonRef}
-        onClose={setAdminDeleteModal}
+        onClose={setUserDeleteModal}
       >
         <Transition.Child
           as={Fragment}
@@ -88,7 +91,7 @@ export const ModalAdminConfirmDelete = () => {
                   <button
                     type="button"
                     className="mt-3 inline-flex w-full justify-center rounded-md bg-second px-3 py-2 text-sm font-semibold text-primary shadow-sm sm:mt-0 sm:w-auto md:hover:scale-[1.02] transition-all"
-                    onClick={() => setAdminDeleteModal(false)}
+                    onClick={() => setUserDeleteModal(false)}
                     ref={cancelButtonRef}
                   >
                     CANCELAR

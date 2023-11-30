@@ -29,6 +29,8 @@ export const commentStore = create<ICommentState>()((set) => ({
             return null;
         } finally {
             set({ loading: false });
+            setError("");
+            setMessage("");
         };
     },
 

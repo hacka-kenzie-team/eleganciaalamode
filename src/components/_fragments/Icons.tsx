@@ -1,15 +1,13 @@
 import Image from "next/image"
 import placeholder from "../../../public/next.svg"
 import { DefaultButton } from "./buttons/DefaultButton"
-import likeIcon from "@/assets/icons/likeIcon.svg"
-import iconAvaliabre from "@/assets/icons/icon-avaliabre.svg"
 
 
 export const RatingIcon = ({children}:{children: React.ReactNode}) => {
     return (
         <div className="flex gap5 items-center gap-2">
             <Image
-                src={likeIcon}
+                src="/icons/likeIcon.svg"
                 height={20}
                 width={20}
                 alt="Ícone de Estrela"
@@ -23,7 +21,7 @@ export const CommentaryIcon = ({children}:{children: React.ReactNode}) => {
     return (
         <div className="flex gap-2 items-center">
             <Image
-                src={iconAvaliabre}
+                src="/icons/icon-avaliabre.svg"
                 height={30}
                 width={30}
                 alt="Ícone de comentário"

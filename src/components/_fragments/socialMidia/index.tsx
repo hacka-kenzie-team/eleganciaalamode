@@ -2,11 +2,6 @@
 
 import Image from "next/image"
 import { DefaultButton } from "../buttons/DefaultButton"
-import facebook from "@/assets/icons/facebook.svg"
-import instagram from "@/assets/icons/Instagram.svg"
-import twitter from "@/assets/icons/twitter.svg"
-import youtube from "@/assets/icons/youtube.svg"
-import linkedin from "@/assets/icons/linkedin.svg"
 import { useState } from "react"
 import { FooterModalInscrevaSe } from "@/components/FooterModalInscrevaSe"
 
@@ -18,11 +13,11 @@ export const SocialMidia = () => {
             <h3 className="text-2xl">Mídias Sociais</h3>
             <div>
                 <ul className="flex items-center justify-between gap-1">
-                    <li><Image src={facebook} alt="ícone do facebook"/></li>
-                    <li><Image src={instagram} alt="ícone do instagram"/></li>
-                    <li><Image src={twitter} alt="ícone do twitter"/></li>
-                    <li><Image src={youtube} alt="ícone do youtube"/></li>
-                    <li><Image src={linkedin} alt="ícone do linkedin"/></li>
+                    <li className="relative w-8 h-8"><Image src="/icons/facebook.svg" alt="ícone do facebook" fill/></li>
+                    <li className="relative w-8 h-8"><Image src="/icons/Instagram.svg" alt="ícone do instagram" fill/></li>
+                    <li className="relative w-8 h-8"><Image src="/icons/twitter.svg" alt="ícone do twitter" fill/></li>
+                    <li className="relative w-8 h-8"><Image src="/icons/youtube.svg" alt="ícone do youtube" fill/></li>
+                    <li className="relative w-8 h-8"><Image src="/icons/linkedin.svg" alt="ícone do linkedin" fill/></li>
                 </ul>
             </div>
             <p>Recursos exclusivos diretamente na sua caixa de entrada</p>

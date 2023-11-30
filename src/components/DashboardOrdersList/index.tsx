@@ -8,8 +8,8 @@ export const DashboardOrdersList = () => {
   const user = userStore((state) => state.userData?.user);
 
   return (
-    <section>
-      <h1 className="text-lg">Histórico de compras:</h1>
+    <section className="w-full flex flex-col items-center justify-center pt-8">
+      <h1 className="text-2xl">Histórico de compras:</h1>
       <ul>
         {
           user &&

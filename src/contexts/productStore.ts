@@ -29,9 +29,9 @@ export const productStore = create<IProductState>()((set) => ({
             return null;
         } finally {
             set({ loading: false });
+            setError("");
+            setMessage(""); 
             // setTimeout(() => { 
-            //     setError("");
-            //     setMessage(""); 
             // }, 2000);
         };
     },
@@ -49,9 +49,9 @@ export const productStore = create<IProductState>()((set) => ({
             setError("Falha em carregar lista de produtos");
         } finally {
             set({ loading: false });
+            setError("");
+            setMessage(""); 
             // setTimeout(() => { 
-            //     setError("");
-            //     setMessage(""); 
             // }, 2000);
         };
     },
@@ -97,15 +97,16 @@ export const productStore = create<IProductState>()((set) => ({
             setError("falha ao criar o produto.");
         } finally {
             set({ loading: false });
+            setError("");
+            setMessage(""); 
             // setTimeout(() => { 
-            //     setError("");
-            //     setMessage(""); 
             // }, 2000);
         };
     },
 
     editProduct: async (productData, productId, token) => {
         try {
+            console.log(JSON.parse(JSON.stringify(productData)));
             set({ loading: true });
             const { data } = await api.patch<IProduct>(`/products/${productId}/`, productData, {
                 headers: {
@@ -131,10 +132,8 @@ export const productStore = create<IProductState>()((set) => ({
             setError("falha em editar produto");
         } finally {
             set({ loading: false });
-            // setTimeout(() => { 
-            //     setError("");
-            //     setMessage(""); 
-            // }, 2000);
+            setError("");
+            setMessage("");
         };
     },
 
@@ -157,9 +156,9 @@ export const productStore = create<IProductState>()((set) => ({
             setError("falha ao remover o produto.");
         } finally {
             set({ loading: false });
+            setError("");
+            setMessage(""); 
             // setTimeout(() => { 
-            //     setError("");
-            //     setMessage(""); 
             // }, 2000);
         };
     },

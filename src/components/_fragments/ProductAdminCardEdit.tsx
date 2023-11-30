@@ -1,6 +1,5 @@
 "use client"
-import trashIcon from "@/assets/icons/trashIcon.svg"
-import editIcon from "@/assets/icons/editIcon.svg"
+
 import Image from "next/image";
 import { adminStore } from "@/contexts/adminStore";
 import { productStore } from "@/contexts/productStore";
@@ -25,11 +24,11 @@ export const ProductAdminCardEdit = ({productId}: IProductHomeCardInfoProps) => 
     return (
       <>
         <div className="flex items-center justify-between">
-          <button className="bg-second px-5 py-2 rounded-md" onClick={() => handleEditClick()}>
-            <Image src={editIcon} alt="Icone de um lápis"/>
+          <button className="bg-second px-5 py-2 rounded-md relative h-[32px] w-[32px]" onClick={() => handleEditClick()}>
+            <Image src="/icons/editIcon.svg" alt="Icone de um lápis" fill/>
           </button>
           <button className="bg-second px-5 py-2 rounded-md" onClick={() => handledeleteClick()}>
-            <Image src={trashIcon} alt="Icone de uma lixeira"/>
+            <Image src="/icons/trashIcon.svg" alt="Icone de uma lixeira"/>
           </button>
         </div>
       </>

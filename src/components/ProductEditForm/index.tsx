@@ -58,6 +58,7 @@ export const ProductEditForm = () => {
       }
       return productData
     }
+    console.log(formData)
     const productFinalData = removeUndefinedFromObject(formProductObject())
     token && await editProduct(productFinalData, activeProduct!.id, token);
     setAdminEditModal(false);
@@ -95,6 +96,19 @@ export const ProductEditForm = () => {
           />
           {errors.stock && <p>{errors.stock.message}</p>}
         </div>
+      </div>
+      <div>
+        <div className="flex justify-around items-center">
+          <p>Está em promoção?</p>
+          <div className="flex gap-2 items-center">
+            <input
+                type="checkbox"
+                {...register("sale")}
+                className="w-full transform scale-150 rounded-md px-5 outline-none text-primary"
+              />
+          </div>
+        </div>
+        {errors.sale && <p>{errors.sale.message}</p>}
       </div>
       <label>descrição:</label>
       <textarea
@@ -142,30 +156,6 @@ export const ProductEditForm = () => {
         className="w-full h-12 rounded-md p-5 outline-none text-primary"
       />
       {errors.url && <p>{errors.url.message}</p>}
-      <div>
-        <p>Está em promoção?</p>
-        <div className="flex justify-around">
-          <div className="flex gap-2 items-center">
-            <label>sim:</label>
-            <input
-                type="radio"
-                value={"true"}
-                {...register("sale")}
-                className="w-full h-12 rounded-md p-5 outline-none text-primary"
-              />
-          </div>
-          <div className="flex gap-5 items-center">
-            <label>não:</label>
-            <input
-                type="radio"
-                value={"false"}
-                {...register("sale")}
-                className="w-full h-12 rounded-md p-5 outline-none text-primary"
-              />
-          </div>
-        </div>
-        {errors.sale && <p>{errors.sale.message}</p>}
-      </div>
       <div className="flex justify-between gap-2">
         <button
           type="button"

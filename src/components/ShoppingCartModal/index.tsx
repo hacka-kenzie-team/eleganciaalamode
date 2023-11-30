@@ -4,9 +4,8 @@ import { ShoppingCartModalCard } from "../ShoppingCartModalCard";
 import { IShoppingItem } from "@/contexts/@shoppingTypes";
 import { userStore } from "@/contexts/userStore";
 import Link from "next/link";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import cartEmpty from "@/assets/icons/cart-empty-icon.svg"
 import Image from "next/image";
 
 export const ShoppingCartModal = () => {
@@ -98,7 +97,7 @@ export const ShoppingCartModal = () => {
                           >
                             {shoppingList.length <= 0 ? (
                               <div className="flex items-center justify-center pt-20 flex-col h-full text-second">
-                                <Image width={100} src={cartEmpty} alt="Carrinho de compras"/>
+                                <Image width={100} height={100} src="/icons/cart-empty-icon.svg" alt="Carrinho de compras"/>
                                 <p>seu carrinho está vazio</p>
                               </div>
                             ) : (

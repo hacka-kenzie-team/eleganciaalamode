@@ -1,7 +1,5 @@
 "use client";
 import Image from "next/image";
-import placeholder from "../../../public/vercel.svg";
-import { AddIcon, SubtractIcon } from "../_fragments/Icons";
 import { IShoppingItem } from "@/contexts/@shoppingTypes";
 import { shoppingStore } from "@/contexts/shoppingStore";
 
@@ -16,13 +14,12 @@ export const ShoppingCartModalCard = ({
 
   return (
     <li key={shoppingItem.product.id} className="flex py-6">
-      <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-second">
+      <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-second">
         <Image
           src={shoppingItem.product.style.url}
           alt="product picture"
-          width={60}
-          height={60}
-          className="h-full w-full object-fill object-center"
+          fill
+          className="h-full w-full object-cover object-center"
         />
       </div>
 

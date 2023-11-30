@@ -1,7 +1,5 @@
 import Image from "next/image";
-import womanImage from "@/assets/imgs/retrato-jovem-mulher.png"
 import { DefaultButton } from "@/components/_fragments/buttons/DefaultButton";
-import threeSocialMan from "@/assets/imgs/3-homens-de-trerno.png"
 import Link from "next/link";
 
 
@@ -27,8 +25,8 @@ export default function Home() {
               melhor se adequam ao seu estilo e ocasião.
             </p>
           </div>
-          <div className="w-full lg:w-[49.6vw] h-[80vh] sm:h-[90vh] lg:h-[90vh] bg-third relative flex justify-center">
-            <Image src={womanImage} alt="Imagem de uma mulher" className="absolute bottom-0" height={928}/>
+          <div className="w-full lg:w-[49.6vw] h-[80dvh] sm:h-[90dvh] lg:h-[90dvh] bg-third relative flex justify-center flex-shrink-0">
+            <Image src="/imgs/retrato-jovem-mulher.png" alt="Imagem de uma mulher" className="absolute bottom-0 h-[86dvh] sm:h-[100dvh] lg:h-[100dvh] object-cover w-auto" height={928} width={691}/>
           </div>
         </section>
         <section className="flex flex-col lg:flex-row items-center justify-center p-10 gap-10 text-second">
@@ -43,9 +41,9 @@ export default function Home() {
             </p>
             <Link href={'/products/Acessorios'} className="md:hover:scale-[1.02] transition-all"><DefaultButton>Acessórios</DefaultButton></Link>
           </div>
-          <div className="flex flex-col items-center justify-between gap-5">
+          <div className="relative flex flex-col items-center justify-between gap-5 flex-shrink-0">
             <h3 className="text-2xl">os melhores ternos do mercado</h3>
-            <Image src={threeSocialMan} alt="três homens de ternos" className="rounded-md"/>
+            <Image src="/imgs/3-homens-de-trerno.png" width={660} height={415} alt="três homens de ternos" className="rounded-md object-cover h-auto w-auto flex-shrink-0"/>
           </div>
           <div className="h-[400px] lg:h-[300px] flex flex-col justify-around items-center">
             <h3 className="text-2xl">calçados das melhores grifes</h3>
